@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Snap Challenge</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Voyage -->
+    <string name="transport">Dans les transports</string>
+    <string name="simple">Simple</string>
+    <string name="grouped">Grouped</string>
+</resources>
