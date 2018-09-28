@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_programs"
+        android:icon="@drawable/ic_news"
+        android:title="@string/home" />
+
+    <item
+        android:id="@+id/navigation_top_brand"
+        android:icon="@drawable/ic_medal"
+        android:title="@string/my_challenges" />
+
+    <item
+        android:id="@+id/navigation_favorite"
+        android:icon="@drawable/ic_friends"
+        android:title="@string/friends" />
+
+</menu>

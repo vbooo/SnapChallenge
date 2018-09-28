@@ -4,7 +4,12 @@
     tools:context="mypromotion.vboo.com.snapchallenge.MainActivity">
     <item
         android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:title="@string/hashtag"
+        android:icon="@drawable/ic_hashtag"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_add_friends"
+        android:title="@string/friends"
+        android:icon="@drawable/ic_add_friends"
+        app:showAsAction="always" />
 </menu>

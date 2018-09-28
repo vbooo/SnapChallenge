@@ -6,4 +6,8 @@
     <string name="transport">Dans les transports</string>
     <string name="simple">Simple</string>
     <string name="grouped">Grouped</string>
+    <string name="home">Home</string>
+    <string name="my_challenges">My challenges</string>
+    <string name="friends">Friends</string>
+    <string name="hashtag">Hashtag</string>
 </resources>
