@@ -12,10 +12,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setSupportActionBar(findViewById(R.id.my_toolbar))
+        setContentView(R.layout.layout_test)
+        //setSupportActionBar(findViewById(R.id.my_toolbar))
         //actionBar?.elevation = 2.0F
-        actionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
+        //actionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
 
     }
 
