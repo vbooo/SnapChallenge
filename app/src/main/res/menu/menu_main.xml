@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="mypromotion.vboo.com.snapchallenge.MainActivity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_search"
         android:title="@string/hashtag"
-        android:icon="@drawable/ic_hashtag"
-        app:showAsAction="always" />
+        android:icon="@drawable/baseline_search_black_24"
+        app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_add_friends"
+        android:id="@+id/action_ranking"
         android:title="@string/friends"
-        android:icon="@drawable/ic_add_friends"
-        app:showAsAction="always" />
+        android:icon="@drawable/ranking"
+        app:showAsAction="ifRoom" />
 </menu>

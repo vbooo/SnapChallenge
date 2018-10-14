@@ -7,7 +7,7 @@ class Action {
 
     private var id: Int? = null
     private var label: String? = null
-    private var difficulty: Int? = null
+    private var value: Int? = null
     private var timeObjDefault: Int? = null
 
 }
