@@ -15,4 +15,11 @@
     <string name="subscribe">Subscribe</string>
 
     <string name="answer">Answer</string>
+    <string name="bet">BET</string>
+    <string name="challenge_privacy">Challenge privacy</string>
+    <string name="who_can_see_your_challenge">Who can see your challenge?</string>
+    <string name="public_word">Public</string>
+    <string name="public_privacy_detail">Tous les utilisateurs de l\'application</string>
+    <string name="private_word">Privé</string>
+    <string name="private_privacy_detail">Vous et l\'auteur du challenge</string>
 </resources>

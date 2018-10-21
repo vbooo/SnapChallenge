@@ -6,19 +6,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import mypromotion.vboo.com.snapchallenge.R
 import mypromotion.vboo.com.snapchallenge.fragment.MyChallengesFragment
-import mypromotion.vboo.com.snapchallenge.holder.MyChallengeHolder
+import mypromotion.vboo.com.snapchallenge.holder.FriendsChallengeHolder
 
-class MyChallengeAdapter(private var dataSet: MutableList<MyChallengesFragment.Challenge>, var context: Context) : RecyclerView.Adapter<MyChallengeHolder>(){
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MyChallengeHolder {
-        val view = LayoutInflater.from(parent?.context).inflate(R.layout.item_my_challenge, parent, false)
-        return MyChallengeHolder(view, context)
+class FriendChallengesAdapter(var dataSet: MutableList<MyChallengesFragment.Challenge>, var context: Context) : RecyclerView.Adapter<FriendsChallengeHolder>(){
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): FriendsChallengeHolder {
+        val view = LayoutInflater.from(parent?.context).inflate(R.layout.item_friend_challenge, parent, false)
+        return FriendsChallengeHolder(view, context)
     }
 
     override fun getItemCount(): Int {
         return dataSet.size
     }
 
-    override fun onBindViewHolder(holder: MyChallengeHolder?, position: Int) {
+    override fun onBindViewHolder(holder: FriendsChallengeHolder?, position: Int) {
         holder?.setActionName(dataSet[position].a)
         holder?.setStatus(dataSet[position].p)
         holder?.setTime(dataSet[position].t)

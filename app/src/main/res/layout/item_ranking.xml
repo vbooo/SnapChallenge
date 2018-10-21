@@ -41,7 +41,7 @@
             android:maxLines="1"
             android:ellipsize="end"
             android:textColor="@android:color/black"
-            android:textSize="14sp"/>
+            android:textSize="@dimen/second_text"/>
         <TextView
             android:id="@+id/item_ranking_user_points"
             android:layout_width="wrap_content"

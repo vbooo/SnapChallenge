@@ -13,4 +13,10 @@
     <string name="ranking">Classement</string>
     <string name="subscribe">S\'ABONNER</string>
     <string name="answer">RÉPONDRE</string>
+    <string name="bet">PARIER</string>
+    <string name="challenge_privacy">Confidentialité du challenge</string>
+    <string name="who_can_see_your_challenge">Qui peut voir votre challenge?</string>
+    <string name="public_word">Public</string>
+    <string name="public_privacy_detail">Tous les utilisateurs de l\'application</string>
+    <string name="private_word">Privé</string>
 </resources>

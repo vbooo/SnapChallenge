@@ -4,6 +4,7 @@ package mypromotion.vboo.com.snapchallenge.fragment
 import android.app.Activity
 import android.app.Fragment
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -13,7 +14,11 @@ import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.fragment_my_challenges.*
 import mypromotion.vboo.com.snapchallenge.MainActivity
 import mypromotion.vboo.com.snapchallenge.R
+import mypromotion.vboo.com.snapchallenge.activity.PrivacyChallengeActivity
 import mypromotion.vboo.com.snapchallenge.adapter.MyChallengeAdapter
+import android.support.v7.widget.RecyclerView
+
+
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -46,14 +51,14 @@ class MyChallengesFragment : Fragment() {
         // set up the list view adapter
         val listChallenge = arrayListOf<Challenge>()
         listChallenge.clear()
-        listChallenge.add(Challenge("Aller à l'escalade", "200 points", " - 00:12:34", "Francis -> moi"))
-        listChallenge.add(Challenge("Prendre une douche tout habillé", "300 points", " - 01:12:34", "Valérie -> moi"))
-        listChallenge.add(Challenge("Prendre le prof de maths au tableau", "100 points", " - 02:12:34", "Nathalie -> moi"))
-        listChallenge.add(Challenge("Faire la bise à une inconnue", "500 points", " - 04:34:12", "moi -> Pierre"))
-        listChallenge.add(Challenge("Manger des haricots verts au Nutella", "450 points", " - 05:12:34", "moi -> Marc"))
-        listChallenge.add(Challenge("Aller à la piscine", "50 points", " - En vérification", "moi -> Nicolas"))
-        listChallenge.add(Challenge("Ice bucket challenge", "500 points", " - Terminé", "Julien -> moi"))
-        listChallenge.add(Challenge("Aller à la Tour Eiffel", "240 points", " - Terminé", "Didier -> moi"))
+        listChallenge.add(Challenge("Aller à l'escalade", "", "00:12:34", "Francis -> moi"))
+        listChallenge.add(Challenge("Prendre une douche tout habillé", "", "01:12:34", "Valérie -> moi"))
+        listChallenge.add(Challenge("Prendre le prof de maths au tableau", "", "02:12:34", "Nathalie -> moi"))
+        listChallenge.add(Challenge("Faire la bise à une inconnue", "", "04:34:12", "moi -> Pierre"))
+        listChallenge.add(Challenge("Manger des haricots verts au Nutella", "", "05:12:34", "moi -> Marc"))
+        listChallenge.add(Challenge("Aller à la piscine", "", "échoué", "moi -> Nicolas"))
+        listChallenge.add(Challenge("Ice bucket challenge", "", "répondu", "Julien -> moi"))
+        listChallenge.add(Challenge("Aller à la Tour Eiffel", "", "répondu", "Didier -> moi"))
         val viewAdapter = MyChallengeAdapter(listChallenge, mainActivity)
 
         // apply the manager and the adapter to the permit_list
@@ -62,6 +67,20 @@ class MyChallengesFragment : Fragment() {
             this.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
             adapter = viewAdapter
         }
+
+        fragment_my_challenge_fab.setOnClickListener {
+            val intentRanking = Intent(mainActivity, PrivacyChallengeActivity::class.java)
+            startActivity(intentRanking)
+        }
+
+        fragment_my_challenge_recycler_view.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+                if (dy > 0)
+                    fragment_my_challenge_fab.hide()
+                else if (dy < 0)
+                    fragment_my_challenge_fab.show()
+            }
+        })
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
