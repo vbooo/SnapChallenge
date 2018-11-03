@@ -21,5 +21,6 @@ open class Challenge {
      var dateStartChallenge: Date? = null
      var dateEndChallenge: Date? = null
      var idStatusChallenge: Date? = null
+     var tempActionName: String? = null
 
 }

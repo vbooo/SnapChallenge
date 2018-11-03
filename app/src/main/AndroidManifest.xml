@@ -53,7 +53,11 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ChooseChallengedUserActivity"
-            android:label="@string/lay_down_a_challenge"
+            android:label="@string/choose_challenged_user"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CreateNewActionActivity"
+            android:label="@string/new_action"
             android:screenOrientation="portrait" />
 
         <provider
@@ -65,6 +69,8 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+
     </application>
 
 </manifest>

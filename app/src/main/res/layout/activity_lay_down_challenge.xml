@@ -6,6 +6,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activity.LayDownChallengeActivity">
 
+    <TextView
+        android:id="@+id/activity_lay_down_challenge_action_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="18sp"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/activity_lay_down_challenge_layout_add_user"/>
+
     <LinearLayout
         android:id="@+id/activity_lay_down_challenge_layout_add_user"
         android:layout_width="match_parent"
@@ -23,14 +33,31 @@
             android:tint="@color/blue_theme"
             android:layout_gravity="center_horizontal"/>
         <TextView
-            android:id="@+id/activity_lay_down_challenge_add_user"
+            android:id="@+id/activity_lay_down_challenge_add_action"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:paddingTop="@dimen/padding_small"
-            android:text="@string/choose_user_to_lay_down"
             android:textSize="16sp"/>
     </LinearLayout>
+
+
+    <FrameLayout
+        android:id="@+id/activity_lay_down_challenge_layout_challenged_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue_theme"
+        app:layout_constraintBottom_toTopOf="@+id/activity_lay_down_challenge_layout_lay_down">
+
+        <TextView
+            android:id="@+id/activity_lay_down_challenged_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:padding="@dimen/padding_large"/>
+    </FrameLayout>
 
     <FrameLayout
         android:id="@+id/activity_lay_down_challenge_layout_lay_down"

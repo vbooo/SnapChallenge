@@ -38,5 +38,10 @@
     <string name="lay_down_challenge">Lancer le défi !</string>
     <string name="choose_user_to_lay_down">Qui voulez vous challenger ?</string>
     <string name="lay_down_a_challenge">Lancer un challenge</string>
+    <string name="choose_action_to_realize">Choisissez une action à réaliser !</string>
+    <string name="choose_challenged_user">Choisir le challengé</string>
+    <string name="action_to_realize">Action à réaliser</string>
+    <string name="choose_in_list">Choisir dans la liste</string>
+    <string name="choose_challenge_time">Choisissez un délai pour ce challenge</string>
 
 </resources>
