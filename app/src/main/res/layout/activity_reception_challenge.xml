@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activity.ReceptionChallengeActivity">
+    <TextView
+        android:id="@+id/activity_reception_challenge_user_sent_challenge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="@dimen/padding_large"
+        android:textSize="22sp"
+        android:gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/activity_reception_challenge_name_challenge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        android:textSize="28sp" />
+
+    <LinearLayout
+        android:id="@+id/activity_reception_challenge_layout_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/padding_large"
+        app:layout_constraintTop_toBottomOf="@+id/activity_reception_challenge_name_challenge"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingRight="@dimen/padding_small"
+            android:src="@drawable/ic_time"/>
+        <TextView
+            android:id="@+id/activity_reception_challenge_time_challenge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/activity_reception_challenge_accept_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue_theme"
+        app:layout_constraintBottom_toTopOf="@+id/activity_reception_challenge_refuse_layout">
+
+        <TextView
+            android:id="@+id/activity_reception_challenge_accept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/accept"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:padding="@dimen/padding_large"
+            android:textColor="@android:color/white"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/activity_reception_challenge_refuse_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/activity_reception_challenge_refuse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/refuse"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:padding="@dimen/padding_large"
+            android:textColor="@android:color/holo_red_dark"/>
+    </FrameLayout>
+
+</android.support.constraint.ConstraintLayout>

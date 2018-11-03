@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="mypromotion.vboo.com.snapchallenge">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,10 +30,41 @@
         <activity
             android:name=".activity.RankingActivity"
             android:label="@string/ranking"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".activity.PrivacyChallengeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PrivacyChallengeActivity"
             android:label="@string/challenge_privacy"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.NewActionActivity"
+            android:label="@string/new_action"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PublishChallengeActivity"
+            android:label="@string/publish_challenge"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ReceptionChallengeActivity"
+            android:label="@string/new_challenge"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.LayDownChallengeActivity"
+            android:label="@string/lay_down_a_challenge"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ChooseChallengedUserActivity"
+            android:label="@string/lay_down_a_challenge"
+            android:screenOrientation="portrait" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="mypromotion.vboo.com.snapchallenge.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

@@ -18,5 +18,25 @@
     <string name="who_can_see_your_challenge">Qui peut voir votre challenge?</string>
     <string name="public_word">Public</string>
     <string name="public_privacy_detail">Tous les utilisateurs de l\'application</string>
+    <string name="private_privacy_detail">Vous et l\'auteur du challenge</string>
     <string name="private_word">Privé</string>
+    <string name="new_action">Nouvelle action</string>
+    <string name="name_of_action">Nom de l\'action</string>
+    <string name="propose_action">Proposer cette action à SnapChallenge</string>
+    <string name="validate">VALIDER</string>
+    <string name="publish_challenge">Publier un challenge</string>
+    <string name="describe_your_challenge">Décrivez votre challenge</string>
+    <string name="complete_challenge">Complétez le challenge</string>
+    <string name="my_profil">Mon profil</string>
+    <string name="error_default">Une erreur est survenue</string>
+    <string name="picture_or_video">Photo ou vidéo?</string>
+    <string name="new_challenge">Nouveau challenge</string>
+
+    <string name="user_sent_challenge">%1$s vous a lancé un challenge!</string>
+    <string name="accept">Accepter</string>
+    <string name="refuse">Refuser</string>
+    <string name="lay_down_challenge">Lancer le défi !</string>
+    <string name="choose_user_to_lay_down">Qui voulez vous challenger ?</string>
+    <string name="lay_down_a_challenge">Lancer un challenge</string>
+
 </resources>

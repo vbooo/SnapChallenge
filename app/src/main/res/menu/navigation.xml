@@ -12,8 +12,8 @@
         android:title="@string/my_challenges" />
 
     <item
-        android:id="@+id/navigation_friends"
-        android:icon="@drawable/ic_friends"
-        android:title="@string/friends" />
+        android:id="@+id/navigation_avatar"
+        android:icon="@drawable/avatar"
+        android:title="@string/my_profil" />
 
 </menu>

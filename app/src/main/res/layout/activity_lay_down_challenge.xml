@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activity.LayDownChallengeActivity">
+
+    <LinearLayout
+        android:id="@+id/activity_lay_down_challenge_layout_add_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add"
+            android:adjustViewBounds="true"
+            android:tint="@color/blue_theme"
+            android:layout_gravity="center_horizontal"/>
+        <TextView
+            android:id="@+id/activity_lay_down_challenge_add_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingTop="@dimen/padding_small"
+            android:text="@string/choose_user_to_lay_down"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/activity_lay_down_challenge_layout_lay_down"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_top"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/activity_lay_down_challenge_lay_down"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lay_down_challenge"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:padding="@dimen/padding_large"/>
+    </FrameLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -8,9 +8,9 @@ import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
 import mypromotion.vboo.com.snapchallenge.activity.RankingActivity
-import mypromotion.vboo.com.snapchallenge.fragment.FriendsFragment
 import mypromotion.vboo.com.snapchallenge.fragment.HomeFragment
 import mypromotion.vboo.com.snapchallenge.fragment.MyChallengesFragment
+import mypromotion.vboo.com.snapchallenge.fragment.ProfilFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
                 changeFragment(1)
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_friends -> {
+            R.id.navigation_avatar -> {
                 changeFragment(2)
                 return@OnNavigationItemSelectedListener true
             }
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
     private fun changeFragment(position: Int) {
         val newFragment = when (position) {
             1 -> MyChallengesFragment()
-            2 -> FriendsFragment()
+            2 -> ProfilFragment()
             else -> HomeFragment()
         }
 
