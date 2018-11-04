@@ -42,7 +42,26 @@
     <string name="choose_challenged_user">Choisir le challengé</string>
     <string name="action_to_realize">Action à réaliser</string>
     <string name="choose_in_list">Choisir dans la liste</string>
-    <string name="choose_challenge_time">Choisissez un délai pour ce challenge</string>
+    <string name="choose_challenge_time">Définissez un délai (optionnel)</string>
     <string name="time">Délai</string>
+    <string name="day">Jour</string>
+    <string name="hour">Heure</string>
+    <string name="minute">Minute</string>
+    <string name="no_time">Pas de délai</string>
+
+    <plurals name="x_minute">
+        <item quantity="one">%d min</item>
+        <item quantity="other">%d mins</item>
+    </plurals>
+
+    <plurals name="x_hour">
+        <item quantity="one">%d heure</item>
+        <item quantity="other">%d heures</item>
+    </plurals>
+
+    <plurals name="x_day">
+        <item quantity="one">%d jour</item>
+        <item quantity="other">%d jours</item>
+    </plurals>
 
 </resources>

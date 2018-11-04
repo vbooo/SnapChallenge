@@ -6,7 +6,7 @@ import mypromotion.vboo.com.snapchallenge.R
 import mypromotion.vboo.com.snapchallenge.model.Challenge
 
 
-class LayDownChallengeViewModel(val challenge: Challenge, val context: Context) {
+class LayDownChallengeViewModel(val challenge: Challenge, val context: Context, var tempDay: Int = 0, var tempHour: Int = 0, var tempMinute: Int = 0) {
 
     fun visibilityActionName(): Int {
         return if (challenge.tempActionName == null || challenge.tempActionName!!.isEmpty()) {
@@ -15,6 +15,48 @@ class LayDownChallengeViewModel(val challenge: Challenge, val context: Context) 
             View.VISIBLE
         }
     }
+
+    fun visibilityLayoutTime(): Int {
+        return if (tempDay == 0 && tempHour == 0 && tempMinute == 0) {
+            View.GONE
+        } else {
+            View.VISIBLE
+        }
+    }
+
+    fun visibilityLayoutAddAction(): Int {
+        return if (tempDay == 0 && tempHour == 0 && tempMinute == 0) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
+    }
+
+    fun getTimeValue(): String {
+        return if (tempDay == 0 && tempHour == 0 && tempMinute != 0) {
+            context.resources.getQuantityString(R.plurals.x_minute, tempMinute, tempMinute)
+        } else if (tempDay == 0 && tempHour != 0 && tempMinute == 0) {
+            context.resources.getQuantityString(R.plurals.x_hour, tempHour, tempHour)
+        } else if (tempDay != 0 && tempHour == 0 && tempMinute == 0) {
+            context.resources.getQuantityString(R.plurals.x_day, tempDay, tempDay)
+        } else if (tempDay == 0 && tempHour != 0 && tempMinute != 0) {
+            context.resources.getQuantityString(R.plurals.x_hour, tempHour, tempHour) +
+                    " " + context.resources.getQuantityString(R.plurals.x_minute, tempMinute, tempMinute)
+        } else if (tempDay != 0 && tempHour == 0 && tempMinute != 0) {
+            context.resources.getQuantityString(R.plurals.x_day, tempDay, tempDay) +
+                    " " + context.resources.getQuantityString(R.plurals.x_minute, tempMinute, tempMinute)
+        } else if (tempDay != 0 && tempHour != 0 && tempMinute == 0) {
+            context.resources.getQuantityString(R.plurals.x_day, tempDay, tempDay) +
+                    " " + context.resources.getQuantityString(R.plurals.x_hour, tempHour, tempHour)
+        } else if (tempDay != 0 && tempHour != 0 && tempMinute != 0) {
+            context.resources.getQuantityString(R.plurals.x_day, tempDay, tempDay) + " " +
+                     context.resources.getQuantityString(R.plurals.x_hour, tempHour, tempHour) + " " +
+            context.resources.getQuantityString(R.plurals.x_minute, tempMinute, tempMinute)
+        } else {
+            ""
+        }
+    }
+
 
     fun addActionText(): String {
         return if (challenge.idChallengedUser == null) {

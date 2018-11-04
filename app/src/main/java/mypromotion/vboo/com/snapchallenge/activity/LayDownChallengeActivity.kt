@@ -9,9 +9,11 @@ import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_lay_down_challenge.*
 import kotlinx.android.synthetic.main.choose_action_dialog.*
+import kotlinx.android.synthetic.main.choose_challenge_time_dialog.*
 import mypromotion.vboo.com.snapchallenge.R
 import mypromotion.vboo.com.snapchallenge.model.Challenge
 import mypromotion.vboo.com.snapchallenge.viewModel.LayDownChallengeViewModel
+
 
 class LayDownChallengeActivity : AppCompatActivity() {
 
@@ -35,6 +37,7 @@ class LayDownChallengeActivity : AppCompatActivity() {
         updateAddActionText()
         updateActionName()
         handleClickUserChallenged()
+        handleSetChallengeTime()
 
         activity_lay_down_challenge_action_name.setOnClickListener {
             handleNewActionDialog()
@@ -56,7 +59,7 @@ class LayDownChallengeActivity : AppCompatActivity() {
     }
 
     private fun updateAddActionLink() {
-        activity_lay_down_challenge_layout_add_user.setOnClickListener {
+        activity_lay_down_challenge_layout_add_layout.setOnClickListener {
             if (viewModel.challenge.idChallengedUser == null) {
                 val intent = Intent(context, ChooseChallengedUserActivity::class.java)
                 intent.putExtra(ChooseChallengedUserActivity.ID_CHALLENGED_USER, 0)
@@ -72,8 +75,53 @@ class LayDownChallengeActivity : AppCompatActivity() {
     private fun handleTimeAction() {
         val builder = AlertDialog.Builder(this)
         builder.setView(R.layout.choose_challenge_time_dialog)
+                .setPositiveButton(android.R.string.ok) { _, _ ->
+                    handleSetChallengeTime()
+                }
+                .setNegativeButton(R.string.no_time) { _, _ ->
+                    viewModel.tempDay = 0
+                    viewModel.tempHour = 0
+                    viewModel.tempMinute = 0
+                    handleSetChallengeTime()
+                }
         val dialog = builder.create()
         dialog.show()
+
+        dialog.choose_challenge_time_dialog_picker_day.maxValue = 364
+        dialog.choose_challenge_time_dialog_picker_day.minValue = 0
+        dialog.choose_challenge_time_dialog_picker_day.value = viewModel.tempDay
+
+
+
+        dialog.choose_challenge_time_dialog_picker_hour.maxValue = 23
+        dialog.choose_challenge_time_dialog_picker_hour.minValue = 0
+        dialog.choose_challenge_time_dialog_picker_hour.value = viewModel.tempHour
+
+        dialog.choose_challenge_time_dialog_picker_minute.maxValue = 59
+        dialog.choose_challenge_time_dialog_picker_minute.minValue = 0
+        dialog.choose_challenge_time_dialog_picker_minute.value = viewModel.tempMinute
+
+
+        dialog.choose_challenge_time_dialog_picker_day.setOnValueChangedListener { picker, oldVal, newVal ->
+            viewModel.tempDay = newVal
+        }
+
+        dialog.choose_challenge_time_dialog_picker_hour.setOnValueChangedListener { picker, oldVal, newVal ->
+            viewModel.tempHour = newVal
+        }
+
+        dialog.choose_challenge_time_dialog_picker_minute.setOnValueChangedListener { picker, oldVal, newVal ->
+            viewModel.tempMinute = newVal
+        }
+    }
+
+    private fun handleSetChallengeTime() {
+        activity_lay_down_challenge_layout_add_layout.visibility = viewModel.visibilityLayoutAddAction()
+        activity_lay_down_challenge_time_layout.visibility = viewModel.visibilityLayoutTime()
+        activity_lay_down_challenge_time.text = viewModel.getTimeValue()
+        activity_lay_down_challenge_time_layout.setOnClickListener {
+            handleTimeAction()
+        }
     }
 
     private fun handleNewActionDialog() {
