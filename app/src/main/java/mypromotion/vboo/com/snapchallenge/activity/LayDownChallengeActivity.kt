@@ -6,64 +6,74 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
+import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_lay_down_challenge.*
 import kotlinx.android.synthetic.main.choose_action_dialog.*
 import mypromotion.vboo.com.snapchallenge.R
 import mypromotion.vboo.com.snapchallenge.model.Challenge
+import mypromotion.vboo.com.snapchallenge.viewModel.LayDownChallengeViewModel
 
 class LayDownChallengeActivity : AppCompatActivity() {
 
-    var challenge: Challenge? = null
-    var context: Context? = null
+    lateinit var context: Context
+    lateinit var viewModel: LayDownChallengeViewModel
     private val REQUEST_CODE_ADD_CHALLENGED_USER = 1
     private val REQUEST_CODE_ADD_NEW_ACTION = 2
-    // code for choose challenged user activity result
-    private val REQUEST_CODE = 1
+    private val REQUEST_CODE_GET_ACTION_IN_LIST = 3
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lay_down_challenge)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        viewModel = LayDownChallengeViewModel(Challenge(), this)
         context = this
-        challenge = Challenge()
 
         updateAddActionLink()
         updatechallengedUserField()
         updateAddActionText()
         updateActionName()
         handleClickUserChallenged()
+
+        activity_lay_down_challenge_action_name.setOnClickListener {
+            handleNewActionDialog()
+        }
     }
 
     private fun updateActionName() {
-        if (challenge?.tempActionName == null || challenge?.tempActionName!!.isEmpty()) {
-            activity_lay_down_challenge_action_name.visibility = View.GONE
-        } else {
-            activity_lay_down_challenge_action_name.visibility = View.VISIBLE
-            activity_lay_down_challenge_action_name.text = challenge?.tempActionName
-        }
+        activity_lay_down_challenge_action_name.visibility = viewModel.visibilityActionName()
+        activity_lay_down_challenge_action_name.text = viewModel.challenge.tempActionName
+
     }
 
     private fun handleClickUserChallenged() {
         activity_lay_down_challenge_layout_challenged_user.setOnClickListener {
             val intent = Intent(context, ChooseChallengedUserActivity::class.java)
-            intent.putExtra(ChooseChallengedUserActivity.ID_CHALLENGED_USER, challenge?.idChallengedUser)
+            intent.putExtra(ChooseChallengedUserActivity.ID_CHALLENGED_USER, viewModel.challenge.idChallengedUser)
             startActivityForResult(intent, REQUEST_CODE_ADD_CHALLENGED_USER)
         }
     }
 
     private fun updateAddActionLink() {
-
-            activity_lay_down_challenge_layout_add_user.setOnClickListener {
-                if (challenge?.idChallengedUser != null) {
-                    handleNewActionDialog()
-                } else {
-                    val intent = Intent(context, ChooseChallengedUserActivity::class.java)
-                    intent.putExtra(ChooseChallengedUserActivity.ID_CHALLENGED_USER, 0)
-                    startActivityForResult(intent, REQUEST_CODE_ADD_CHALLENGED_USER)
-                }
+        activity_lay_down_challenge_layout_add_user.setOnClickListener {
+            if (viewModel.challenge.idChallengedUser == null) {
+                val intent = Intent(context, ChooseChallengedUserActivity::class.java)
+                intent.putExtra(ChooseChallengedUserActivity.ID_CHALLENGED_USER, 0)
+                startActivityForResult(intent, REQUEST_CODE_ADD_CHALLENGED_USER)
+            } else if (viewModel.challenge.idChallengedUser != null && viewModel.challenge.tempActionName == null) {
+                handleNewActionDialog()
+            } else if (viewModel.challenge.tempActionName != null) {
+                handleTimeAction()
+            }
         }
+    }
 
+    private fun handleTimeAction() {
+        val builder = AlertDialog.Builder(this)
+        builder.setView(R.layout.choose_challenge_time_dialog)
+        val dialog = builder.create()
+        dialog.show()
     }
 
     private fun handleNewActionDialog() {
@@ -72,24 +82,21 @@ class LayDownChallengeActivity : AppCompatActivity() {
         val dialog = builder.create()
         dialog.show()
 
-        dialog.choose_action_dialog_new_action_layout.setOnClickListener {
-            val intent = Intent(context, NewActionActivity::class.java)
-            //intent.putExtra(CreateNewActionActivity.NAME_ACTION, "")
-            startActivityForResult(intent, REQUEST_CODE_ADD_NEW_ACTION)
+        dialog.choose_action_dialog_in_list_layout.setOnClickListener {
+            val intent = Intent(context, ListActionActivity::class.java)
+            startActivityForResult(intent, REQUEST_CODE_GET_ACTION_IN_LIST)
             dialog.dismiss()
         }
 
+        dialog.choose_action_dialog_new_action_layout.setOnClickListener {
+            val intent = Intent(context, NewActionActivity::class.java)
+            startActivityForResult(intent, REQUEST_CODE_ADD_NEW_ACTION)
+            dialog.dismiss()
+        }
     }
 
     private fun updateAddActionText() {
-        if (challenge?.idChallengedUser == null) {
-            activity_lay_down_challenge_add_action.text = resources.getString(R.string.choose_user_to_lay_down)
-        } else if (challenge?.idChallengedUser != null && challenge?.tempActionName == null) {
-            activity_lay_down_challenge_add_action.text = resources.getString(R.string.choose_action_to_realize)
-        } else if (challenge?.tempActionName != null) {
-            activity_lay_down_challenge_add_action.text = resources.getString(R.string.choose_challenge_time)
-        }
-
+        activity_lay_down_challenge_add_action.text = viewModel.addActionText()
     }
 
     /**
@@ -97,17 +104,17 @@ class LayDownChallengeActivity : AppCompatActivity() {
      */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == REQUEST_CODE_ADD_CHALLENGED_USER && resultCode == Activity.RESULT_OK) {
-
-            // update UI and data regarding the challenged user
             onChallengedUserChosen(data?.getIntExtra(ChooseChallengedUserActivity.ID_CHALLENGED_USER, 0))
         } else if (requestCode == REQUEST_CODE_ADD_NEW_ACTION && resultCode == Activity.RESULT_OK) {
             onNewActionChosen(data?.getStringExtra(NewActionActivity.ACTION_NAME))
+        } else if (requestCode == REQUEST_CODE_GET_ACTION_IN_LIST && resultCode == Activity.RESULT_OK) {
+            onNewActionChosen(data?.getStringExtra(ListActionActivity.ACTION_NAME))
         }
         super.onActivityResult(requestCode, resultCode, data)
     }
 
     private fun onNewActionChosen(actionName: String?) {
-        challenge?.tempActionName = actionName
+        viewModel.challenge.tempActionName = actionName
         updateActionName()
         updateAddActionText()
     }
@@ -116,8 +123,7 @@ class LayDownChallengeActivity : AppCompatActivity() {
      * Called when a challenged user has been chosen in the list
      */
     private fun onChallengedUserChosen(idChallengedUser: Int?) {
-
-        challenge?.idChallengedUser = idChallengedUser
+        viewModel.challenge.idChallengedUser = idChallengedUser
 
         // update the challenged user field
         updatechallengedUserField()
@@ -125,11 +131,15 @@ class LayDownChallengeActivity : AppCompatActivity() {
     }
 
     private fun updatechallengedUserField() {
-        if (challenge?.idChallengedUser == null) {
-            activity_lay_down_challenge_layout_challenged_user.visibility = View.GONE
-        } else {
-            activity_lay_down_challenge_layout_challenged_user.visibility = View.VISIBLE
-            activity_lay_down_challenged_user.text = "Francis Gros"
+        activity_lay_down_challenge_layout_challenged_user.visibility = viewModel.challengedUserVisibility()
+        activity_lay_down_challenged_user.text = viewModel.challengedUserName()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            this.finish()
+            return true
         }
+        return super.onOptionsItemSelected(item)
     }
 }

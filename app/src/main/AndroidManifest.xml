@@ -70,7 +70,8 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-
+        <activity android:name=".activity.ListActionActivity" />
+        <activity android:name=".activity.ActionByCategoryActivity"></activity>
     </application>
 
 </manifest>

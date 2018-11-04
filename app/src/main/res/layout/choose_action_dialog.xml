@@ -20,6 +20,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:paddingStart="@dimen/padding_small"
+        android:paddingEnd="@dimen/padding_small"
+        android:paddingBottom="@dimen/padding_small"
         android:paddingTop="@dimen/padding_large"
         app:layout_constraintTop_toBottomOf="@+id/choose_action_dialog_title"
         app:layout_constraintBottom_toTopOf="@+id/choose_action_dialog_new_action_layout">
@@ -42,7 +45,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="@dimen/padding_large"
+        android:paddingStart="@dimen/padding_small"
+        android:paddingEnd="@dimen/padding_small"
+        android:paddingBottom="@dimen/padding_small"
+        android:paddingTop="@dimen/padding_small"
         app:layout_constraintTop_toBottomOf="@+id/choose_action_dialog_in_list_layout">
         <ImageView
             android:layout_width="wrap_content"

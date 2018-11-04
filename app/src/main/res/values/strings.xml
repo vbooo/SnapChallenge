@@ -45,4 +45,5 @@
     <string name="action_to_realize">Action à réaliser</string>
     <string name="choose_in_list">Choisir dans la liste</string>
     <string name="choose_challenge_time">Choisissez un délai pour ce challenge</string>
+    <string name="time">Délai</string>
 </resources>

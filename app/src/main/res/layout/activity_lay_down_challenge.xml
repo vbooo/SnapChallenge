@@ -12,7 +12,9 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="18sp"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:padding="@dimen/padding_large"
         android:gravity="center_horizontal"
         app:layout_constraintBottom_toTopOf="@+id/activity_lay_down_challenge_layout_add_user"/>
 

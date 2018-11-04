@@ -68,7 +68,7 @@ class ChooseChallengedUserActivity : AppCompatActivity() {
         listFriends.add(User(1, "Gros", "Francis", Date(), "", 2867))
         listFriends.add(User(2, "Festin", "Bruno", Date(), "", 2867))
         listFriends.add(User(3, "Thami", "Romain", Date(), "", 2867))
-        listFriends.add(User(4, "Fornerod", "Nicolas", Date(), "", 2867))
+        listFriends.add(User(4, "Fornerod avec un nom à rallonge de ouf", "Nicolas", Date(), "", 2867))
         listFriends.add(User(5, "Deneux", "Yenny", Date(), "", 2867))
         listFriends.add(User(6, "Fornerod", "Julien", Date(), "", 2867))
         listFriends.add(User(7, "Voisin", "Nathalie", Date(), "", 2867))
