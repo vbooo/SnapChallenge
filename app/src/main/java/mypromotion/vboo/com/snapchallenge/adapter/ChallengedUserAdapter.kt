@@ -26,7 +26,7 @@ class ChallengedUserAdapter (private val activity: ChooseChallengedUserActivity,
         holder?.getUserRow()?.isChecked = users[position].id == idSelectedUser
 
         // click listener on user row
-        holder?.getUserRow()?.setOnClickListener {
+        holder?.getUserLayout()?.setOnClickListener {
             activity.saveChallengedUser(users[position].id)
         }
     }

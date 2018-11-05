@@ -6,6 +6,7 @@
     <color name="white">#FFFFFF</color>
     <color name="blue_theme">#4A90E2</color>
     <color name="second_text">#929292</color>
+    <color name="blue_theme_opacity">#bdd7f4</color>
 
     <color name="grey_icon_info">#979797</color>
 </resources>

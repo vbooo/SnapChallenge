@@ -37,7 +37,7 @@
     <string name="user_sent_challenge">%1$s vous a lancé un challenge!</string>
     <string name="accept">Accepter</string>
     <string name="refuse">Refuser</string>
-    <string name="lay_down_challenge">Lancer le défi !</string>
+    <string name="lay_down_challenge">LANCER LE DÉFI !</string>
     <string name="choose_user_to_lay_down">Qui voulez vous challenger ?</string>
     <string name="lay_down_a_challenge">Lancer un challenge</string>
     <string name="choose_action_to_realize">Choisissez une action à réaliser !</string>
@@ -50,6 +50,7 @@
     <string name="hour">Heure</string>
     <string name="minute">Minute</string>
     <string name="no_time">Pas de délai</string>
+    <string name="discardChallengeCreation">Abandonner la création du challenge ?</string>
 
     <plurals name="x_minute">
         <item quantity="one">%d min</item>

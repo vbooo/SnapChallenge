@@ -1,6 +1,7 @@
 package mypromotion.vboo.com.snapchallenge.viewModel
 
 import android.content.Context
+import android.support.v4.content.ContextCompat
 import android.view.View
 import mypromotion.vboo.com.snapchallenge.R
 import mypromotion.vboo.com.snapchallenge.model.Challenge
@@ -14,6 +15,18 @@ class LayDownChallengeViewModel(val challenge: Challenge, val context: Context, 
         } else {
             View.VISIBLE
         }
+    }
+
+    fun getLayDownChallengeTextColor(): Int {
+        return if (challenge.idChallengedUser != null && challenge.tempActionName != null) {
+            ContextCompat.getColor(context, R.color.blue_theme)
+        } else {
+            ContextCompat.getColor(context, R.color.blue_theme_opacity)
+        }
+    }
+
+    fun isLayDownChallengeLayoutClickable(): Boolean {
+        return challenge.idChallengedUser != null && challenge.tempActionName != null
     }
 
     fun visibilityLayoutTime(): Int {

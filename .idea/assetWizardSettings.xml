@@ -19,8 +19,8 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="$USER_HOME$/Documents/challenge/list icon/hdpi/list.png" />
-                                      <entry key="outputName" value="ic_list" />
+                                      <entry key="imageAsset" value="$USER_HOME$/Downloads/plus_128.png" />
+                                      <entry key="outputName" value="ic_add_128" />
                                       <entry key="theme" value="CUSTOM" />
                                       <entry key="themeColor" value="000000" />
                                     </map>

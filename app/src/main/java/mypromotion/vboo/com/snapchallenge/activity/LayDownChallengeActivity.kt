@@ -6,7 +6,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.KeyEvent
 import android.view.MenuItem
+import android.view.animation.TranslateAnimation
 import kotlinx.android.synthetic.main.activity_lay_down_challenge.*
 import kotlinx.android.synthetic.main.choose_action_dialog.*
 import kotlinx.android.synthetic.main.choose_challenge_time_dialog.*
@@ -41,6 +43,18 @@ class LayDownChallengeActivity : AppCompatActivity() {
 
         activity_lay_down_challenge_action_name.setOnClickListener {
             handleNewActionDialog()
+        }
+
+        updateLayDownChallenge()
+    }
+
+    private fun updateLayDownChallenge() {
+        activity_lay_down_challenge_lay_down.setTextColor(viewModel.getLayDownChallengeTextColor())
+        activity_lay_down_challenge_layout_lay_down.isClickable = viewModel.isLayDownChallengeLayoutClickable()
+        if (activity_lay_down_challenge_layout_lay_down.isClickable) {
+            activity_lay_down_challenge_layout_lay_down.setOnClickListener {
+                finish()
+            }
         }
     }
 
@@ -92,7 +106,6 @@ class LayDownChallengeActivity : AppCompatActivity() {
         dialog.choose_challenge_time_dialog_picker_day.value = viewModel.tempDay
 
 
-
         dialog.choose_challenge_time_dialog_picker_hour.maxValue = 23
         dialog.choose_challenge_time_dialog_picker_hour.minValue = 0
         dialog.choose_challenge_time_dialog_picker_hour.value = viewModel.tempHour
@@ -122,6 +135,7 @@ class LayDownChallengeActivity : AppCompatActivity() {
         activity_lay_down_challenge_time_layout.setOnClickListener {
             handleTimeAction()
         }
+        updateAddActionText()
     }
 
     private fun handleNewActionDialog() {
@@ -138,6 +152,7 @@ class LayDownChallengeActivity : AppCompatActivity() {
 
         dialog.choose_action_dialog_new_action_layout.setOnClickListener {
             val intent = Intent(context, NewActionActivity::class.java)
+            intent.putExtra(NewActionActivity.ACTION_NAME, viewModel.challenge.tempActionName)
             startActivityForResult(intent, REQUEST_CODE_ADD_NEW_ACTION)
             dialog.dismiss()
         }
@@ -145,6 +160,15 @@ class LayDownChallengeActivity : AppCompatActivity() {
 
     private fun updateAddActionText() {
         activity_lay_down_challenge_add_action.text = viewModel.addActionText()
+        val animationFromBottom350 = TranslateAnimation(1500.0f, 0.0f, 0.0f, 0.0f) // new TranslateAnimation(xFrom,xTo, yFrom,yTo)
+        animationFromBottom350.duration = 370 // animation duration
+        animationFromBottom350.fillAfter = true
+        activity_lay_down_challenge_add_action.startAnimation(animationFromBottom350)
+
+        val animationFromBottom300 = TranslateAnimation(1500.0f, 0.0f, 0.0f, 0.0f) // new TranslateAnimation(xFrom,xTo, yFrom,yTo)
+        animationFromBottom300.duration = 320 // animation duration
+        animationFromBottom300.fillAfter = true
+        activity_lay_down_challenge_add_img.startAnimation(animationFromBottom300)
     }
 
     /**
@@ -165,6 +189,12 @@ class LayDownChallengeActivity : AppCompatActivity() {
         viewModel.challenge.tempActionName = actionName
         updateActionName()
         updateAddActionText()
+        handleLayDownButton()
+        updateLayDownChallenge()
+    }
+
+    private fun handleLayDownButton() {
+
     }
 
     /**
@@ -176,18 +206,50 @@ class LayDownChallengeActivity : AppCompatActivity() {
         // update the challenged user field
         updatechallengedUserField()
         updateAddActionText()
+        updateLayDownChallenge()
     }
 
     private fun updatechallengedUserField() {
         activity_lay_down_challenge_layout_challenged_user.visibility = viewModel.challengedUserVisibility()
         activity_lay_down_challenged_user.text = viewModel.challengedUserName()
+
+        val animationFromRight300 = TranslateAnimation(1500.0f, 0.0f, 0.0f, 0.0f) // new TranslateAnimation(xFrom,xTo, yFrom,yTo)
+        animationFromRight300.duration = 280 // animation duration
+        animationFromRight300.fillAfter = true
+        activity_lay_down_challenge_layout_challenged_user.startAnimation(animationFromRight300)
+
+        val animationFromRight400 = TranslateAnimation(1500.0f, 0.0f, 0.0f, 0.0f) // new TranslateAnimation(xFrom,xTo, yFrom,yTo)
+        animationFromRight400.duration = 320 // animation duration
+        animationFromRight400.fillAfter = true
+        activity_lay_down_challenged_user.startAnimation(animationFromRight400)
+    }
+
+    private fun discardChallengeCreation() {
+        val alertDiscardChallenge = AlertDialog.Builder(this).create()
+        // set the message
+        alertDiscardChallenge.setMessage(resources.getString(R.string.discardChallengeCreation))
+
+        // set the AlertDialog buttons
+        alertDiscardChallenge.setButton(AlertDialog.BUTTON_NEGATIVE, resources.getString(android.R.string.cancel)) {
+            _, _ ->
+        }
+        alertDiscardChallenge.setButton(AlertDialog.BUTTON_POSITIVE, resources.getString(android.R.string.yes)) {
+            _, _ -> finish()
+
+        }
+        alertDiscardChallenge.show()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
-            this.finish()
+            discardChallengeCreation()
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        discardChallengeCreation()
+        return true
     }
 }
