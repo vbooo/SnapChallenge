@@ -4,13 +4,16 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.*
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.KeyEvent
 import android.view.MenuItem
 import android.view.animation.TranslateAnimation
+import android.widget.SeekBar
+import android.widget.Toast
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_lay_down_challenge.*
-import kotlinx.android.synthetic.main.choose_action_dialog.*
 import kotlinx.android.synthetic.main.choose_challenge_time_dialog.*
 import mypromotion.vboo.com.snapchallenge.R
 import mypromotion.vboo.com.snapchallenge.model.Challenge
@@ -34,55 +37,51 @@ class LayDownChallengeActivity : AppCompatActivity() {
         viewModel = LayDownChallengeViewModel(Challenge(), this)
         context = this
 
-        updateAddActionLink()
-        updatechallengedUserField()
-        updateAddActionText()
-        updateActionName()
+
+
+        Picasso.get().load(R.drawable.picture_fabien).error(R.drawable.user_default).placeholder(R.drawable.user_default)
+        .into(activity_lay_down_challenge_author_picture)
+
+        val animationFromBottom350 = TranslateAnimation(1500.0f, 0.0f, 0.0f, 0.0f) // new TranslateAnimation(xFrom,xTo, yFrom,yTo)
+        animationFromBottom350.duration = 370 // animation duration
+        animationFromBottom350.fillAfter = true
+        activity_lay_down_challenge_author_picture.startAnimation(animationFromBottom350)
+
+        Picasso.get().load(R.drawable.user_default).error(R.drawable.user_default).placeholder(R.drawable.user_default)
+                .into(activity_lay_down_challenge_challenged_user_picture)
+
+        activity_lay_down_challenge_challenged_user_picture.startAnimation(animationFromBottom350)
+
         handleClickUserChallenged()
-        handleSetChallengeTime()
+        handleAddAction()
+        handleTime()
 
-        activity_lay_down_challenge_action_name.setOnClickListener {
-            handleNewActionDialog()
-        }
+        activity_lay_down_challenge_time_value.text = viewModel.getTimeValue(0)
+        //activity_lay_down_challenge_action_background.visibility = viewModel.actionImageBackgroundVisibility()
 
-        updateLayDownChallenge()
+
     }
 
-    private fun updateLayDownChallenge() {
-        activity_lay_down_challenge_lay_down.setTextColor(viewModel.getLayDownChallengeTextColor())
-        activity_lay_down_challenge_layout_lay_down.isClickable = viewModel.isLayDownChallengeLayoutClickable()
-        if (activity_lay_down_challenge_layout_lay_down.isClickable) {
-            activity_lay_down_challenge_layout_lay_down.setOnClickListener {
-                finish()
+    private fun handleTime() {
+        activity_lay_down_challenge_seekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+
+            override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {
+                activity_lay_down_challenge_time_value.text = viewModel.getTimeValue(i)
             }
-        }
-    }
 
-    private fun updateActionName() {
-        activity_lay_down_challenge_action_name.visibility = viewModel.visibilityActionName()
-        activity_lay_down_challenge_action_name.text = viewModel.challenge.tempActionName
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+            }
 
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+            }
+        })
     }
 
     private fun handleClickUserChallenged() {
-        activity_lay_down_challenge_layout_challenged_user.setOnClickListener {
+        activity_lay_down_challenge_challenged_user_picture.setOnClickListener {
             val intent = Intent(context, ChooseChallengedUserActivity::class.java)
             intent.putExtra(ChooseChallengedUserActivity.ID_CHALLENGED_USER, viewModel.challenge.idChallengedUser)
             startActivityForResult(intent, REQUEST_CODE_ADD_CHALLENGED_USER)
-        }
-    }
-
-    private fun updateAddActionLink() {
-        activity_lay_down_challenge_layout_add_layout.setOnClickListener {
-            if (viewModel.challenge.idChallengedUser == null) {
-                val intent = Intent(context, ChooseChallengedUserActivity::class.java)
-                intent.putExtra(ChooseChallengedUserActivity.ID_CHALLENGED_USER, 0)
-                startActivityForResult(intent, REQUEST_CODE_ADD_CHALLENGED_USER)
-            } else if (viewModel.challenge.idChallengedUser != null && viewModel.challenge.tempActionName == null) {
-                handleNewActionDialog()
-            } else if (viewModel.challenge.tempActionName != null) {
-                handleTimeAction()
-            }
         }
     }
 
@@ -90,13 +89,12 @@ class LayDownChallengeActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setView(R.layout.choose_challenge_time_dialog)
                 .setPositiveButton(android.R.string.ok) { _, _ ->
-                    handleSetChallengeTime()
+                    //handleSetChallengeTime()
                 }
                 .setNegativeButton(R.string.no_time) { _, _ ->
                     viewModel.tempDay = 0
                     viewModel.tempHour = 0
                     viewModel.tempMinute = 0
-                    handleSetChallengeTime()
                 }
         val dialog = builder.create()
         dialog.show()
@@ -128,47 +126,11 @@ class LayDownChallengeActivity : AppCompatActivity() {
         }
     }
 
-    private fun handleSetChallengeTime() {
-        activity_lay_down_challenge_layout_add_layout.visibility = viewModel.visibilityLayoutAddAction()
-        activity_lay_down_challenge_time_layout.visibility = viewModel.visibilityLayoutTime()
-        activity_lay_down_challenge_time.text = viewModel.getTimeValue()
-        activity_lay_down_challenge_time_layout.setOnClickListener {
-            handleTimeAction()
-        }
-        updateAddActionText()
-    }
-
-    private fun handleNewActionDialog() {
-        val builder = AlertDialog.Builder(this)
-        builder.setView(R.layout.choose_action_dialog)
-        val dialog = builder.create()
-        dialog.show()
-
-        dialog.choose_action_dialog_in_list_layout.setOnClickListener {
+    private fun handleAddAction() {
+        activity_lay_down_challenge_action_layout.setOnClickListener {
             val intent = Intent(context, ListActionActivity::class.java)
             startActivityForResult(intent, REQUEST_CODE_GET_ACTION_IN_LIST)
-            dialog.dismiss()
         }
-
-        dialog.choose_action_dialog_new_action_layout.setOnClickListener {
-            val intent = Intent(context, NewActionActivity::class.java)
-            intent.putExtra(NewActionActivity.ACTION_NAME, viewModel.challenge.tempActionName)
-            startActivityForResult(intent, REQUEST_CODE_ADD_NEW_ACTION)
-            dialog.dismiss()
-        }
-    }
-
-    private fun updateAddActionText() {
-        activity_lay_down_challenge_add_action.text = viewModel.addActionText()
-        val animationFromBottom350 = TranslateAnimation(1500.0f, 0.0f, 0.0f, 0.0f) // new TranslateAnimation(xFrom,xTo, yFrom,yTo)
-        animationFromBottom350.duration = 370 // animation duration
-        animationFromBottom350.fillAfter = true
-        activity_lay_down_challenge_add_action.startAnimation(animationFromBottom350)
-
-        val animationFromBottom300 = TranslateAnimation(1500.0f, 0.0f, 0.0f, 0.0f) // new TranslateAnimation(xFrom,xTo, yFrom,yTo)
-        animationFromBottom300.duration = 320 // animation duration
-        animationFromBottom300.fillAfter = true
-        activity_lay_down_challenge_add_img.startAnimation(animationFromBottom300)
     }
 
     /**
@@ -178,23 +140,65 @@ class LayDownChallengeActivity : AppCompatActivity() {
         if (requestCode == REQUEST_CODE_ADD_CHALLENGED_USER && resultCode == Activity.RESULT_OK) {
             onChallengedUserChosen(data?.getIntExtra(ChooseChallengedUserActivity.ID_CHALLENGED_USER, 0))
         } else if (requestCode == REQUEST_CODE_ADD_NEW_ACTION && resultCode == Activity.RESULT_OK) {
-            onNewActionChosen(data?.getStringExtra(NewActionActivity.ACTION_NAME))
+            onActionChosen(data?.getStringExtra(NewActionActivity.ACTION_NAME))
         } else if (requestCode == REQUEST_CODE_GET_ACTION_IN_LIST && resultCode == Activity.RESULT_OK) {
-            onNewActionChosen(data?.getStringExtra(ListActionActivity.ACTION_NAME))
+            onActionChosen(data?.getStringExtra(ListActionActivity.ACTION_NAME))
         }
         super.onActivityResult(requestCode, resultCode, data)
+        updateLayDownChallenge()
     }
 
-    private fun onNewActionChosen(actionName: String?) {
-        viewModel.challenge.tempActionName = actionName
-        updateActionName()
-        updateAddActionText()
-        handleLayDownButton()
-        updateLayDownChallenge()
+    private fun onActionChosen(stringExtra: String?) {
+        viewModel.challenge.tempActionName = stringExtra
+        activity_lay_down_challenge_picture_swords.visibility = viewModel.iconActionVisibility()
+        activity_lay_down_challenge_action_name.text = viewModel.getActionName()
+
+        //activity_lay_down_challenge_action_layout.layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
+
+        //activity_lay_down_challenge_action_background.visibility = viewModel.actionImageBackgroundVisibility()
+        //activity_lay_down_challenge_action_background.setImageResource(R.drawable.sport_action)
+
+        val bitImg = BitmapFactory.decodeResource(resources,
+                R.drawable.sport_action)
+        //activity_lay_down_challenge_action_background.setImageBitmap(getRoundedCornerImage(bitImg))
+        //activity_lay_down_challenge_action_background.setColorFilter(0xffa6a6a6.toInt(), PorterDuff.Mode.MULTIPLY )
+    }
+
+    fun getRoundedCornerImage(bitmap: Bitmap): Bitmap {
+        val output = Bitmap.createBitmap(bitmap.width,
+                bitmap.height, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(output)
+
+        val color = -0xbdbdbe
+        val paint = Paint()
+        val rect = Rect(0, 0, bitmap.width, bitmap.height)
+        val rectF = RectF(rect)
+        val roundPx = 100f
+
+        paint.setAntiAlias(true)
+        canvas.drawARGB(0, 0, 0, 0)
+        paint.setColor(color)
+        canvas.drawRoundRect(rectF, roundPx, roundPx, paint)
+
+        paint.setXfermode(PorterDuffXfermode(PorterDuff.Mode.SRC_IN))
+        canvas.drawBitmap(bitmap, rect, rect, paint)
+
+        return output
+
     }
 
     private fun handleLayDownButton() {
 
+    }
+
+    private fun updateLayDownChallenge() {
+        activity_lay_down_challenge_lay_down.setTextColor(viewModel.getLayDownChallengeTextColor())
+        activity_lay_down_challenge_layout_lay_down.isClickable = viewModel.isLayDownChallengeLayoutClickable()
+        if (activity_lay_down_challenge_layout_lay_down.isClickable) {
+            activity_lay_down_challenge_layout_lay_down.setOnClickListener {
+                finish()
+            }
+        }
     }
 
     /**
@@ -203,25 +207,6 @@ class LayDownChallengeActivity : AppCompatActivity() {
     private fun onChallengedUserChosen(idChallengedUser: Int?) {
         viewModel.challenge.idChallengedUser = idChallengedUser
 
-        // update the challenged user field
-        updatechallengedUserField()
-        updateAddActionText()
-        updateLayDownChallenge()
-    }
-
-    private fun updatechallengedUserField() {
-        activity_lay_down_challenge_layout_challenged_user.visibility = viewModel.challengedUserVisibility()
-        activity_lay_down_challenged_user.text = viewModel.challengedUserName()
-
-        val animationFromRight300 = TranslateAnimation(1500.0f, 0.0f, 0.0f, 0.0f) // new TranslateAnimation(xFrom,xTo, yFrom,yTo)
-        animationFromRight300.duration = 280 // animation duration
-        animationFromRight300.fillAfter = true
-        activity_lay_down_challenge_layout_challenged_user.startAnimation(animationFromRight300)
-
-        val animationFromRight400 = TranslateAnimation(1500.0f, 0.0f, 0.0f, 0.0f) // new TranslateAnimation(xFrom,xTo, yFrom,yTo)
-        animationFromRight400.duration = 320 // animation duration
-        animationFromRight400.fillAfter = true
-        activity_lay_down_challenged_user.startAnimation(animationFromRight400)
     }
 
     private fun discardChallengeCreation() {

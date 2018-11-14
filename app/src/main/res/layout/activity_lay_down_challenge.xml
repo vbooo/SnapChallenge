@@ -8,84 +8,155 @@
     tools:context=".activity.LayDownChallengeActivity">
 
     <TextView
-        android:id="@+id/activity_lay_down_challenge_action_name"
+        android:id="@+id/activity_lay_down_challenge_challenged_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/activity_lay_down_challenge_challenged_user_layout"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:padding="@dimen/padding_large"
-        android:gravity="center_horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/activity_lay_down_challenge_layout_add_layout"/>
+        android:paddingLeft="@dimen/padding_large"
+        android:paddingRight="@dimen/padding_large"
+        android:paddingBottom="@dimen/padding_small"
+        android:paddingTop="@dimen/padding_large"
+        android:text="@string/challenged_user"
+        android:textColor="@color/dark"/>
     <LinearLayout
-        android:id="@+id/activity_lay_down_challenge_time_layout"
+        android:id="@+id/activity_lay_down_challenge_challenged_user_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        android:paddingTop="@dimen/padding_large"
-        android:paddingStart="@dimen/padding_small"
-        android:paddingEnd="@dimen/padding_small"
-        app:layout_constraintTop_toBottomOf="@+id/activity_lay_down_challenge_action_name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:paddingRight="@dimen/padding_small"
-            android:src="@drawable/ic_time"/>
-        <TextView
-            android:id="@+id/activity_lay_down_challenge_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp" />
+        android:padding="@dimen/padding_small"
+        app:layout_constraintTop_toBottomOf="@+id/activity_lay_down_challenge_challenged_user">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/activity_lay_down_challenge_author_picture"
+                android:layout_width="92dp"
+                android:layout_height="92dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/activity_lay_down_challenge_picture_arrow"/>
+            <ImageView
+                android:id="@+id/activity_lay_down_challenge_picture_arrow"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:layout_constraintLeft_toRightOf="@+id/activity_lay_down_challenge_author_picture"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/three_chevron_arrows_pointing_right"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/activity_lay_down_challenge_challenged_user_picture"
+                android:layout_width="92dp"
+                android:layout_height="92dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/activity_lay_down_challenge_picture_arrow"/>
+
+        </android.support.constraint.ConstraintLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/activity_lay_down_challenge_layout_add_layout"
+    <TextView
+        android:id="@+id/activity_lay_down_challenge_action"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-        <ImageView
-            android:id="@+id/activity_lay_down_challenge_add_img"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_add_256"
-            android:adjustViewBounds="true"
-            android:tint="@color/blue_theme"
-            android:layout_gravity="center_horizontal"/>
-        <TextView
-            android:id="@+id/activity_lay_down_challenge_add_action"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:paddingTop="@dimen/padding_small"
-            android:textSize="16sp"/>
-    </LinearLayout>
-
+        app:layout_constraintTop_toBottomOf="@+id/activity_lay_down_challenge_challenged_user_layout"
+        app:layout_constraintBottom_toTopOf="@+id/activity_lay_down_challenge_action_layout"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingLeft="@dimen/padding_large"
+        android:paddingRight="@dimen/padding_large"
+        android:paddingBottom="@dimen/padding_small"
+        android:paddingTop="@dimen/padding_large"
+        android:text="@string/action_to_realize"
+        android:textColor="@color/dark"/>
 
     <FrameLayout
-        android:id="@+id/activity_lay_down_challenge_layout_challenged_user"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/blue_theme"
-        app:layout_constraintBottom_toTopOf="@+id/activity_lay_down_challenge_layout_lay_down">
+        android:id="@+id/activity_lay_down_challenge_action_layout"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:background="@drawable/border_frame"
+        android:layout_margin="@dimen/padding_large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_lay_down_challenge_action"
+        app:layout_constraintBottom_toTopOf="@+id/activity_lay_down_challenge_time">
+
+        <ImageView
+            android:id="@+id/activity_lay_down_challenge_picture_swords"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:src="@drawable/swords"/>
 
         <TextView
-            android:id="@+id/activity_lay_down_challenged_user"
+            android:id="@+id/activity_lay_down_challenge_action_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/dark"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/activity_lay_down_challenge_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/activity_lay_down_challenge_action_layout"
+        app:layout_constraintBottom_toTopOf="@+id/activity_lay_down_challenge_time_value_layout"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingLeft="@dimen/padding_large"
+        android:paddingRight="@dimen/padding_large"
+        android:paddingBottom="@dimen/padding_small"
+        android:paddingTop="@dimen/padding_large"
+        android:text="@string/time_optionnal"
+        android:textColor="@color/dark"/>
+
+    <LinearLayout
+        android:id="@+id/activity_lay_down_challenge_time_value_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/activity_lay_down_challenge_time"
+        app:layout_constraintBottom_toTopOf="@+id/activity_lay_down_challenge_seekbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/padding_small"
+        android:paddingBottom="@dimen/padding_small"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/padding_small"
+            android:src="@drawable/hourglass"/>
+
+        <TextView
+            android:id="@+id/activity_lay_down_challenge_time_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:textSize="18sp"
-            android:textColor="@android:color/white"
-            android:padding="@dimen/padding_large"/>
-    </FrameLayout>
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/dark"/>
+
+    </LinearLayout>
+
+    <SeekBar
+        android:id="@+id/activity_lay_down_challenge_seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:indeterminate="false"
+        app:layout_constraintTop_toBottomOf="@+id/activity_lay_down_challenge_time_value_layout"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <FrameLayout
         android:id="@+id/activity_lay_down_challenge_layout_lay_down"
@@ -102,7 +173,9 @@
             android:gravity="center"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:textColor="@color/blue_theme_opacity"
             android:padding="@dimen/padding_large"/>
     </FrameLayout>
+
 
 </android.support.constraint.ConstraintLayout>

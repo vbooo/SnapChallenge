@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="mypromotion.vboo.com.snapchallenge.MainActivity">
+    <item
+        android:id="@+id/action_search_action"
+        android:title="@string/search_action"
+        android:icon="@drawable/baseline_search_white_24"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_add_new_action"
+        android:title="@string/new_action"
+        android:icon="@drawable/baseline_add_white_24"
+        app:showAsAction="ifRoom" />
+</menu>

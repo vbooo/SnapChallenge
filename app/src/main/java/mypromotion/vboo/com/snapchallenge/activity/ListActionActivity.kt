@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_list_action.*
 import mypromotion.vboo.com.snapchallenge.R
@@ -18,7 +19,7 @@ class ListActionActivity : AppCompatActivity() {
 
     companion object {
         const val ACTION_NAME = "actionName"
-        const val REQUEST_CODE_TEMP = 4
+        const val REQUEST_CODE_ACTION_CHOSE = 4
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,17 +66,36 @@ class ListActionActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == REQUEST_CODE_TEMP && resultCode == Activity.RESULT_OK) {
+        if (requestCode == REQUEST_CODE_ACTION_CHOSE && resultCode == Activity.RESULT_OK) {
             saveActionName(data?.getStringExtra(ACTION_NAME))
         }
         super.onActivityResult(requestCode, resultCode, data)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.menu_category, menu)
+        return true
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            this.finish()
-            return true
+        return when (item.itemId) {
+            android.R.id.home -> {
+                this.finish()
+                true
+            }
+            R.id.action_add_new_action -> {
+                val intent = Intent(context, NewActionActivity::class.java)
+                startActivityForResult(intent, REQUEST_CODE_ACTION_CHOSE)
+                true
+            }
+
+            R.id.action_search_action -> {
+                val intent = Intent(context, SearchActionActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
-        return super.onOptionsItemSelected(item)
     }
 }

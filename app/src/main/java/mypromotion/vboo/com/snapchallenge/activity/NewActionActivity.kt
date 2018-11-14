@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.MenuItem
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_lay_down_challenge.*
 import kotlinx.android.synthetic.main.activity_new_action.*
 import mypromotion.vboo.com.snapchallenge.R
@@ -51,6 +52,10 @@ class NewActionActivity : AppCompatActivity() {
         val intent = intent
         intent.putExtra(ACTION_NAME, name)
         setResult(Activity.RESULT_OK, intent)
+        if (activity_new_action_switch.isChecked) {
+            Toast.makeText(this, resources.getString(R.string.confirmationActionSentToApp),
+                    Toast.LENGTH_LONG).show()
+        }
         finish()
     }
 

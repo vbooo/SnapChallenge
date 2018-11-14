@@ -51,6 +51,12 @@
     <string name="minute">Minute</string>
     <string name="no_time">Pas de délai</string>
     <string name="discardChallengeCreation">Abandonner la création du challenge ?</string>
+    <string name="confirmationActionSentToApp">Merci pour votre nouvelle idée de challenge !</string>
+    <string name="challenged_user">Challengé</string>
+    <string name="time_optionnal">Délai (optionnel)</string>
+    <string name="categories">Catégories</string>
+    <string name="action">Action</string>
+    <string name="search_action">Rechercher une action</string>
 
     <plurals name="x_minute">
         <item quantity="one">%d min</item>

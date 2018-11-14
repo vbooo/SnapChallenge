@@ -56,8 +56,12 @@
             android:label="@string/choose_challenged_user"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.CreateNewActionActivity"
-            android:label="@string/new_action"
+            android:name=".activity.ListActionActivity"
+            android:label="@string/action"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ActionByCategoryActivity"
+            android:label="@string/action"
             android:screenOrientation="portrait" />
 
         <provider
@@ -70,8 +74,13 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".activity.ListActionActivity" />
-        <activity android:name=".activity.ActionByCategoryActivity"></activity>
+        <activity android:name="activity.SearchActionActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <meta-data android:name="android.app.searchable"
+                android:resource="@xml/searchable"/>
+        </activity>
     </application>
 
 </manifest>

@@ -31,7 +31,7 @@ class CategoryActionsAdapter (private val activity: ListActionActivity, private 
         holder?.getCategoryName()?.setOnClickListener {
             val intent = Intent(activity, ActionByCategoryActivity::class.java)
             //intent.putExtra(CreateNewActionActivity.NAME_ACTION, "")
-            activity.startActivityForResult(intent, ListActionActivity.REQUEST_CODE_TEMP)
+            activity.startActivityForResult(intent, ListActionActivity.REQUEST_CODE_ACTION_CHOSE)
         }
     }
 }

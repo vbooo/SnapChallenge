@@ -9,4 +9,9 @@
     <color name="blue_theme_opacity">#bdd7f4</color>
 
     <color name="grey_icon_info">#979797</color>
+
+    <color name="dark">#1F314A</color>
+    <color name="blue">#46BDE7</color>
+    <color name="primary">#FF5791</color>
+
 </resources>

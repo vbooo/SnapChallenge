@@ -9,12 +9,24 @@ import mypromotion.vboo.com.snapchallenge.model.Challenge
 
 class LayDownChallengeViewModel(val challenge: Challenge, val context: Context, var tempDay: Int = 0, var tempHour: Int = 0, var tempMinute: Int = 0) {
 
-    fun visibilityActionName(): Int {
+    fun iconActionVisibility(): Int {
+        return if (challenge.tempActionName == null || challenge.tempActionName!!.isEmpty()) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
+    }
+
+    fun actionImageBackgroundVisibility(): Int {
         return if (challenge.tempActionName == null || challenge.tempActionName!!.isEmpty()) {
             View.GONE
         } else {
             View.VISIBLE
         }
+    }
+
+    fun getActionName(): String? {
+        return challenge.tempActionName
     }
 
     fun getLayDownChallengeTextColor(): Int {
@@ -45,7 +57,7 @@ class LayDownChallengeViewModel(val challenge: Challenge, val context: Context, 
         }
     }
 
-    fun getTimeValue(): String {
+    /*fun getTimeValue(value: Int): String {
         return if (tempDay == 0 && tempHour == 0 && tempMinute != 0) {
             context.resources.getQuantityString(R.plurals.x_minute, tempMinute, tempMinute)
         } else if (tempDay == 0 && tempHour != 0 && tempMinute == 0) {
@@ -68,18 +80,13 @@ class LayDownChallengeViewModel(val challenge: Challenge, val context: Context, 
         } else {
             ""
         }
-    }
+    }*/
 
-
-    fun addActionText(): String {
-        return if (challenge.idChallengedUser == null) {
-             context.resources.getString(R.string.choose_user_to_lay_down)
-        } else if (challenge.idChallengedUser != null && challenge.tempActionName == null) {
-            context.resources.getString(R.string.choose_action_to_realize)
-        } else if (challenge.tempActionName != null && !challenge.tempActionName!!.isEmpty()) {
-            context.resources.getString(R.string.choose_challenge_time)
+    fun getTimeValue(value: Int): String {
+        return if (value == 0) {
+            context.resources.getString(R.string.no_time)
         } else {
-            ""
+            context.resources.getQuantityString(R.plurals.x_day, value, value)
         }
     }
 
@@ -88,14 +95,6 @@ class LayDownChallengeViewModel(val challenge: Challenge, val context: Context, 
             View.GONE
         } else {
             View.VISIBLE
-        }
-    }
-
-    fun challengedUserName(): String {
-        return if (challenge.idChallengedUser != null) {
-            "Francis Gros"
-        } else {
-            ""
         }
     }
 }
