@@ -4,6 +4,7 @@ import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.VideoView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_home_challenge.view.*
@@ -14,7 +15,6 @@ class HomeChallengeHolder(var view: View, var context: Context) : RecyclerView.V
 
     // set user name
     fun setUserPicture(url: String?) {
-        val toto = url
         Picasso.get().load(url).error(R.drawable.user_default).placeholder(R.drawable.user_default)
                 .into(view.item_home_challenge_user_picture)
     }
@@ -59,4 +59,9 @@ class HomeChallengeHolder(var view: View, var context: Context) : RecyclerView.V
         Picasso.get().load(url).error(R.drawable.user_default).placeholder(R.drawable.user_default)
                 .into(view.item_home_challenge_container_image)
     }
+
+    fun getNbChallengerTextView(): TextView {
+        return view.item_home_challenge_nb_challengers
+    }
+
 }

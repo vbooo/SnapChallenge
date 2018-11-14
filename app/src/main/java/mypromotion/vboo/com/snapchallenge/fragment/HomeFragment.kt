@@ -3,8 +3,10 @@ package mypromotion.vboo.com.snapchallenge.fragment
 import android.app.Activity
 import android.app.Fragment
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +14,7 @@ import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.fragment_home.*
 import mypromotion.vboo.com.snapchallenge.MainActivity
 import mypromotion.vboo.com.snapchallenge.R
+import mypromotion.vboo.com.snapchallenge.activity.PublishChallengeActivity
 import mypromotion.vboo.com.snapchallenge.adapter.HomeChallengeAdapter
 import mypromotion.vboo.com.snapchallenge.model.ChallengeAnswer
 import java.util.*
@@ -51,6 +54,20 @@ class HomeFragment : Fragment() {
             this.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
             adapter = viewAdapter
         }
+
+        fragment_home_fab.setOnClickListener {
+            val intent = Intent(mainActivity, PublishChallengeActivity::class.java)
+            startActivity(intent)
+        }
+
+        fragment_home_recycler_view.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+                if (dy > 0)
+                    fragment_home_fab.hide()
+                else if (dy < 0)
+                    fragment_home_fab.show()
+            }
+        })
     }
 
     override fun onAttach(context: Context) {

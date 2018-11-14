@@ -1,20 +1,15 @@
 package mypromotion.vboo.com.snapchallenge.activity
 
-import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
-import android.os.Environment.getExternalStorageDirectory
-import android.os.Environment.getExternalStoragePublicDirectory
 import android.provider.MediaStore
-import android.support.v4.app.ActivityCompat
-import android.support.v4.content.ContextCompat
 import android.support.v4.content.FileProvider
 import android.support.v7.app.AppCompatActivity
+import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_publish_challenge.*
 import mypromotion.vboo.com.snapchallenge.R
 import java.io.File
@@ -33,6 +28,9 @@ class PublishChallengeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_publish_challenge)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         activity_publish_challenge_image_camera.setOnClickListener {
             val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             dispatchTakePictureIntent()
@@ -42,6 +40,8 @@ class PublishChallengeActivity : AppCompatActivity() {
             val takeVideoIntent = Intent(MediaStore.ACTION_VIDEO_CAPTURE)
             //dispatchTakePictureIntent(takeVideoIntent)
         }
+
+
     }
 
     private fun dispatchTakePictureIntent() {
@@ -134,5 +134,13 @@ class PublishChallengeActivity : AppCompatActivity() {
             mCurrentPhotoPath = absolutePath
         }
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            this.finish()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

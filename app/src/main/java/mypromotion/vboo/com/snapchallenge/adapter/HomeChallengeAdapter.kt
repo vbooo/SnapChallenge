@@ -1,21 +1,19 @@
 package mypromotion.vboo.com.snapchallenge.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import mypromotion.vboo.com.snapchallenge.AnswerChallengeType
 import mypromotion.vboo.com.snapchallenge.R
+import mypromotion.vboo.com.snapchallenge.activity.ActionChallengersActivity
+import mypromotion.vboo.com.snapchallenge.activity.DetailMediaActivity
+import mypromotion.vboo.com.snapchallenge.activity.PublishChallengeActivity
 import mypromotion.vboo.com.snapchallenge.holder.HomeChallengeHolder
 import mypromotion.vboo.com.snapchallenge.model.ChallengeAnswer
 import java.util.*
-import android.content.Intent
-import android.net.Uri
-import android.support.v4.content.ContextCompat.startActivity
-import android.util.Log
-import mypromotion.vboo.com.snapchallenge.R.id.item_home_challenge_container
-import mypromotion.vboo.com.snapchallenge.R.id.item_home_challenge_container_video
 
 
 class HomeChallengeAdapter(private var dataSet: MutableList<ChallengeAnswer>, var context: Context) : RecyclerView.Adapter<HomeChallengeHolder>(){
@@ -50,6 +48,15 @@ class HomeChallengeAdapter(private var dataSet: MutableList<ChallengeAnswer>, va
 
         holder?.setNbChallengers(context.resources.getQuantityString(R.plurals.x_challenger, dataSet[position].nbChallengers, dataSet[position].nbChallengers))
 
+        holder?.getNbChallengerTextView()?.setOnClickListener {
+            val intent = Intent(context, ActionChallengersActivity::class.java)
+            context.startActivity(intent)
+        }
+
+        holder?.getPhotoContainer()?.setOnClickListener {
+            val intent = Intent(context, DetailMediaActivity::class.java)
+            context.startActivity(intent)
+        }
 
     }
 }

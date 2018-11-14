@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         //actionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        changeFragment(0)
 
     }
 
