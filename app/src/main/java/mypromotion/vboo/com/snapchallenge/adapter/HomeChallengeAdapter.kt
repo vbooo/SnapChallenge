@@ -10,6 +10,13 @@ import mypromotion.vboo.com.snapchallenge.R
 import mypromotion.vboo.com.snapchallenge.holder.HomeChallengeHolder
 import mypromotion.vboo.com.snapchallenge.model.ChallengeAnswer
 import java.util.*
+import android.content.Intent
+import android.net.Uri
+import android.support.v4.content.ContextCompat.startActivity
+import android.util.Log
+import mypromotion.vboo.com.snapchallenge.R.id.item_home_challenge_container
+import mypromotion.vboo.com.snapchallenge.R.id.item_home_challenge_container_video
+
 
 class HomeChallengeAdapter(private var dataSet: MutableList<ChallengeAnswer>, var context: Context) : RecyclerView.Adapter<HomeChallengeHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): HomeChallengeHolder {
@@ -39,7 +46,10 @@ class HomeChallengeAdapter(private var dataSet: MutableList<ChallengeAnswer>, va
         holder?.setNbComment(dataSet[position].nbComment)
         holder?.setNbShare(dataSet[position].nbShare)
 
+        holder?.setUrlPicture(dataSet[position].url)
+
         holder?.setNbChallengers(context.resources.getQuantityString(R.plurals.x_challenger, dataSet[position].nbChallengers, dataSet[position].nbChallengers))
+
 
     }
 }

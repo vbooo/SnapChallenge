@@ -14,7 +14,8 @@ class HomeChallengeHolder(var view: View, var context: Context) : RecyclerView.V
 
     // set user name
     fun setUserPicture(url: String?) {
-        Picasso.get().load(R.drawable.user_default).error(R.drawable.user_default).placeholder(R.drawable.user_default)
+        val toto = url
+        Picasso.get().load(url).error(R.drawable.user_default).placeholder(R.drawable.user_default)
                 .into(view.item_home_challenge_user_picture)
     }
 
@@ -52,5 +53,10 @@ class HomeChallengeHolder(var view: View, var context: Context) : RecyclerView.V
 
     fun setNbChallengers(value: String?) {
         view.item_home_challenge_nb_challengers.text = value.toString()
+    }
+
+    fun setUrlPicture(url: String?) {
+        Picasso.get().load(url).error(R.drawable.user_default).placeholder(R.drawable.user_default)
+                .into(view.item_home_challenge_container_image)
     }
 }
