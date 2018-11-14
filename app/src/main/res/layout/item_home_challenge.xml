@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layout_marginBottom="@dimen/padding_large"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- START HEADER CHALLENGE PUBLICATION -->
+    <FrameLayout
+        android:id="@+id/item_home_challenge_header"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toTopOf="@+id/item_home_challenge_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/item_home_challenge_user_picture"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="@dimen/padding_large"
+                android:src="@drawable/user_default"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/item_home_challenge_info"
+                />
+
+            <LinearLayout
+                android:id="@+id/item_home_challenge_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/padding_large"
+                android:paddingEnd="@dimen/padding_large"
+                app:layout_constraintLeft_toRightOf="@+id/item_home_challenge_user_picture"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <TextView
+                    android:id="@+id/item_home_challenge_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"/>
+
+                <TextView
+                    android:id="@+id/item_home_challenge_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/second_text"/>
+            </LinearLayout>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </FrameLayout>
+    <!-- END HEADER CHALLENGE PUBLICATION -->
+
+    <TextView
+        android:id="@+id/item_home_challenge_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/dark"
+        android:padding="@dimen/padding_large"
+        app:layout_constraintTop_toBottomOf="@+id/item_home_challenge_header"
+        app:layout_constraintBottom_toTopOf="@+id/item_home_challenge_container"/>
+
+    <!-- START CONTAINER CHALLENGE PUBLICATION -->
+
+    <FrameLayout
+        android:id="@+id/item_home_challenge_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/item_home_challenge_description"
+        app:layout_constraintBottom_toTopOf="@+id/item_home_challenge_footer">
+
+        <VideoView
+            android:id="@+id/item_home_challenge_container_video"
+            android:layout_width="match_parent"
+            android:layout_height="220dp" />
+        <ImageView
+            android:id="@+id/item_home_challenge_container_image"
+            android:layout_width="match_parent"
+            android:layout_height="220dp" />
+
+    </FrameLayout>
+
+    <!-- END CONTAINER CHALLENGE PUBLICATION -->
+
+    <!-- START FOOTER CHALLENGE PUBLICATION -->
+    <FrameLayout
+        android:id="@+id/item_home_challenge_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_large"
+        app:layout_constraintTop_toBottomOf="@+id/item_home_challenge_container">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:id="@+id/item_home_challenge_layout_interaction"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/item_home_challenge_like_picture"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_like_icon"
+                        android:tint="@android:color/black"
+                        android:paddingEnd="@dimen/padding_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/item_home_challenge_nb_like"/>
+                    <TextView
+                        android:id="@+id/item_home_challenge_nb_like"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tint="@android:color/black"
+                        android:paddingEnd="@dimen/padding_small"
+                        app:layout_constraintLeft_toRightOf="@+id/item_home_challenge_like_picture"
+                        app:layout_constraintRight_toLeftOf="@+id/item_home_challenge_comment_picture"/>
+
+                    <ImageView
+                        android:id="@+id/item_home_challenge_comment_picture"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_comment_icon"
+                        android:tint="@android:color/black"
+                        android:paddingEnd="@dimen/padding_small"
+                        app:layout_constraintLeft_toRightOf="@+id/item_home_challenge_nb_like"
+                        app:layout_constraintRight_toLeftOf="@+id/item_home_challenge_nb_comment"/>
+                    <TextView
+                        android:id="@+id/item_home_challenge_nb_comment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tint="@android:color/black"
+                        android:paddingEnd="@dimen/padding_small"
+                        app:layout_constraintLeft_toRightOf="@+id/item_home_challenge_comment_picture"
+                        app:layout_constraintRight_toLeftOf="@+id/item_home_challenge_share_picture"/>
+
+                    <ImageView
+                        android:id="@+id/item_home_challenge_share_picture"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_share_icon"
+                        android:tint="@android:color/black"
+                        android:paddingEnd="@dimen/padding_small"
+                        app:layout_constraintLeft_toRightOf="@+id/item_home_challenge_nb_comment"
+                        app:layout_constraintRight_toLeftOf="@+id/item_home_challenge_nb_share"/>
+                    <TextView
+                        android:id="@+id/item_home_challenge_nb_share"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tint="@android:color/black"
+                        app:layout_constraintLeft_toRightOf="@+id/item_home_challenge_share_picture"/>
+
+                </android.support.constraint.ConstraintLayout>
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/item_home_challenge_nb_challengers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue_theme"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toRightOf="@+id/item_home_challenge_layout_interaction"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </FrameLayout>
+
+    <!-- END FOOTER CHALLENGE PUBLICATION -->
+
+    <View
+        android:id="@+id/item_home_challenge_separator_footer"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/padding_large"
+        android:layout_marginEnd="@dimen/padding_large"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@+id/item_home_challenge_footer"
+        app:layout_constraintBottom_toTopOf="@+id/item_home_challenge_answer_challenge_layout"/>
+
+    <LinearLayout
+        android:id="@+id/item_home_challenge_answer_challenge_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/padding_small"
+        app:layout_constraintTop_toBottomOf="@+id/item_home_challenge_separator_footer">
+
+        <ImageView
+            android:id="@+id/item_home_challenge_action_picture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/clapper"/>
+        <TextView
+            android:id="@+id/item_home_challenge_answser_challenge"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/padding_small"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:text="@string/answer_challenge"/>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -16,15 +16,8 @@ import kotlinx.android.synthetic.main.fragment_my_challenges.*
 import mypromotion.vboo.com.snapchallenge.MainActivity
 import mypromotion.vboo.com.snapchallenge.R
 import mypromotion.vboo.com.snapchallenge.activity.LayDownChallengeActivity
-import mypromotion.vboo.com.snapchallenge.activity.PublishChallengeActivity
-import mypromotion.vboo.com.snapchallenge.activity.ReceptionChallengeActivity
 import mypromotion.vboo.com.snapchallenge.adapter.MyChallengeAdapter
 
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
@@ -33,18 +26,8 @@ private const val ARG_PARAM2 = "param2"
  *
  */
 class MyChallengesFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
     private lateinit var mainActivity: Context
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

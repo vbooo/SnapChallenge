@@ -55,6 +55,9 @@
     <string name="categories">Catégories</string>
     <string name="action">Action</string>
     <string name="search_action">Rechercher une action</string>
+    <string name="picture">photo</string>
+    <string name="video">video</string>
+    <string name="answer_challenge">Répondre au challenge</string>
 
     <plurals name="x_minute">
         <item quantity="one">%d min</item>
