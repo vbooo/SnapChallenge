@@ -85,7 +85,8 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity android:name=".activity.ActionChallengersActivity" />
-        <activity android:name=".activity.DetailMediaActivity"></activity>
+        <activity android:name=".activity.DetailMediaActivity" />
+        <activity android:name=".activity.CommentMediaActivity"></activity>
     </application>
 
 </manifest>

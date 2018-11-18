@@ -9,8 +9,9 @@ import android.view.ViewGroup
 import mypromotion.vboo.com.snapchallenge.AnswerChallengeType
 import mypromotion.vboo.com.snapchallenge.R
 import mypromotion.vboo.com.snapchallenge.activity.ActionChallengersActivity
+import mypromotion.vboo.com.snapchallenge.activity.CommentMediaActivity
 import mypromotion.vboo.com.snapchallenge.activity.DetailMediaActivity
-import mypromotion.vboo.com.snapchallenge.activity.PublishChallengeActivity
+import mypromotion.vboo.com.snapchallenge.activity.DetailMediaActivity.Companion.CHALLENGE_ANSWER
 import mypromotion.vboo.com.snapchallenge.holder.HomeChallengeHolder
 import mypromotion.vboo.com.snapchallenge.model.ChallengeAnswer
 import java.util.*
@@ -44,7 +45,7 @@ class HomeChallengeAdapter(private var dataSet: MutableList<ChallengeAnswer>, va
         holder?.setNbComment(dataSet[position].nbComment)
         holder?.setNbShare(dataSet[position].nbShare)
 
-        holder?.setUrlPicture(dataSet[position].url)
+        holder?.setUrlPicture(dataSet[position].urlMedia)
 
         holder?.setNbChallengers(context.resources.getQuantityString(R.plurals.x_challenger, dataSet[position].nbChallengers, dataSet[position].nbChallengers))
 
@@ -55,6 +56,12 @@ class HomeChallengeAdapter(private var dataSet: MutableList<ChallengeAnswer>, va
 
         holder?.getPhotoContainer()?.setOnClickListener {
             val intent = Intent(context, DetailMediaActivity::class.java)
+            intent.putExtra(CHALLENGE_ANSWER, dataSet[position])
+            context.startActivity(intent)
+        }
+
+        holder?.getCommentIcon()?.setOnClickListener {
+            val intent = Intent(context, CommentMediaActivity::class.java)
             context.startActivity(intent)
         }
 

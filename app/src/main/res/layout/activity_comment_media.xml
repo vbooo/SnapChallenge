@@ -1,0 +1,51 @@
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/activity_comment_media_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+
+        <LinearLayout
+            android:id="@+id/activity_comment_layout_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/border_top">
+
+
+            <EditText
+                android:id="@+id/activity_comment_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="4"
+                android:minLines="1"
+                android:background="@android:color/transparent"
+                android:layout_weight="15"
+                android:hint="@string/add_comment"
+                android:textColorHint="@color/second_text"
+                android:padding="@dimen/padding_large"
+                />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/blue_theme"
+                android:layout_weight="85">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/baseline_send_white_48dp"/>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+</LinearLayout>

@@ -25,4 +25,101 @@
             android:layout_height="match_parent" />
 
     </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/item_home_challenge_layout_interaction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:layout_marginStart="@dimen/padding_large"
+        android:layout_marginEnd="@dimen/padding_large"
+        app:layout_constraintTop_toBottomOf="@+id/item_home_challenge_container"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/activity_detail_media_layout_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/activity_detail_media_layout_comment">
+                <ImageView
+                    android:id="@+id/activity_detail_media_like_picture"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/like_64"
+                    android:tint="@color/white"
+                    android:paddingEnd="@dimen/padding_small"/>
+                <TextView
+                    android:id="@+id/activity_detail_media_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center_vertical"
+                    android:paddingEnd="@dimen/padding_small"
+                    android:text="@string/like"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_detail_media_layout_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toRightOf="@+id/activity_detail_media_layout_like"
+                app:layout_constraintRight_toLeftOf="@+id/activity_detail_media_layout_share"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <ImageView
+                    android:id="@+id/activity_detail_media_comment_picture"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/comment_64"
+                    android:tint="@color/white"
+                    android:paddingEnd="@dimen/padding_small" />
+                <TextView
+                    android:id="@+id/activity_detail_media_comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center_vertical"
+                    android:paddingEnd="@dimen/padding_small"
+                    android:text="@string/comment"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/activity_detail_media_layout_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/activity_detail_media_layout_comment"
+                >
+
+                <ImageView
+                    android:id="@+id/activity_detail_media_share_picture"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/share_64"
+                    android:tint="@color/white"
+                    android:paddingEnd="@dimen/padding_small"/>
+                <TextView
+                    android:id="@+id/activity_detail_media_share"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/white"
+                    android:text="@string/share"/>
+            </LinearLayout>
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </FrameLayout>
 </android.support.constraint.ConstraintLayout>

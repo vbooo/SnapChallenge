@@ -56,12 +56,16 @@ class HomeChallengeHolder(var view: View, var context: Context) : RecyclerView.V
     }
 
     fun setUrlPicture(url: String?) {
-        Picasso.get().load(url).error(R.drawable.user_default).placeholder(R.drawable.user_default)
+        Picasso.get().load(url)
                 .into(view.item_home_challenge_container_image)
     }
 
     fun getNbChallengerTextView(): TextView {
         return view.item_home_challenge_nb_challengers
+    }
+
+    fun getCommentIcon(): ImageView {
+        return view.item_home_challenge_comment_picture
     }
 
 }

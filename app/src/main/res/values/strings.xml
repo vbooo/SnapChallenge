@@ -60,6 +60,11 @@
     <string name="picture">photo</string>
     <string name="video">video</string>
     <string name="answer_challenge">Répondre au challenge</string>
+    <string name="like">J\'aime</string>
+    <string name="comment">Commenter</string>
+    <string name="share">Partager</string>
+    <string name="likeWord">like</string>
+    <string name="add_comment">Ajouter un commentaire...</string>
 
     <plurals name="x_minute">
         <item quantity="one">%d min</item>
