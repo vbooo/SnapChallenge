@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:id="@+id/item_ranking_header_second_user_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/item_ranking_header_first_user_layout">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/item_ranking_header_second_picture"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/ic_friends"
+                android:padding="14dp"
+                android:layout_gravity="center_horizontal"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/item_ranking_header_second_name"
+                />
+
+            <TextView
+                android:id="@+id/item_ranking_header_second_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/item_ranking_header_second_picture"
+                app:layout_constraintBottom_toTopOf="@+id/item_ranking_header_second_nb_points"/>
+
+            <TextView
+                android:id="@+id/item_ranking_header_second_nb_points"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue_theme"
+                android:gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/item_ranking_header_second_name"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/item_ranking_header_first_user_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="@id/item_ranking_header_second_user_layout"
+        app:layout_constraintEnd_toStartOf="@id/item_ranking_header_third_user_layout">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/item_ranking_header_first_picture"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/ic_friends"
+                android:padding="14dp"
+                android:layout_gravity="center_horizontal"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/item_ranking_header_first_name"
+                />
+
+            <TextView
+                android:id="@+id/item_ranking_header_first_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/item_ranking_header_first_picture"
+                app:layout_constraintBottom_toTopOf="@+id/item_ranking_header_first_nb_points"/>
+
+            <TextView
+                android:id="@+id/item_ranking_header_first_nb_points"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue_theme"
+                android:gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/item_ranking_header_first_name"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </android.support.constraint.ConstraintLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_ranking_header_third_user_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="@id/item_ranking_header_first_user_layout"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/item_ranking_header_third_picture"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_friends"
+                android:layout_marginTop="50dp"
+                android:padding="14dp"
+                android:layout_gravity="center_horizontal"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/item_ranking_header_third_name"
+                />
+
+            <TextView
+                android:id="@+id/item_ranking_header_third_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/item_ranking_header_third_picture"
+                app:layout_constraintBottom_toTopOf="@+id/item_ranking_header_third_nb_points"/>
+
+            <TextView
+                android:id="@+id/item_ranking_header_third_nb_points"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue_theme"
+                android:gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/item_ranking_header_third_name"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </android.support.constraint.ConstraintLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.activity_ranking.*
 import mypromotion.vboo.com.snapchallenge.R
+import mypromotion.vboo.com.snapchallenge.RankingListDataSourceImpl
 import mypromotion.vboo.com.snapchallenge.adapter.RankingAdapter
 
 class RankingActivity : AppCompatActivity() {
@@ -19,16 +20,24 @@ class RankingActivity : AppCompatActivity() {
         // set up the list view adapter
         val listUser = arrayListOf<User>()
         listUser.clear()
-        listUser.add(RankingActivity.User("1.Fabien Bouvet haha coucou jij heheh alo ??", "1067 points"))
-        listUser.add(RankingActivity.User("2.Francis Gros", "980 points"))
-        listUser.add(RankingActivity.User("3.Nicolas Fornerod", "654 points"))
-        listUser.add(RankingActivity.User("4.Julien Martin", "543 points"))
-        listUser.add(RankingActivity.User("5.Julie Dupond", "398 points"))
-        listUser.add(RankingActivity.User("6.Julien Fornerod", "298 points"))
-        listUser.add(RankingActivity.User("7.Bruno Festin", "238 points"))
-        listUser.add(RankingActivity.User("8.Nathalie Bouvet", "198 points"))
-        listUser.add(RankingActivity.User("9.Emmanuel Voisin", "54 points"))
-        val viewAdapter = RankingAdapter(listUser, this)
+        listUser.add(RankingActivity.User("Fabien Bouvet", 1067, "https://randomuser.me/api/portraits/thumb/men/10.jpg"))
+        listUser.add(RankingActivity.User("Francis Gros", 980, "https://randomuser.me/api/portraits/thumb/men/15.jpg"))
+        listUser.add(RankingActivity.User("Nicolas Fornerod", 654, "https://randomuser.me/api/portraits/thumb/men/25.jpg"))
+        listUser.add(RankingActivity.User("Julien Martin", 543, "https://randomuser.me/api/portraits/thumb/women/35.jpg"))
+        listUser.add(RankingActivity.User("Julie Dupond", 398, "https://randomuser.me/api/portraits/thumb/women/45.jpg"))
+        listUser.add(RankingActivity.User("Julien Fornerod", 298, "https://randomuser.me/api/portraits/thumb/men/11.jpg"))
+        listUser.add(RankingActivity.User("Bruno Festin", 238, "https://randomuser.me/api/portraits/thumb/men/12.jpg"))
+        listUser.add(RankingActivity.User("Nathalie Bouvet", 198, "https://randomuser.me/api/portraits/thumb/women/22.jpg"))
+        listUser.add(RankingActivity.User("Emmanuel Voisin", 54, "https://randomuser.me/api/portraits/thumb/men/43.jpg"))
+        listUser.add(RankingActivity.User("Pierre Machin", 52, "https://randomuser.me/api/portraits/thumb/men/11.jpg"))
+        listUser.add(RankingActivity.User("Nora Bouret", 34, "https://randomuser.me/api/portraits/thumb/women/15.jpg"))
+        listUser.add(RankingActivity.User("Romain Thami", 23, "https://randomuser.me/api/portraits/thumb/men/43.jpg"))
+        listUser.add(RankingActivity.User("Emmanuel Voisin", 19, "https://randomuser.me/api/portraits/thumb/men/43.jpg"))
+        listUser.add(RankingActivity.User("Fabrice Luchini", 15, "https://randomuser.me/api/portraits/thumb/men/42.jpg"))
+        listUser.add(RankingActivity.User("Booba Voisin", 13, "https://randomuser.me/api/portraits/thumb/men/23.jpg"))
+        listUser.add(RankingActivity.User("Benjamin Biolay", 12, "https://randomuser.me/api/portraits/thumb/men/24.jpg"))
+        val viewAdapter = RankingAdapter(this)
+        viewAdapter.listRankingDataSource = RankingListDataSourceImpl(listUser)
 
         // apply the manager and the adapter to the permit_list
         activity_ranking_recycler_view.apply {
@@ -38,10 +47,7 @@ class RankingActivity : AppCompatActivity() {
         }
     }
 
-    class User(var n: String, var p: String) {
-         var name = n
-         var points = p
-    }
+    class User(var name: String, var point: Int, var urlPic: String)
 
     override fun onSupportNavigateUp(): Boolean {
         finish()

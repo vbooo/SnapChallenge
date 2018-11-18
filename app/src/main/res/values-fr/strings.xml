@@ -63,6 +63,7 @@
     <string name="share">Partager</string>
     <string name="likeWord">like</string>
     <string name="add_comment">Ajouter un commentaire...</string>
+    <string name="points">points</string>
 
     <plurals name="x_minute">
         <item quantity="one">%d min</item>
@@ -77,6 +78,16 @@
     <plurals name="x_day">
         <item quantity="one">%d jour</item>
         <item quantity="other">%d jours</item>
+    </plurals>
+
+    <plurals name="x_challenger">
+        <item quantity="one">%d challenger</item>
+        <item quantity="other">%d challengers</item>
+    </plurals>
+
+    <plurals name="x_point">
+        <item quantity="one">%d point</item>
+        <item quantity="other">%d points</item>
     </plurals>
 
 </resources>
