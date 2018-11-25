@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.activity_ranking.*
 import mypromotion.vboo.com.snapchallenge.R
-import mypromotion.vboo.com.snapchallenge.RankingListDataSourceImpl
+import mypromotion.vboo.com.snapchallenge.dataSource.RankingListDataSourceImpl
 import mypromotion.vboo.com.snapchallenge.adapter.RankingAdapter
 
 class RankingActivity : AppCompatActivity() {
@@ -47,7 +47,7 @@ class RankingActivity : AppCompatActivity() {
         }
     }
 
-    class User(var name: String, var point: Int, var urlPic: String)
+    class User(var name: String, var point: Int, var urlPic: String, var rank: Int? = 0)
 
     override fun onSupportNavigateUp(): Boolean {
         finish()

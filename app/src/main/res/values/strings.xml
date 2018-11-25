@@ -66,6 +66,9 @@
     <string name="likeWord">like</string>
     <string name="add_comment">Ajouter un commentaire...</string>
     <string name="points">points</string>
+    <string name="points_upper">POINTS</string>
+    <string name="challenges_upper">CHALLENGES</string>
+    <string name="subscribers_upper">ABONNÉS</string>
 
     <plurals name="x_minute">
         <item quantity="one">%d min</item>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layout_marginBottom="@dimen/padding_small"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/item_profil_header_user_image"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/item_profil_header_user_name"
+        />
+
+    <TextView
+        android:id="@+id/item_profil_header_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/dark"
+        android:textSize="18sp"
+        android:layout_marginTop="@dimen/padding_small"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_profil_header_user_image"
+        app:layout_constraintBottom_toTopOf="@+id/item_profil_header_subscribe_layout"/>
+
+    <LinearLayout
+        android:id="@+id/item_profil_header_subscribe_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/padding_large"
+        android:background="@drawable/background_blue_button"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_profil_header_user_name"
+        app:layout_constraintBottom_toTopOf="@+id/item_profil_header_info_user_layout"
+        >
+        <TextView
+            android:id="@+id/item_profil_header_subscribe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/subscribe"
+            android:paddingBottom="@dimen/padding_xsmall"
+            android:paddingTop="@dimen/padding_xsmall"
+            android:paddingEnd="@dimen/padding_small"
+            android:paddingStart="@dimen/padding_small"
+            android:layout_gravity="center_vertical"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_profil_header_info_user_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/padding_large"
+        app:layout_constraintTop_toBottomOf="@+id/item_profil_header_subscribe_layout">
+
+        <LinearLayout
+            android:id="@+id/item_profil_header_points_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item_profil_header_points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/primary_text"
+                android:textStyle="bold"
+                android:textColor="@color/dark"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/points_upper"
+                android:textSize="@dimen/second_text"
+                android:textStyle="bold"
+                android:textColor="@color/second_text"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/item_profil_header_nb_challenges_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item_profil_header_nb_challenges"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/primary_text"
+                android:textStyle="bold"
+                android:textColor="@color/dark"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/challenges_upper"
+                android:textSize="@dimen/second_text"
+                android:textStyle="bold"
+                android:textColor="@color/second_text"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/item_profil_header_subscribers_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item_profil_header_nb_subscribers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/primary_text"
+                android:textStyle="bold"
+                android:textColor="@color/dark"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/subscribers_upper"
+                android:textSize="@dimen/second_text"
+                android:textStyle="bold"
+                android:textColor="@color/second_text"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

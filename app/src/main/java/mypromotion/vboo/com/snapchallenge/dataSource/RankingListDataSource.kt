@@ -1,4 +1,4 @@
-package mypromotion.vboo.com.snapchallenge
+package mypromotion.vboo.com.snapchallenge.dataSource
 
 import mypromotion.vboo.com.snapchallenge.activity.RankingActivity
 import mypromotion.vboo.com.snapchallenge.model.HeaderRankingInfo

@@ -15,4 +15,9 @@
     <color name="blue">#46BDE7</color>
     <color name="primary">#FF5791</color>
 
+
+    <color name="color_border_first_user">#4a90e2</color>
+    <color name="color_border_second_user">#e2aa4a</color>
+    <color name="color_border_third_user">#e25e4a</color>
+
 </resources>

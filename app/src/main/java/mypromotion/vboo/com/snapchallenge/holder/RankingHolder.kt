@@ -24,6 +24,10 @@ class RankingHolder(var view: View, var context: Context) : RecyclerView.ViewHol
         view.item_ranking_user_name.text = name
     }
 
+    fun setUserRank(name: String?) {
+        view.item_ranking_number.text = name
+    }
+
     // set user points
     fun setUserPoints(points: Int) {
         val pointString = context.resources.getQuantityString(R.plurals.x_point, points, points)

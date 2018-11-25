@@ -1,4 +1,4 @@
-package mypromotion.vboo.com.snapchallenge
+package mypromotion.vboo.com.snapchallenge.dataSource
 
 import mypromotion.vboo.com.snapchallenge.activity.RankingActivity
 import mypromotion.vboo.com.snapchallenge.model.HeaderRankingInfo
@@ -23,6 +23,7 @@ class RankingListDataSourceImpl(var listUser: List<RankingActivity.User>) : Rank
             listItems.add(headerRankingInfo)
             listUser.forEachIndexed { index, element ->
                 if (index > 2) {
+                    element.rank = index
                     listItems.add(element)
                 }
             }

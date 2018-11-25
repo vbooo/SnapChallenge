@@ -20,7 +20,7 @@ class ChallengedUserAdapter (private val activity: ChooseChallengedUserActivity,
 
     override fun onBindViewHolder(holder: UserHolder?, position: Int) {
         // set user title
-        holder?.getUserRow()?.text = users[position].firstName + " " + users[position].name
+        holder?.getUserRow()?.text = users[position].name
 
         // check the selected user
         holder?.getUserRow()?.isChecked = users[position].id == idSelectedUser

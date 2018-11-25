@@ -12,22 +12,22 @@ import mypromotion.vboo.com.snapchallenge.activity.ActionChallengersActivity
 import mypromotion.vboo.com.snapchallenge.activity.CommentMediaActivity
 import mypromotion.vboo.com.snapchallenge.activity.DetailMediaActivity
 import mypromotion.vboo.com.snapchallenge.activity.DetailMediaActivity.Companion.CHALLENGE_ANSWER
-import mypromotion.vboo.com.snapchallenge.holder.HomeChallengeHolder
+import mypromotion.vboo.com.snapchallenge.holder.ChallengeHolder
 import mypromotion.vboo.com.snapchallenge.model.ChallengeAnswer
 import java.util.*
 
 
-class HomeChallengeAdapter(private var dataSet: MutableList<ChallengeAnswer>, var context: Context) : RecyclerView.Adapter<HomeChallengeHolder>(){
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): HomeChallengeHolder {
-        val view = LayoutInflater.from(parent?.context).inflate(R.layout.item_home_challenge, parent, false)
-        return HomeChallengeHolder(view, context)
+class HomeChallengeAdapter(private var dataSet: MutableList<ChallengeAnswer>, var context: Context) : RecyclerView.Adapter<ChallengeHolder>(){
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ChallengeHolder {
+        val view = LayoutInflater.from(parent?.context).inflate(R.layout.item_challenge, parent, false)
+        return ChallengeHolder(view, context)
     }
 
     override fun getItemCount(): Int {
         return dataSet.size
     }
 
-    override fun onBindViewHolder(holder: HomeChallengeHolder?, position: Int) {
+    override fun onBindViewHolder(holder: ChallengeHolder?, position: Int) {
         holder?.setUserPicture(dataSet[position].urlOwner)
         holder?.setChallengeDate(Date())
         holder?.setChallengeTitle(dataSet[position].nameOwner + " a publié un challenge")

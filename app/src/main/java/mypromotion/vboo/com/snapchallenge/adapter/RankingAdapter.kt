@@ -3,7 +3,7 @@ package mypromotion.vboo.com.snapchallenge.adapter
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
-import mypromotion.vboo.com.snapchallenge.RankingListDataSource
+import mypromotion.vboo.com.snapchallenge.dataSource.RankingListDataSource
 import mypromotion.vboo.com.snapchallenge.holder.RankingHeaderHolder
 import mypromotion.vboo.com.snapchallenge.holder.RankingHolder
 
@@ -61,6 +61,7 @@ class RankingAdapter(var context: Context) : RecyclerView.Adapter<RecyclerView.V
         } else if (holder is RankingHolder) {
             val user = _listRankingDataSource.getUserAt(position)
             holder.setUserName(user.name)
+            holder.setUserRank(user.rank.toString())
             holder.setUserPoints(user.point)
             holder.setUserPicture(user.urlPic)
         }

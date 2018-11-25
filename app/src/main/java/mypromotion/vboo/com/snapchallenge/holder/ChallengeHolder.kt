@@ -2,16 +2,26 @@ package mypromotion.vboo.com.snapchallenge.holder
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.VideoView
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_home_challenge.view.*
+import kotlinx.android.synthetic.main.item_challenge.view.*
 import mypromotion.vboo.com.snapchallenge.R
 import java.util.*
 
-class HomeChallengeHolder(var view: View, var context: Context) : RecyclerView.ViewHolder(view) {
+class ChallengeHolder(var view: View, var context: Context) : RecyclerView.ViewHolder(view) {
+
+    companion object {
+        fun create(parent: ViewGroup, context: Context): ChallengeHolder {
+            val view = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.item_challenge, parent, false)
+            return ChallengeHolder(view, context)
+        }
+    }
 
     // set user name
     fun setUserPicture(url: String?) {
