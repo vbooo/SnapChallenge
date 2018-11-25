@@ -61,6 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:paddingBottom="@dimen/padding_small"
         android:layout_marginTop="@dimen/padding_large"
         app:layout_constraintTop_toBottomOf="@+id/item_profil_header_subscribe_layout">
 
@@ -78,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/primary_text"
                 android:textStyle="bold"
-                android:textColor="@color/dark"
+                android:textColor="@color/blue_theme"
                 />
 
             <TextView
@@ -106,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/primary_text"
                 android:textStyle="bold"
-                android:textColor="@color/dark"/>
+                android:textColor="@color/blue_theme"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -133,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/primary_text"
                 android:textStyle="bold"
-                android:textColor="@color/dark"/>
+                android:textColor="@color/blue_theme"/>
 
             <TextView
                 android:layout_width="wrap_content"

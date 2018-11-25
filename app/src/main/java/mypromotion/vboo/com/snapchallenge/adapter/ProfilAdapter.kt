@@ -14,7 +14,6 @@ import mypromotion.vboo.com.snapchallenge.dataSource.ProfilDataSource
 import mypromotion.vboo.com.snapchallenge.holder.ChallengeHolder
 import mypromotion.vboo.com.snapchallenge.holder.ProfilHeaderHolder
 import mypromotion.vboo.com.snapchallenge.model.User
-import java.util.*
 
 class ProfilAdapter(var context: Context, var user: User) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

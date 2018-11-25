@@ -33,7 +33,11 @@ class ProfilFragment : Fragment() {
         // set up the list view adapter
         val listChallengeUser = arrayListOf<ChallengeAnswer>()
         listChallengeUser.clear()
-        listChallengeUser.add(ChallengeAnswer(1, "https://randomuser.me/api/portraits/women/33.jpg", "Bisous en haut de la Tour Eiffel", "", null, Date(), 7, 32, 12,  1, "https://randomuser.me/api/portraits/thumb/women/33.jpg", 1))
+        listChallengeUser.add(ChallengeAnswer(1, "https://randomuser.me/api/portraits/women/33.jpg", "Fab", "Bisous en haut de la Tour Eiffel", null, Date(), 7, 32, 32,  8, "https://randomuser.me/api/portraits/thumb/women/33.jpg", 1))
+        listChallengeUser.add(ChallengeAnswer(1, "https://randomuser.me/api/portraits/women/34.jpg", "Fab", "Ice Bucket challenge", null, Date(), 14, 132, 52,  2, "https://randomuser.me/api/portraits/thumb/women/33.jpg", 2))
+        listChallengeUser.add(ChallengeAnswer(1, "https://randomuser.me/api/portraits/men/50.jpg", "Fab", "En sous vêtement dans la neige", null, Date(), 10, 52, 62,  10, "https://randomuser.me/api/portraits/thumb/women/33.jpg", 1))
+        listChallengeUser.add(ChallengeAnswer(1, "https://randomuser.me/api/portraits/men/51.jpg", "Fab", "Faire du piano", null, Date(), 22, 62, 72,  7, "https://randomuser.me/api/portraits/thumb/women/33.jpg", 1))
+        listChallengeUser.add(ChallengeAnswer(1, "https://randomuser.me/api/portraits/men/53.jpg", "Fab", "Faire la plus grosse bombe à la piscine", null, Date(), 34, 72, 54,  0, "https://randomuser.me/api/portraits/thumb/women/33.jpg", 1))
 
 
         val user = User(1, "Fabien Bouvet", Date(), "https://randomuser.me/api/portraits/men/33.jpg", 1500, 23, 140)
@@ -47,8 +51,6 @@ class ProfilFragment : Fragment() {
             adapter = viewAdapter
         }
     }
-
-    class UserProfil(var name: String, var point: Int, var urlPic: String, var rank: Int? = 0)
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
