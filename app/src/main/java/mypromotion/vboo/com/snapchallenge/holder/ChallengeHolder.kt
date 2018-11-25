@@ -11,6 +11,7 @@ import android.widget.VideoView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_challenge.view.*
 import mypromotion.vboo.com.snapchallenge.R
+import mypromotion.vboo.com.snapchallenge.R.id.item_home_challenge_answer_challenge_layout
 import java.util.*
 
 class ChallengeHolder(var view: View, var context: Context) : RecyclerView.ViewHolder(view) {
@@ -76,6 +77,15 @@ class ChallengeHolder(var view: View, var context: Context) : RecyclerView.ViewH
 
     fun getCommentIcon(): ImageView {
         return view.item_home_challenge_comment_picture
+    }
+
+    fun hideAnswerChallenge() {
+        view.item_home_challenge_answer_challenge_layout.visibility = View.GONE
+        view.item_home_challenge_separator_footer.visibility = View.GONE
+    }
+
+    fun hideNbChallengers() {
+        view.item_home_challenge_nb_challengers.visibility = View.GONE
     }
 
 }

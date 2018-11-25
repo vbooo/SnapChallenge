@@ -7,25 +7,28 @@ import android.view.View
 import android.view.ViewGroup
 import mypromotion.vboo.com.snapchallenge.AnswerChallengeType
 import mypromotion.vboo.com.snapchallenge.R
+import mypromotion.vboo.com.snapchallenge.R.id.item_home_challenge_answer_challenge_layout
 import mypromotion.vboo.com.snapchallenge.activity.ActionChallengersActivity
 import mypromotion.vboo.com.snapchallenge.activity.CommentMediaActivity
 import mypromotion.vboo.com.snapchallenge.activity.DetailMediaActivity
+import mypromotion.vboo.com.snapchallenge.dataSource.ActionChallengersDataSource
 import mypromotion.vboo.com.snapchallenge.dataSource.ProfilDataSource
+import mypromotion.vboo.com.snapchallenge.holder.ActionChallengersHeaderHolder
 import mypromotion.vboo.com.snapchallenge.holder.ChallengeHolder
 import mypromotion.vboo.com.snapchallenge.holder.ProfilHeaderHolder
 import mypromotion.vboo.com.snapchallenge.model.User
 
-class ProfilAdapter(var context: Context, var user: User) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ActionChallengersAdapter(var context: Context, var user: User) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     /** Enum used to distinguish the different type of row in the recycler view */
     enum class ViewType { HEADER, ROW }
 
-    private lateinit var _profilDataSource: ProfilDataSource
+    private lateinit var _actionChallengersDataSource: ActionChallengersDataSource
 
-    var profilDataSource: ProfilDataSource? = null
+    var profilDataSource: ActionChallengersDataSource? = null
         set(value) {
             if (value != null) {
-                _profilDataSource = value
+                _actionChallengersDataSource = value
                 notifyDataSetChanged()
             }
         }
@@ -33,14 +36,14 @@ class ProfilAdapter(var context: Context, var user: User) : RecyclerView.Adapter
     override fun onCreateViewHolder(parent: ViewGroup,
                                     viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == ViewType.HEADER.ordinal) {
-            ProfilHeaderHolder.create(parent, context)
+            ActionChallengersHeaderHolder.create(parent, context)
         } else {
             ChallengeHolder.create(parent, context)
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (_profilDataSource.isHeaderAt(position)) {
+        return if (_actionChallengersDataSource.isHeaderAt(position)) {
             ViewType.HEADER.ordinal
         } else {
             ViewType.ROW.ordinal
@@ -48,19 +51,17 @@ class ProfilAdapter(var context: Context, var user: User) : RecyclerView.Adapter
     }
 
     override fun getItemCount(): Int {
-        return _profilDataSource.nbItem
+        return _actionChallengersDataSource.nbItem
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
-        if (holder is ProfilHeaderHolder) {
-            val header = _profilDataSource.getHeaderAt(position)
-            holder.setUserPicture(header.urlProfilPicture)
-            holder.setUserName(header.name)
-            holder.setNbPoints(header.points.toString())
-            holder.setNbChallenges(header.nbChallenges.toString())
-            holder.setNbSubscribe(header.nbSubscribers.toString())
+        if (holder is ActionChallengersHeaderHolder) {
+            val header = _actionChallengersDataSource.getHeaderAt(position)
+            holder.setActionName(header.nameAction)
+            holder.setNbChallengers(header.nbChallengers)
+
         } else if (holder is ChallengeHolder) {
-            val challengeUser = _profilDataSource.getChallengeUserAt(position)
+            val challengeUser = _actionChallengersDataSource.getChallengeUserAt(position)
             holder.setUserPicture(user.urlProfilPicture)
             holder.setChallengeDate(challengeUser.dateSubmission)
             holder.setChallengeTitle(user.name + " a publié un challenge")
@@ -97,8 +98,8 @@ class ProfilAdapter(var context: Context, var user: User) : RecyclerView.Adapter
                 val intent = Intent(context, CommentMediaActivity::class.java)
                 context.startActivity(intent)
             }
-
             holder.hideAnswerChallenge()
+            holder.hideNbChallengers()
         }
     }
 }

@@ -16,6 +16,8 @@ class CommentMediaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_comment_media)
 
+        supportActionBar?.hide()
+
         val listChallenge = arrayListOf<CommentMedia>()
         listChallenge.clear()
         listChallenge.add(CommentMedia(1, "https://randomuser.me/api/portraits/thumb/men/65.jpg", "Nicolas", Date(), "Whaou ton challenge est ouf, bravo !! Par contre est ce que tu peux le refaire car j'adore et commentaire hyper long", 2))

@@ -84,9 +84,18 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <activity android:name=".activity.ActionChallengersActivity" />
-        <activity android:name=".activity.DetailMediaActivity" />
-        <activity android:name=".activity.CommentMediaActivity"></activity>
+
+        <activity
+            android:name=".activity.ActionChallengersActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.DetailMediaActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.CommentMediaActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

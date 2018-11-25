@@ -23,6 +23,8 @@ class DetailMediaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_media)
 
+        supportActionBar?.hide()
+
         challenge = intent.getSerializableExtra(CHALLENGE_ANSWER) as ChallengeAnswer
 
         viewModel = DetailMediaViewModel(challenge)
