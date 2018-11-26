@@ -67,6 +67,8 @@
     <string name="points_upper">POINTS</string>
     <string name="challenges_upper">CHALLENGES</string>
     <string name="subscribers_upper">ABONNÉS</string>
+    <string name="mediaImageTransition">mediaImageTransition</string>
+    <string name="profilPictureTransition">profilPictureTransition</string>
 
     <plurals name="x_minute">
         <item quantity="one">%d min</item>

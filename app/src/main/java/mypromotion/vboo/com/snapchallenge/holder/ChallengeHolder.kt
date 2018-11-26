@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.VideoView
 import com.squareup.picasso.Picasso
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.item_challenge.view.*
 import mypromotion.vboo.com.snapchallenge.R
 import mypromotion.vboo.com.snapchallenge.R.id.item_home_challenge_answer_challenge_layout
@@ -28,6 +29,10 @@ class ChallengeHolder(var view: View, var context: Context) : RecyclerView.ViewH
     fun setUserPicture(url: String?) {
         Picasso.get().load(url).error(R.drawable.user_default).placeholder(R.drawable.user_default)
                 .into(view.item_home_challenge_user_picture)
+    }
+
+    fun getUserPicture(): CircleImageView {
+        return view.item_home_challenge_user_picture
     }
 
     fun setChallengeTitle(title: String?) {

@@ -1,5 +1,7 @@
 package mypromotion.vboo.com.snapchallenge.adapter
 
+import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.support.v7.widget.RecyclerView
@@ -12,12 +14,13 @@ import mypromotion.vboo.com.snapchallenge.activity.ActionChallengersActivity
 import mypromotion.vboo.com.snapchallenge.activity.CommentMediaActivity
 import mypromotion.vboo.com.snapchallenge.activity.DetailMediaActivity
 import mypromotion.vboo.com.snapchallenge.activity.DetailMediaActivity.Companion.CHALLENGE_ANSWER
+import mypromotion.vboo.com.snapchallenge.activity.ProfilActivity
 import mypromotion.vboo.com.snapchallenge.holder.ChallengeHolder
 import mypromotion.vboo.com.snapchallenge.model.ChallengeAnswer
 import java.util.*
 
 
-class HomeChallengeAdapter(private var dataSet: MutableList<ChallengeAnswer>, var context: Context) : RecyclerView.Adapter<ChallengeHolder>(){
+class HomeChallengeAdapter(private var dataSet: MutableList<ChallengeAnswer>, var context: Context, var activity: Activity) : RecyclerView.Adapter<ChallengeHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ChallengeHolder {
         val view = LayoutInflater.from(parent?.context).inflate(R.layout.item_challenge, parent, false)
         return ChallengeHolder(view, context)
@@ -57,11 +60,21 @@ class HomeChallengeAdapter(private var dataSet: MutableList<ChallengeAnswer>, va
         holder?.getPhotoContainer()?.setOnClickListener {
             val intent = Intent(context, DetailMediaActivity::class.java)
             intent.putExtra(CHALLENGE_ANSWER, dataSet[position])
-            context.startActivity(intent)
+            val options = ActivityOptions
+                    .makeSceneTransitionAnimation(activity, holder.getPhotoContainer() as View, context.resources.getString(R.string.mediaImageTransition))
+            context.startActivity(intent, options.toBundle())
         }
 
         holder?.getCommentIcon()?.setOnClickListener {
             val intent = Intent(context, CommentMediaActivity::class.java)
+            context.startActivity(intent)
+        }
+
+        holder?.getUserPicture()?.setOnClickListener {
+            val intent = Intent(context, ProfilActivity::class.java)
+            intent.putExtra(CHALLENGE_ANSWER, dataSet[position])
+            val options = ActivityOptions
+                    .makeSceneTransitionAnimation(activity, holder.getPhotoContainer() as View, context.resources.getString(R.string.profilPictureTransition))
             context.startActivity(intent)
         }
 

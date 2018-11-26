@@ -26,6 +26,7 @@
                 android:id="@+id/item_home_challenge_user_picture"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:transitionName="@string/profilPictureTransition"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -90,6 +91,7 @@
         <ImageView
             android:id="@+id/item_home_challenge_container_image"
             android:layout_width="match_parent"
+            android:transitionName="@string/mediaImageTransition"
             android:layout_height="220dp" />
 
     </FrameLayout>

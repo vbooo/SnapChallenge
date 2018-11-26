@@ -21,6 +21,7 @@
             android:layout_height="match_parent" />
         <ImageView
             android:id="@+id/activity_detail_media_container_image"
+            android:transitionName="@string/mediaImageTransition"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

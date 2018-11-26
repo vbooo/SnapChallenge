@@ -1,5 +1,7 @@
 package mypromotion.vboo.com.snapchallenge.adapter
 
+import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.support.v7.widget.RecyclerView
@@ -90,8 +92,10 @@ class ActionChallengersAdapter(var context: Context, var user: User) : RecyclerV
 
             holder.getPhotoContainer().setOnClickListener {
                 val intent = Intent(context, DetailMediaActivity::class.java)
+                val options = ActivityOptions
+                        .makeSceneTransitionAnimation(context as Activity, holder.getPhotoContainer() as View, context.resources.getString(R.string.mediaImageTransition))
                 intent.putExtra(DetailMediaActivity.CHALLENGE_ANSWER, challengeUser)
-                context.startActivity(intent)
+                context.startActivity(intent, options.toBundle())
             }
 
             holder.getCommentIcon().setOnClickListener {

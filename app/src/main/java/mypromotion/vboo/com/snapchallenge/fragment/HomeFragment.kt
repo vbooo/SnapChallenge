@@ -22,6 +22,7 @@ import java.util.*
 
 class HomeFragment : Fragment() {
     private lateinit var mainActivity: Context
+    private lateinit var activity: MainActivity
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -46,7 +47,7 @@ class HomeFragment : Fragment() {
         listChallenge.add(ChallengeAnswer(3, "https://youtu.be/tzzVwl9DDLM", "Nicolas Fornerod", "Voici mon pari de ouf haha", "", Date(), 7, 32, 12, 8, "https://randomuser.me/api/portraits/thumb/men/23.jpg", 2))
         listChallenge.add(ChallengeAnswer(3, "https://youtu.be/tzzVwl9DDLM", "Nicolas Fornerod", "Voici mon pari de ouf haha", "", Date(), 7, 32, 12, 8, "https://randomuser.me/api/portraits/thumb/men/33.jpg", 2))
 
-        val viewAdapter = HomeChallengeAdapter(listChallenge, mainActivity)
+        val viewAdapter = HomeChallengeAdapter(listChallenge, mainActivity, activity)
 
         // apply the manager and the adapter to the permit_list
         fragment_home_recycler_view.apply {
@@ -86,6 +87,7 @@ class HomeFragment : Fragment() {
     private fun instantiateContextOrActivity(context: Context) {
         if (context is MainActivity) {
             mainActivity = context
+            activity = context
         } else {
             throw RuntimeException(context.toString() + " is not of type RequestPermitActivity")
         }
