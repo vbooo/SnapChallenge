@@ -6,6 +6,7 @@ import android.app.Fragment
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -31,6 +32,11 @@ class MyChallengesFragment : Fragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        (activity as AppCompatActivity).setSupportActionBar(my_toolbar)
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        activity.title = resources.getString(R.string.my_challenges)
+
         // set up the list view adapter
         val listChallenge = arrayListOf<Challenge>()
         listChallenge.clear()

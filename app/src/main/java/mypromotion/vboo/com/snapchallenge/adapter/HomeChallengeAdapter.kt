@@ -33,7 +33,7 @@ class HomeChallengeAdapter(private var dataSet: MutableList<ChallengeAnswer>, va
     override fun onBindViewHolder(holder: ChallengeHolder?, position: Int) {
         holder?.setUserPicture(dataSet[position].urlOwner)
         holder?.setChallengeDate(Date())
-        holder?.setChallengeTitle(dataSet[position].nameOwner + " a publié un challenge")
+        holder?.setChallengeTitle(dataSet[position].nameOwner)
         holder?.setChallengeDescription(dataSet[position].description)
 
         if (dataSet[position].typeChallenge == AnswerChallengeType.video.ordinal) {

@@ -3,6 +3,7 @@ package mypromotion.vboo.com.snapchallenge.activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.view.MenuItem
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.activity_comment_media.*
 import mypromotion.vboo.com.snapchallenge.R
@@ -16,7 +17,8 @@ class CommentMediaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_comment_media)
 
-        supportActionBar?.hide()
+        setSupportActionBar(findViewById(R.id.my_toolbar))
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val listChallenge = arrayListOf<CommentMedia>()
         listChallenge.clear()
@@ -34,6 +36,16 @@ class CommentMediaActivity : AppCompatActivity() {
             setHasFixedSize(true)
             this.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
             adapter = viewAdapter
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                this.finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

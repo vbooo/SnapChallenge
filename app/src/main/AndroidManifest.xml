@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -86,12 +86,15 @@
         </activity>
         <activity
             android:name=".activity.ActionChallengersActivity"
+            android:label="@string/challenges"
+            android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.DetailMediaActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.CommentMediaActivity"
+            android:label="@string/comments"
             android:screenOrientation="portrait" />
         <activity android:name=".activity.ProfilActivity"></activity>
     </application>

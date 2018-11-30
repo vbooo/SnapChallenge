@@ -71,6 +71,10 @@
     <string name="subscribers_upper">ABONNÉS</string>
     <string name="mediaImageTransition">mediaImageTransition</string>
     <string name="profilPictureTransition">profilPictureTransition</string>
+    <string name="challenges">Challenges</string>
+    <string name="comments">Commentaires</string>
+    <string name="profil">Profil</string>
+    <string name="news">Fil d\'actualité</string>
 
     <plurals name="x_minute">
         <item quantity="one">%d min</item>

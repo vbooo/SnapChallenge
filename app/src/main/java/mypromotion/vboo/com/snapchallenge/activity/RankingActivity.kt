@@ -3,6 +3,7 @@ package mypromotion.vboo.com.snapchallenge.activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.view.MenuItem
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.activity_ranking.*
 import mypromotion.vboo.com.snapchallenge.R
@@ -15,14 +16,15 @@ class RankingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ranking)
 
+        setSupportActionBar(findViewById(R.id.my_toolbar))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         // set up the list view adapter
         val listUser = arrayListOf<User>()
         listUser.clear()
-        listUser.add(RankingActivity.User("Fabien Bouvet", 1067, "https://randomuser.me/api/portraits/thumb/men/10.jpg"))
-        listUser.add(RankingActivity.User("Francis Gros", 980, "https://randomuser.me/api/portraits/thumb/men/15.jpg"))
-        listUser.add(RankingActivity.User("Nicolas Fornerod", 654, "https://randomuser.me/api/portraits/thumb/men/25.jpg"))
+        listUser.add(RankingActivity.User("Fabien Bouvet", 1067, "https://randomuser.me/api/portraits/men/10.jpg"))
+        listUser.add(RankingActivity.User("Francis Gros", 980, "https://randomuser.me/api/portraits/men/15.jpg"))
+        listUser.add(RankingActivity.User("Nicolas Fornerod", 654, "https://randomuser.me/api/portraits/men/25.jpg"))
         listUser.add(RankingActivity.User("Julien Martin", 543, "https://randomuser.me/api/portraits/thumb/women/35.jpg"))
         listUser.add(RankingActivity.User("Julie Dupond", 398, "https://randomuser.me/api/portraits/thumb/women/45.jpg"))
         listUser.add(RankingActivity.User("Julien Fornerod", 298, "https://randomuser.me/api/portraits/thumb/men/11.jpg"))
@@ -52,5 +54,15 @@ class RankingActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                this.finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

@@ -12,6 +12,7 @@ import mypromotion.vboo.com.snapchallenge.R
 import mypromotion.vboo.com.snapchallenge.activity.ActionChallengersActivity
 import mypromotion.vboo.com.snapchallenge.activity.CommentMediaActivity
 import mypromotion.vboo.com.snapchallenge.activity.DetailMediaActivity
+import mypromotion.vboo.com.snapchallenge.activity.RankingActivity
 import mypromotion.vboo.com.snapchallenge.dataSource.ProfilDataSource
 import mypromotion.vboo.com.snapchallenge.holder.ChallengeHolder
 import mypromotion.vboo.com.snapchallenge.holder.ProfilHeaderHolder
@@ -61,11 +62,15 @@ class ProfilAdapter(var context: Context, var user: User) : RecyclerView.Adapter
             holder.setNbPoints(header.points.toString())
             holder.setNbChallenges(header.nbChallenges.toString())
             holder.setNbSubscribe(header.nbSubscribers.toString())
+            holder.getLayoutPoints().setOnClickListener {
+                val intent = Intent(context, RankingActivity::class.java)
+                context.startActivity(intent)
+            }
         } else if (holder is ChallengeHolder) {
             val challengeUser = _profilDataSource.getChallengeUserAt(position)
             holder.setUserPicture(user.urlProfilPicture)
             holder.setChallengeDate(challengeUser.dateSubmission)
-            holder.setChallengeTitle(user.name + " a publié un challenge")
+            holder.setChallengeTitle(user.name)
             holder.setChallengeDescription(challengeUser.description)
 
             if (challengeUser.typeChallenge == AnswerChallengeType.video.ordinal) {

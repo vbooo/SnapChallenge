@@ -66,7 +66,7 @@ class ActionChallengersAdapter(var context: Context, var user: User) : RecyclerV
             val challengeUser = _actionChallengersDataSource.getChallengeUserAt(position)
             holder.setUserPicture(user.urlProfilPicture)
             holder.setChallengeDate(challengeUser.dateSubmission)
-            holder.setChallengeTitle(user.name + " a publié un challenge")
+            holder.setChallengeTitle(user.name)
             holder.setChallengeDescription(challengeUser.description)
 
             if (challengeUser.typeChallenge == AnswerChallengeType.video.ordinal) {

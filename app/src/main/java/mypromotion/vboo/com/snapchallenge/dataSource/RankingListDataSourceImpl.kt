@@ -23,7 +23,7 @@ class RankingListDataSourceImpl(var listUser: List<RankingActivity.User>) : Rank
             listItems.add(headerRankingInfo)
             listUser.forEachIndexed { index, element ->
                 if (index > 2) {
-                    element.rank = index
+                    element.rank = index + 1
                     listItems.add(element)
                 }
             }
