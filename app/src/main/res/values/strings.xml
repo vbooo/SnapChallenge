@@ -75,6 +75,7 @@
     <string name="comments">Commentaires</string>
     <string name="profil">Profil</string>
     <string name="news">Fil d\'actualité</string>
+    <string name="community">Communauté</string>
 
     <plurals name="x_minute">
         <item quantity="one">%d min</item>

@@ -20,8 +20,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -96,7 +95,9 @@
             android:name=".activity.CommentMediaActivity"
             android:label="@string/comments"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.ProfilActivity"></activity>
+        <activity
+            android:name=".activity.ProfilActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

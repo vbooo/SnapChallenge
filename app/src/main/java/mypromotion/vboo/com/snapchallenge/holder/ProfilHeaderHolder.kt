@@ -45,4 +45,8 @@ class ProfilHeaderHolder(var view: View, var context: Context) : RecyclerView.Vi
     fun getLayoutPoints(): LinearLayout {
         return view.item_profil_header_points_layout
     }
+
+    fun getSubscribeLayout(): LinearLayout {
+        return view.item_profil_header_subscribe_layout
+    }
 }

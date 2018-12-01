@@ -86,7 +86,7 @@ class ChallengeHolder(var view: View, var context: Context) : RecyclerView.ViewH
 
     fun hideAnswerChallenge() {
         view.item_home_challenge_answer_challenge_layout.visibility = View.GONE
-        view.item_home_challenge_separator_footer.visibility = View.GONE
+
     }
 
     fun hideNbChallengers() {

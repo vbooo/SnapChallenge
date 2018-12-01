@@ -9,9 +9,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.fragment_my_challenges.*
 import mypromotion.vboo.com.snapchallenge.MainActivity
@@ -32,22 +30,22 @@ class MyChallengesFragment : Fragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
 
         (activity as AppCompatActivity).setSupportActionBar(my_toolbar)
-        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
         activity.title = resources.getString(R.string.my_challenges)
 
         // set up the list view adapter
         val listChallenge = arrayListOf<Challenge>()
         listChallenge.clear()
-        listChallenge.add(Challenge("Aller à l'escalade", "", "00:12:34", "Francis -> moi"))
-        listChallenge.add(Challenge("Prendre une douche tout habillé", "", "01:12:34", "Valérie -> moi"))
-        listChallenge.add(Challenge("Prendre le prof de maths au tableau", "", "02:12:34", "Nathalie -> moi"))
-        listChallenge.add(Challenge("Faire la bise à une inconnue", "", "04:34:12", "moi -> Pierre"))
-        listChallenge.add(Challenge("Manger des haricots verts au Nutella", "", "05:12:34", "moi -> Marc"))
-        listChallenge.add(Challenge("Aller à la piscine", "", "échoué", "moi -> Nicolas"))
-        listChallenge.add(Challenge("Ice bucket challenge", "", "répondu", "Julien -> moi"))
-        listChallenge.add(Challenge("Aller à la Tour Eiffel", "", "répondu", "Didier -> moi"))
+        listChallenge.add(Challenge("Aller à l'escalade", "", "00:12:34", "https://randomuser.me/api/portraits/thumb/men/89.jpg", "https://randomuser.me/api/portraits/thumb/men/34.jpg"))
+        listChallenge.add(Challenge("Prendre une douche tout habillé", "", "1 jour restant", "https://randomuser.me/api/portraits/thumb/women/33.jpg", "https://randomuser.me/api/portraits/thumb/men/34.jpg"))
+        listChallenge.add(Challenge("Prendre le prof de maths au tableau", "", "2 jours restant", "https://randomuser.me/api/portraits/thumb/women/34.jpg", "https://randomuser.me/api/portraits/thumb/men/34.jpg"))
+        listChallenge.add(Challenge("Faire la bise à une inconnue", "", "5 jours restant", "https://randomuser.me/api/portraits/thumb/men/34.jpg", "https://randomuser.me/api/portraits/thumb/men/84.jpg"))
+        listChallenge.add(Challenge("Manger des haricots verts au Nutella", "", "15 jours restant", "https://randomuser.me/api/portraits/thumb/men/34.jpg", "https://randomuser.me/api/portraits/thumb/men/83.jpg"))
+        listChallenge.add(Challenge("Aller à la piscine", "", "échoué", "https://randomuser.me/api/portraits/thumb/men/34.jpg", "https://randomuser.me/api/portraits/thumb/men/82.jpg"))
+        listChallenge.add(Challenge("Ice bucket challenge", "", "répondu", "https://randomuser.me/api/portraits/thumb/men/81.jpg", "https://randomuser.me/api/portraits/thumb/men/34.jpg"))
+        listChallenge.add(Challenge("Aller à la Tour Eiffel", "", "répondu", "https://randomuser.me/api/portraits/thumb/men/10.jpg", "https://randomuser.me/api/portraits/thumb/men/34.jpg"))
         val viewAdapter = MyChallengeAdapter(listChallenge, mainActivity)
 
         // apply the manager and the adapter to the permit_list
@@ -70,6 +68,11 @@ class MyChallengesFragment : Fragment() {
                     fragment_my_challenge_fab.show()
             }
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_my_challenges, menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -99,5 +102,5 @@ class MyChallengesFragment : Fragment() {
         }
     }
 
-    class Challenge(var a: String, var p: String, var t: String, var actor: String)
+    class Challenge(var action: String, var p: String, var time: String, var author: String, var challengedUser: String)
 }

@@ -1,9 +1,13 @@
 package mypromotion.vboo.com.snapchallenge.activity
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import android.widget.LinearLayout
+import kotlinx.android.synthetic.main.item_profil_header.*
 import kotlinx.android.synthetic.main.profil_fragment.*
 import mypromotion.vboo.com.snapchallenge.R
 import mypromotion.vboo.com.snapchallenge.adapter.ProfilAdapter
@@ -17,6 +21,7 @@ class ProfilActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.profil_fragment)
+
 
         val listChallengeUser = arrayListOf<ChallengeAnswer>()
         listChallengeUser.clear()
@@ -36,6 +41,22 @@ class ProfilActivity : AppCompatActivity() {
             setHasFixedSize(true)
             this.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
             adapter = viewAdapter
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.menu_profil_user, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                this.finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

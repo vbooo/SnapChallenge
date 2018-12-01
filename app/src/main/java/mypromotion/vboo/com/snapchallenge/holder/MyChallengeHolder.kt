@@ -3,7 +3,10 @@ package mypromotion.vboo.com.snapchallenge.holder
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.LinearLayout
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_my_challenge.view.*
+import mypromotion.vboo.com.snapchallenge.R
 
 class MyChallengeHolder(var view: View, var context: Context) : RecyclerView.ViewHolder(view) {
 
@@ -23,7 +26,17 @@ class MyChallengeHolder(var view: View, var context: Context) : RecyclerView.Vie
     }
 
     // set user points
-    fun setActors(value: String?) {
-        view.item_my_challenge_actors.text = value
+    fun setAuthorPicture(url: String?) {
+        Picasso.get().load(url).error(R.drawable.user_default).placeholder(R.drawable.user_default)
+                .into(view.item_my_challenge_author_picture)
+    }
+
+    fun setChallengedUserPicture(url: String?) {
+        Picasso.get().load(url).error(R.drawable.user_default).placeholder(R.drawable.user_default)
+                .into(view.item_my_challenge_challenged_user_picture)
+    }
+
+    fun getAnswerButton(): LinearLayout {
+        return view.item_my_challenge_layout_button
     }
 }

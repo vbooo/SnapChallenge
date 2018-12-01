@@ -19,9 +19,11 @@ class MyChallengeAdapter(private var dataSet: MutableList<MyChallengesFragment.C
     }
 
     override fun onBindViewHolder(holder: MyChallengeHolder?, position: Int) {
-        holder?.setActionName(dataSet[position].a)
+        holder?.setActionName(dataSet[position].action)
         holder?.setStatus(dataSet[position].p)
-        holder?.setTime(dataSet[position].t)
-        holder?.setActors(dataSet[position].actor)
+        holder?.setTime(dataSet[position].time)
+        holder?.setAuthorPicture(dataSet[position].author)
+        holder?.setChallengedUserPicture(dataSet[position].challengedUser)
+        //holder?.setActors(dataSet[position].actor)
     }
 }

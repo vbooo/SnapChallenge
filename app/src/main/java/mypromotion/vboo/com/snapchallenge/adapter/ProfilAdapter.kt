@@ -66,6 +66,11 @@ class ProfilAdapter(var context: Context, var user: User) : RecyclerView.Adapter
                 val intent = Intent(context, RankingActivity::class.java)
                 context.startActivity(intent)
             }
+            if (header.name == "Fabien Bouvet") {
+                holder.getSubscribeLayout().visibility = View.GONE
+            } else {
+                holder.getSubscribeLayout().visibility = View.VISIBLE
+            }
         } else if (holder is ChallengeHolder) {
             val challengeUser = _profilDataSource.getChallengeUserAt(position)
             holder.setUserPicture(user.urlProfilPicture)
