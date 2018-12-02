@@ -23,8 +23,7 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 import android.widget.CompoundButton
-
-
+import kotlinx.android.synthetic.main.fab_action_answer_challenge.*
 
 
 class AnswerChallengeActivity : AppCompatActivity() {
@@ -85,8 +84,6 @@ class AnswerChallengeActivity : AppCompatActivity() {
             val takeVideoIntent = Intent(MediaStore.ACTION_VIDEO_CAPTURE)
             //dispatchTakePictureIntent(takeVideoIntent)
         }*/
-
-
     }
 
     private fun handleHeader() {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activity.AnswerChallengeActivity">
     <android.support.v7.widget.Toolbar
@@ -13,15 +13,11 @@
         android:theme="@style/CustomActionBarStyle"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        android:fillViewport="true">
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="?android:attr/actionBarSize"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".activity.AnswerChallengeActivity">
@@ -154,9 +150,9 @@
             android:visibility="gone"
             />
 
-
-
     </android.support.constraint.ConstraintLayout>
-</ScrollView>
 
-</android.support.constraint.ConstraintLayout>
+
+
+    <include layout="@layout/fab_action_answer_challenge"/>
+</RelativeLayout>

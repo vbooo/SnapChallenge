@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto">
+
+
+    <!-- The floating actions to add either an event, a behavior or a permit -->
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/activity_answer_challenge_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/baseline_camera_alt_white_24"
+        android:layout_marginEnd="@dimen/padding_small"
+        android:layout_marginBottom="@dimen/padding_xsmall"
+        fab:fab_addButtonColorNormal="@color/color_border_second_user"
+        fab:fab_addButtonColorPressed="@color/primary"
+        fab:fab_labelsPosition="left"
+        fab:fab_labelStyle="@style/HistoryView_Button_Labels">
+
+        <com.getbase.floatingactionbutton.AddFloatingActionButton
+            android:id="@+id/floating_button_add_permit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/blue_theme"
+            fab:fab_title="@string/picture"
+            fab:fab_colorPressed="@color/dark"/>
+
+        <com.getbase.floatingactionbutton.AddFloatingActionButton
+            android:id="@+id/floating_button_add_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/color_border_third_user"
+            fab:fab_title="@string/video"
+            fab:fab_colorPressed="@color/dark_50"/>
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+</merge>
