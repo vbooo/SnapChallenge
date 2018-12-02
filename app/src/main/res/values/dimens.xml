@@ -2,6 +2,7 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="padding_large">16dp</dimen>
     <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_6dp">6dp</dimen>
     <dimen name="padding_xsmall">4dp</dimen>
     <dimen name="primary_text">16sp</dimen>
     <dimen name="second_text">14sp</dimen>

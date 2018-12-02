@@ -1,10 +1,12 @@
 package mypromotion.vboo.com.snapchallenge.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import mypromotion.vboo.com.snapchallenge.R
+import mypromotion.vboo.com.snapchallenge.activity.AnswerChallengeActivity
 import mypromotion.vboo.com.snapchallenge.fragment.MyChallengesFragment
 import mypromotion.vboo.com.snapchallenge.holder.MyChallengeHolder
 
@@ -24,6 +26,12 @@ class MyChallengeAdapter(private var dataSet: MutableList<MyChallengesFragment.C
         holder?.setTime(dataSet[position].time)
         holder?.setAuthorPicture(dataSet[position].author)
         holder?.setChallengedUserPicture(dataSet[position].challengedUser)
-        //holder?.setActors(dataSet[position].actor)
+        holder?.getAnswerButton()?.setOnClickListener {
+            val intent = Intent(context, AnswerChallengeActivity::class.java)
+            intent.putExtra(AnswerChallengeActivity.NAME_ACTION, dataSet[position].action)
+            intent.putExtra(AnswerChallengeActivity.IS_ANSWER_TO_SOMEONE, true)
+            intent.putExtra(AnswerChallengeActivity.URL_AUTHOR, dataSet[position].author)
+            context.startActivity(intent)
+        }
     }
 }

@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.item_action_challengers.view.*
-import kotlinx.android.synthetic.main.item_profil_header.view.*
 import mypromotion.vboo.com.snapchallenge.R
 
 class ActionChallengersHeaderHolder(var view: View, var context: Context) : RecyclerView.ViewHolder(view) {

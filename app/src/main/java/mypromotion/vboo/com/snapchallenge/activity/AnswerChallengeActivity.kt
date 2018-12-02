@@ -1,37 +1,82 @@
 package mypromotion.vboo.com.snapchallenge.activity
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.support.v4.content.FileProvider
 import android.support.v7.app.AppCompatActivity
+import android.view.LayoutInflater
 import android.view.MenuItem
-import kotlinx.android.synthetic.main.activity_publish_challenge.*
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_answer_challenge.*
+import kotlinx.android.synthetic.main.activity_privacy_challenge.*
 import mypromotion.vboo.com.snapchallenge.R
+import mypromotion.vboo.com.snapchallenge.viewModel.AnswerChallengeViewModel
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
+import android.widget.CompoundButton
 
 
-class PublishChallengeActivity : AppCompatActivity() {
+
+
+class AnswerChallengeActivity : AppCompatActivity() {
     private val REQUEST_IMAGE_CAPTURE = 1
     private val REQUEST_TAKE_PHOTO = 1
     private var mCurrentPhotoPath: String? = null
     private var photoURI: Uri? = null
     private var fileMedia: File? = null
 
+    private var isAnswerToSomeone: Boolean = false
+    private var nameAction: String? = null
+    private var urlAuthor: String? = null
+    private var urlUser = "https://randomuser.me/api/portraits/thumb/men/43.jpg"
+
+    private lateinit var viewModel: AnswerChallengeViewModel
+
+    companion object {
+        const val NAME_ACTION = "name_action"
+        const val IS_ANSWER_TO_SOMEONE = "is_answer_to_someone"
+        const val URL_AUTHOR = "url_author"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_publish_challenge)
+        setContentView(R.layout.activity_answer_challenge)
 
+        setSupportActionBar(findViewById(R.id.activity_answer_challenge_toolbar))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        activity_publish_challenge_image_camera.setOnClickListener {
+        nameAction = if (intent.extras != null && intent.hasExtra(NAME_ACTION)) {
+            intent.getStringExtra(NAME_ACTION)
+        } else {
+            null
+        }
+
+        isAnswerToSomeone = if (intent.extras != null && intent.hasExtra(IS_ANSWER_TO_SOMEONE)) {
+            intent.getBooleanExtra(IS_ANSWER_TO_SOMEONE, false)
+        } else {
+            false
+        }
+
+        urlAuthor = if (intent.extras != null && intent.getStringExtra(URL_AUTHOR) != null) {
+            intent.getStringExtra(URL_AUTHOR)
+        } else {
+            null
+        }
+
+        viewModel = AnswerChallengeViewModel(this, nameAction, isAnswerToSomeone, urlAuthor, urlUser, true)
+
+        handleHeader()
+
+        /*activity_publish_challenge_image_camera.setOnClickListener {
             val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             dispatchTakePictureIntent()
         }
@@ -39,9 +84,60 @@ class PublishChallengeActivity : AppCompatActivity() {
         activity_publish_challenge_video.setOnClickListener {
             val takeVideoIntent = Intent(MediaStore.ACTION_VIDEO_CAPTURE)
             //dispatchTakePictureIntent(takeVideoIntent)
+        }*/
+
+
+    }
+
+    private fun handleHeader() {
+        activity_answer_challenge_second_line.visibility = viewModel.visibilitySecondLineHeader()
+        activity_answer_challenge_action_name.text = viewModel.nameAction
+        Picasso.get().load(viewModel.urlAuthor).error(R.drawable.user_default).placeholder(R.drawable.user_default)
+                .into(activity_answer_challenge_author_picture)
+        Picasso.get().load(viewModel.challengedUser).error(R.drawable.user_default).placeholder(R.drawable.user_default)
+                .into(activity_answer_challenge_challenged_user_picture)
+
+        updatePrivacyButton()
+        activity_answer_challenge_privacy_layout.setOnClickListener {
+            displayPrivacyDialog()
+        }
+    }
+
+    private fun updatePrivacyButton() {
+        activity_answer_challenge_privacy.text = viewModel.privacyValue()
+        activity_answer_challenge_privacy_layout.setBackgroundResource(viewModel.getBackgroundPrivacy())
+    }
+
+    private fun displayPrivacyDialog() {
+        val alertDiscardChallenge = AlertDialog.Builder(this).create()
+        val customViewPrivacy = LayoutInflater.from(this).inflate(R.layout.activity_privacy_challenge, null)
+        alertDiscardChallenge.setView(customViewPrivacy)
+
+        alertDiscardChallenge.show()
+
+        alertDiscardChallenge.activity_privacy_challenge_checkbox_private.isChecked = viewModel.privateCheckboxIsChecked()
+        alertDiscardChallenge.activity_privacy_challenge_checkbox_public.isChecked = viewModel.publicCheckboxIsChecked()
+
+
+        alertDiscardChallenge.activity_privacy_challenge_checkbox_public.setOnCheckedChangeListener{ _, isChecked ->
+            if (!viewModel.answerIsPublic) {
+                viewModel.answerIsPublic = isChecked
+                alertDiscardChallenge.activity_privacy_challenge_checkbox_private.isChecked = viewModel.privateCheckboxIsChecked()
+                alertDiscardChallenge.activity_privacy_challenge_checkbox_public.isChecked = viewModel.publicCheckboxIsChecked()
+            }
+            updatePrivacyButton()
+            alertDiscardChallenge.dismiss()
         }
 
-
+        alertDiscardChallenge.activity_privacy_challenge_checkbox_private.setOnCheckedChangeListener{ _, isChecked ->
+            if (viewModel.answerIsPublic) {
+                viewModel.answerIsPublic = !isChecked
+                alertDiscardChallenge.activity_privacy_challenge_checkbox_private.isChecked = viewModel.privateCheckboxIsChecked()
+                alertDiscardChallenge.activity_privacy_challenge_checkbox_public.isChecked = viewModel.publicCheckboxIsChecked()
+            }
+            updatePrivacyButton()
+            alertDiscardChallenge.dismiss()
+        }
     }
 
     private fun dispatchTakePictureIntent() {
@@ -91,11 +187,11 @@ class PublishChallengeActivity : AppCompatActivity() {
             inPurgeable = true
         }
         BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions)?.also { bitmap ->
-            activity_publish_challenge_image.setImageBitmap(bitmap)
+            activity_answer_challenge_image.setImageBitmap(bitmap)
         }
 
         val bitmap =  BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions)
-        activity_publish_challenge_image.setImageBitmap(bitmap)
+        activity_answer_challenge_image.setImageBitmap(bitmap)
     }
 
 

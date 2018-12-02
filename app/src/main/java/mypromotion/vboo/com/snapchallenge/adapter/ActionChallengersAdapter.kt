@@ -9,18 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import mypromotion.vboo.com.snapchallenge.AnswerChallengeType
 import mypromotion.vboo.com.snapchallenge.R
-import mypromotion.vboo.com.snapchallenge.R.id.item_home_challenge_answer_challenge_layout
 import mypromotion.vboo.com.snapchallenge.activity.ActionChallengersActivity
 import mypromotion.vboo.com.snapchallenge.activity.CommentMediaActivity
 import mypromotion.vboo.com.snapchallenge.activity.DetailMediaActivity
 import mypromotion.vboo.com.snapchallenge.dataSource.ActionChallengersDataSource
-import mypromotion.vboo.com.snapchallenge.dataSource.ProfilDataSource
 import mypromotion.vboo.com.snapchallenge.holder.ActionChallengersHeaderHolder
 import mypromotion.vboo.com.snapchallenge.holder.ChallengeHolder
-import mypromotion.vboo.com.snapchallenge.holder.ProfilHeaderHolder
-import mypromotion.vboo.com.snapchallenge.model.User
 
-class ActionChallengersAdapter(var context: Context, var user: User) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ActionChallengersAdapter(var context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     /** Enum used to distinguish the different type of row in the recycler view */
     enum class ViewType { HEADER, ROW }
@@ -64,9 +60,9 @@ class ActionChallengersAdapter(var context: Context, var user: User) : RecyclerV
 
         } else if (holder is ChallengeHolder) {
             val challengeUser = _actionChallengersDataSource.getChallengeUserAt(position)
-            holder.setUserPicture(user.urlProfilPicture)
+            holder.setUserPicture(challengeUser.urlOwner)
             holder.setChallengeDate(challengeUser.dateSubmission)
-            holder.setChallengeTitle(user.name)
+            holder.setChallengeTitle(challengeUser.nameOwner)
             holder.setChallengeDescription(challengeUser.description)
 
             if (challengeUser.typeChallenge == AnswerChallengeType.video.ordinal) {

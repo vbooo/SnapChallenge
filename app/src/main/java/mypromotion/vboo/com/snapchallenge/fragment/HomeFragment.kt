@@ -13,7 +13,7 @@ import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.fragment_home.*
 import mypromotion.vboo.com.snapchallenge.MainActivity
 import mypromotion.vboo.com.snapchallenge.R
-import mypromotion.vboo.com.snapchallenge.activity.PublishChallengeActivity
+import mypromotion.vboo.com.snapchallenge.activity.AnswerChallengeActivity
 import mypromotion.vboo.com.snapchallenge.adapter.HomeChallengeAdapter
 import mypromotion.vboo.com.snapchallenge.model.ChallengeAnswer
 import java.util.*
@@ -65,7 +65,7 @@ class HomeFragment : Fragment() {
         }
 
         fragment_home_fab.setOnClickListener {
-            val intent = Intent(mainActivity, PublishChallengeActivity::class.java)
+            val intent = Intent(mainActivity, AnswerChallengeActivity::class.java)
             startActivity(intent)
         }
 

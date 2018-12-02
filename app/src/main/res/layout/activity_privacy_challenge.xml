@@ -12,12 +12,14 @@
         android:id="@+id/activity_privacy_challenge_general_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/who_can_see_your_challenge"
+        android:text="@string/who_can_see_your_answer"
         android:layout_marginTop="@dimen/padding_small"
         android:paddingBottom="@dimen/padding_large"
         android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/activity_privacy_challenge_layout_public"/>
 
     <android.support.constraint.ConstraintLayout
@@ -28,7 +30,7 @@
 
 
         <android.support.v7.widget.AppCompatCheckBox
-            android:id="@+id/activity_privacy_challenge_checkbox"
+            android:id="@+id/activity_privacy_challenge_checkbox_public"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +48,7 @@
             android:paddingEnd="@dimen/padding_small"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/activity_privacy_challenge_checkbox"
+            app:layout_constraintLeft_toRightOf="@+id/activity_privacy_challenge_checkbox_public"
             app:layout_constraintRight_toLeftOf="@+id/activity_privacy_challenge_public_detail"/>
         <LinearLayout
             android:id="@+id/activity_privacy_challenge_public_detail"
@@ -82,6 +84,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/padding_small"
+        android:paddingBottom="@dimen/padding_large"
         app:layout_constraintTop_toBottomOf="@+id/activity_privacy_challenge_separator">
 
 

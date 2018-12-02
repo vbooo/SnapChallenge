@@ -8,26 +8,54 @@
 
     <TextView
         android:id="@+id/item_action_challengers_action_name"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textColor="@color/dark"
-        android:gravity="center"
         android:layout_marginTop="@dimen/padding_small"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/item_action_challengers_nb_challengers"/>
 
     <TextView
         android:id="@+id/item_action_challengers_nb_challengers"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/primary_text"
-        android:textColor="@color/blue_theme"
-        android:gravity="center"
+        android:textColor="@color/dark_50"
+        android:textStyle="bold"
         android:layout_marginTop="@dimen/padding_small"
-        android:paddingBottom="@dimen/padding_small"
+        android:layout_marginBottom="@dimen/padding_small"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/item_home_challenge_answer_challenge_layout"
         app:layout_constraintTop_toBottomOf="@+id/item_action_challengers_action_name"/>
+
+    <LinearLayout
+        android:id="@+id/item_home_challenge_answer_challenge_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_yellow_button"
+        android:layout_marginBottom="@dimen/padding_small"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_action_challengers_nb_challengers"
+        >
+        <TextView
+            android:id="@+id/item_profil_header_subscribe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/answer_challenge"
+            android:paddingBottom="@dimen/padding_6dp"
+            android:paddingTop="@dimen/padding_6dp"
+            android:paddingEnd="@dimen/padding_small"
+            android:paddingStart="@dimen/padding_small"
+            android:layout_gravity="center_vertical"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:textSize="13sp"/>
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

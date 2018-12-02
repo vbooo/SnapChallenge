@@ -197,7 +197,7 @@
                 android:id="@+id/item_home_challenge_nb_challengers"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textColor="@color/black"
+                android:textColor="@color/color_border_second_user"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toRightOf="@+id/item_home_challenge_layout_interaction"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -214,8 +214,7 @@
         android:id="@+id/item_home_challenge_answer_challenge_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/padding_large"
-        android:background="@drawable/background_blue_button"
+        android:background="@drawable/background_blue_medium_button"
         android:layout_marginBottom="@dimen/padding_small"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -227,13 +226,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/answer_challenge"
-            android:paddingBottom="@dimen/padding_xsmall"
-            android:paddingTop="@dimen/padding_xsmall"
+            android:paddingBottom="@dimen/padding_6dp"
+            android:paddingTop="@dimen/padding_6dp"
             android:paddingEnd="@dimen/padding_small"
             android:paddingStart="@dimen/padding_small"
             android:layout_gravity="center_vertical"
+            android:textStyle="bold"
             android:textColor="@android:color/white"
-            android:textSize="12sp"/>
+            android:textSize="13sp"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

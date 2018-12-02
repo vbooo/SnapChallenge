@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activity.AnswerChallengeActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/activity_answer_challenge_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:elevation="4dp"
+        android:theme="@style/CustomActionBarStyle"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:fillViewport="true">
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".activity.AnswerChallengeActivity">
+
+            <!-- HEADER -->
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/activity_answer_challenge_layout_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/activity_answer_challenge_action_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="19sp"
+                    android:textColor="@color/dark"
+                    android:layout_marginTop="@dimen/padding_large"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/activity_answer_challenge_second_line"/>
+
+                <!-- Second line -->
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/activity_answer_challenge_second_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/padding_large"
+                    android:layout_marginTop="@dimen/padding_small"
+                    android:layout_marginEnd="@dimen/padding_large"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_answer_challenge_action_name">
+
+                    <!-- Actors -->
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/activity_answer_challenge_author_picture"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toLeftOf="@+id/activity_answer_challenge_picture_arrow"/>
+                        <ImageView
+                            android:id="@+id/activity_answer_challenge_picture_arrow"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            app:layout_constraintLeft_toRightOf="@+id/activity_answer_challenge_author_picture"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toLeftOf="@+id/activity_answer_challenge_challenged_user_picture"
+                            android:src="@drawable/three_chevron_arrows_pointing_right"
+                            android:layout_marginRight="@dimen/padding_small"
+                            android:layout_marginLeft="@dimen/padding_small"
+                            android:tint="@color/black"/>
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/activity_answer_challenge_challenged_user_picture"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/activity_answer_challenge_picture_arrow"/>
+
+                    </android.support.constraint.ConstraintLayout>
+
+                    <!-- Privacy -->
+                    <LinearLayout
+                        android:id="@+id/activity_answer_challenge_privacy_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/background_yellow_button"
+                        android:layout_marginBottom="@dimen/padding_small"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        >
+                        <TextView
+                            android:id="@+id/activity_answer_challenge_privacy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="@dimen/padding_xsmall"
+                            android:paddingTop="@dimen/padding_xsmall"
+                            android:paddingStart="@dimen/padding_small"
+                            android:layout_gravity="center_vertical"
+                            android:textStyle="bold"
+                            android:textColor="@android:color/white"
+                            android:textSize="13sp"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/baseline_arrow_drop_down_white_24"/>
+                    </LinearLayout>
+
+                </android.support.constraint.ConstraintLayout>
+
+            </android.support.constraint.ConstraintLayout>
+
+        <EditText
+            android:id="@+id/activity_answer_challenge_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/describe_your_challenge"
+            android:paddingStart="@dimen/padding_small"
+            android:paddingEnd="@dimen/padding_small"
+            android:paddingTop="@dimen/padding_small"
+            android:maxLength="144"
+            android:visibility="gone"
+            android:background="@null"
+            app:layout_constraintTop_toBottomOf="@+id/activity_answer_challenge_layout_header"
+            app:layout_constraintBottom_toTopOf="@+id/activity_answer_challenge_image"/>
+
+        <ImageView
+            android:id="@+id/activity_answer_challenge_image"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:foregroundGravity="top"
+            android:visibility="visible"
+            app:layout_constraintTop_toBottomOf="@+id/activity_answer_challenge_description"
+            />
+        <VideoView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/activity_answer_challenge_description"
+            android:visibility="gone"
+            />
+
+
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
+
+</android.support.constraint.ConstraintLayout>

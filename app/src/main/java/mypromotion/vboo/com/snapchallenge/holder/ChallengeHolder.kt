@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.VideoView
 import com.squareup.picasso.Picasso
@@ -91,6 +92,10 @@ class ChallengeHolder(var view: View, var context: Context) : RecyclerView.ViewH
 
     fun hideNbChallengers() {
         view.item_home_challenge_nb_challengers.visibility = View.GONE
+    }
+
+    fun getAnswerChallengeLayout(): LinearLayout {
+        return view.item_home_challenge_answer_challenge_layout
     }
 
 }

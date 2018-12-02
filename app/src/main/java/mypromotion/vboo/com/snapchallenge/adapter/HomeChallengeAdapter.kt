@@ -10,11 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import mypromotion.vboo.com.snapchallenge.AnswerChallengeType
 import mypromotion.vboo.com.snapchallenge.R
-import mypromotion.vboo.com.snapchallenge.activity.ActionChallengersActivity
-import mypromotion.vboo.com.snapchallenge.activity.CommentMediaActivity
-import mypromotion.vboo.com.snapchallenge.activity.DetailMediaActivity
+import mypromotion.vboo.com.snapchallenge.activity.*
 import mypromotion.vboo.com.snapchallenge.activity.DetailMediaActivity.Companion.CHALLENGE_ANSWER
-import mypromotion.vboo.com.snapchallenge.activity.ProfilActivity
 import mypromotion.vboo.com.snapchallenge.holder.ChallengeHolder
 import mypromotion.vboo.com.snapchallenge.model.ChallengeAnswer
 import java.util.*
@@ -75,6 +72,13 @@ class HomeChallengeAdapter(private var dataSet: MutableList<ChallengeAnswer>, va
             intent.putExtra(CHALLENGE_ANSWER, dataSet[position])
             val options = ActivityOptions
                     .makeSceneTransitionAnimation(activity, holder.getPhotoContainer() as View, context.resources.getString(R.string.profilPictureTransition))
+            context.startActivity(intent)
+        }
+
+        holder?.getAnswerChallengeLayout()?.setOnClickListener {
+            val intent = Intent(context, AnswerChallengeActivity::class.java)
+            intent.putExtra(AnswerChallengeActivity.NAME_ACTION, dataSet[position].description)
+            intent.putExtra(AnswerChallengeActivity.IS_ANSWER_TO_SOMEONE, false)
             context.startActivity(intent)
         }
 

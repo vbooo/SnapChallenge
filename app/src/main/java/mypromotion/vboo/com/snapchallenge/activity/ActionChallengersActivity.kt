@@ -26,16 +26,16 @@ class ActionChallengersActivity : AppCompatActivity() {
         val listChallengeUser = arrayListOf<ChallengeAnswer>()
         listChallengeUser.clear()
         listChallengeUser.add(ChallengeAnswer(1, "https://randomuser.me/api/portraits/women/33.jpg", "Fabien Bouvet", "Bisous en haut de la Tour Eiffel", null, Date(), 7, 32, 32,  8, "https://randomuser.me/api/portraits/thumb/men/33.jpg", 1))
-        listChallengeUser.add(ChallengeAnswer(2, "https://randomuser.me/api/portraits/women/34.jpg", "Valerie", "Embrasser mon chéri en haut de la Tour Eiffel", null, Date(), 14, 132, 52,  2, "https://randomuser.me/api/portraits/thumb/women/33.jpg", 2))
-        listChallengeUser.add(ChallengeAnswer(3, "https://randomuser.me/api/portraits/men/50.jpg", "Manon", "#TourEiffel #kiss", null, Date(), 10, 52, 62,  10, "https://randomuser.me/api/portraits/thumb/women/33.jpg", 1))
-        listChallengeUser.add(ChallengeAnswer(4, "https://randomuser.me/api/portraits/men/51.jpg", "Charline", "Bisous à la Tour Eiffel", null, Date(), 22, 62, 72,  7, "https://randomuser.me/api/portraits/thumb/women/33.jpg", 1))
-        listChallengeUser.add(ChallengeAnswer(5, "https://randomuser.me/api/portraits/men/52.jpg", "Kevin", "Bisous à la Tour Eiffel", null, Date(), 22, 62, 72,  7, "https://randomuser.me/api/portraits/thumb/men/33.jpg", 1))
+        listChallengeUser.add(ChallengeAnswer(2, "https://randomuser.me/api/portraits/women/34.jpg", "Valerie", "Embrasser mon chéri en haut de la Tour Eiffel", null, Date(), 14, 132, 52,  2, "https://randomuser.me/api/portraits/thumb/women/34.jpg", 2))
+        listChallengeUser.add(ChallengeAnswer(3, "https://randomuser.me/api/portraits/men/50.jpg", "Manon", "#TourEiffel #kiss", null, Date(), 10, 52, 62,  10, "https://randomuser.me/api/portraits/thumb/women/35.jpg", 1))
+        listChallengeUser.add(ChallengeAnswer(4, "https://randomuser.me/api/portraits/men/51.jpg", "Charline", "Bisous à la Tour Eiffel", null, Date(), 22, 62, 72,  7, "https://randomuser.me/api/portraits/thumb/women/36.jpg", 1))
+        listChallengeUser.add(ChallengeAnswer(5, "https://randomuser.me/api/portraits/men/52.jpg", "Kevin", "Bisous à la Tour Eiffel", null, Date(), 22, 62, 72,  7, "https://randomuser.me/api/portraits/thumb/men/37.jpg", 1))
         listChallengeUser.add(ChallengeAnswer(6, "https://randomuser.me/api/portraits/men/53.jpg", "Bruno", "Bisous à la Tour Eiffel", null, Date(), 22, 62, 72,  7, "https://randomuser.me/api/portraits/thumb/men/31.jpg", 1))
         listChallengeUser.add(ChallengeAnswer(7, "https://randomuser.me/api/portraits/men/54.jpg", "Nicolas", "Bisous à la Tour Eiffel", null, Date(), 22, 62, 72,  7, "https://randomuser.me/api/portraits/thumb/men/22.jpg", 1))
 
 
         val user = User(1, "Fabien Bouvet", Date(), "https://randomuser.me/api/portraits/men/33.jpg", 1500, 23, 140)
-        val viewAdapter = ActionChallengersAdapter(this, user)
+        val viewAdapter = ActionChallengersAdapter(this)
         viewAdapter.profilDataSource = ActionChallengersDataSourceImpl(listChallengeUser)
 
         // apply the manager and the adapter to the permit_list

@@ -40,8 +40,8 @@
             android:label="@string/new_action"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.PublishChallengeActivity"
-            android:label="@string/publish_challenge"
+            android:name=".activity.AnswerChallengeActivity"
+            android:label="@string/answer_challenge_lower"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ReceptionChallengeActivity"
