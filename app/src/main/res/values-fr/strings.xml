@@ -76,6 +76,9 @@
     <string name="community">Communauté</string>
     <string name="answer_challenge_lower">Répondre au challenge</string>
     <string name="who_can_see_your_answer">Qui peut voir votre réponse?</string>
+    <string name="placeholder_media">Sélectionnez une photo ou une vidéo pour prouver votre challenge</string>
+    <string name="send">ENVOYER</string>
+    <string name="failed">Échoué</string>
 
     <plurals name="x_minute">
         <item quantity="one">%d min</item>

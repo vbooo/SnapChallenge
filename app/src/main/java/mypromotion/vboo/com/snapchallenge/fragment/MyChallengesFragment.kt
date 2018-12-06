@@ -16,6 +16,7 @@ import mypromotion.vboo.com.snapchallenge.MainActivity
 import mypromotion.vboo.com.snapchallenge.R
 import mypromotion.vboo.com.snapchallenge.activity.LayDownChallengeActivity
 import mypromotion.vboo.com.snapchallenge.adapter.MyChallengeAdapter
+import java.util.*
 
 
 /**
@@ -38,14 +39,14 @@ class MyChallengesFragment : Fragment() {
         // set up the list view adapter
         val listChallenge = arrayListOf<Challenge>()
         listChallenge.clear()
-        listChallenge.add(Challenge("Aller à l'escalade", "", "00:12:34", "https://randomuser.me/api/portraits/thumb/men/89.jpg", "https://randomuser.me/api/portraits/thumb/men/34.jpg"))
-        listChallenge.add(Challenge("Prendre une douche tout habillé", "", "1 jour restant", "https://randomuser.me/api/portraits/thumb/women/33.jpg", "https://randomuser.me/api/portraits/thumb/men/34.jpg"))
-        listChallenge.add(Challenge("Prendre le prof de maths au tableau", "", "2 jours restant", "https://randomuser.me/api/portraits/thumb/women/34.jpg", "https://randomuser.me/api/portraits/thumb/men/34.jpg"))
-        listChallenge.add(Challenge("Faire la bise à une inconnue", "", "5 jours restant", "https://randomuser.me/api/portraits/thumb/men/34.jpg", "https://randomuser.me/api/portraits/thumb/men/84.jpg"))
-        listChallenge.add(Challenge("Manger des haricots verts au Nutella", "", "15 jours restant", "https://randomuser.me/api/portraits/thumb/men/34.jpg", "https://randomuser.me/api/portraits/thumb/men/83.jpg"))
-        listChallenge.add(Challenge("Aller à la piscine", "", "échoué", "https://randomuser.me/api/portraits/thumb/men/34.jpg", "https://randomuser.me/api/portraits/thumb/men/82.jpg"))
-        listChallenge.add(Challenge("Ice bucket challenge", "", "répondu", "https://randomuser.me/api/portraits/thumb/men/81.jpg", "https://randomuser.me/api/portraits/thumb/men/34.jpg"))
-        listChallenge.add(Challenge("Aller à la Tour Eiffel", "", "répondu", "https://randomuser.me/api/portraits/thumb/men/10.jpg", "https://randomuser.me/api/portraits/thumb/men/34.jpg"))
+        listChallenge.add(Challenge("Aller à l'escalade", "", getDaysAgo(1), "https://randomuser.me/api/portraits/thumb/men/89.jpg", "https://randomuser.me/api/portraits/thumb/men/34.jpg"))
+        listChallenge.add(Challenge("Prendre une douche tout habillé", "", getDaysAgo(2), "https://randomuser.me/api/portraits/thumb/women/33.jpg", "https://randomuser.me/api/portraits/thumb/men/34.jpg"))
+        listChallenge.add(Challenge("Prendre le prof de maths au tableau", "", getDaysAgo(3), "https://randomuser.me/api/portraits/thumb/women/34.jpg", "https://randomuser.me/api/portraits/thumb/men/34.jpg"))
+        listChallenge.add(Challenge("Faire la bise à une inconnue", "", getDaysAgo(4), "https://randomuser.me/api/portraits/thumb/men/34.jpg", "https://randomuser.me/api/portraits/thumb/men/84.jpg"))
+        listChallenge.add(Challenge("Manger des haricots verts au Nutella", "", getDaysAgo(5), "https://randomuser.me/api/portraits/thumb/men/34.jpg", "https://randomuser.me/api/portraits/thumb/men/83.jpg"))
+        listChallenge.add(Challenge("Aller à la piscine", "", getDaysAgo(6), "https://randomuser.me/api/portraits/thumb/men/34.jpg", "https://randomuser.me/api/portraits/thumb/men/82.jpg"))
+        listChallenge.add(Challenge("Ice bucket challenge", "", getDaysAgo(7), "https://randomuser.me/api/portraits/thumb/men/81.jpg", "https://randomuser.me/api/portraits/thumb/men/34.jpg"))
+        listChallenge.add(Challenge("Aller à la Tour Eiffel", "", getDaysAgo(8), "https://randomuser.me/api/portraits/thumb/men/10.jpg", "https://randomuser.me/api/portraits/thumb/men/34.jpg"))
         val viewAdapter = MyChallengeAdapter(listChallenge, mainActivity)
 
         // apply the manager and the adapter to the permit_list
@@ -68,6 +69,13 @@ class MyChallengesFragment : Fragment() {
                     fragment_my_challenge_fab.show()
             }
         })
+    }
+
+    fun getDaysAgo(daysToAdd: Int): Date {
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.DAY_OF_YEAR, daysToAdd)
+
+        return calendar.time
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -102,5 +110,5 @@ class MyChallengesFragment : Fragment() {
         }
     }
 
-    class Challenge(var action: String, var p: String, var time: String, var author: String, var challengedUser: String)
+    class Challenge(var action: String, var p: String, var time: Date, var author: String, var challengedUser: String)
 }

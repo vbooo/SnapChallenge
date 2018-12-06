@@ -24,6 +24,10 @@ import java.text.SimpleDateFormat
 import java.util.*
 import android.widget.CompoundButton
 import kotlinx.android.synthetic.main.fab_action_answer_challenge.*
+import android.view.animation.AnimationUtils
+import android.view.animation.Animation
+
+
 
 
 class AnswerChallengeActivity : AppCompatActivity() {
@@ -84,6 +88,13 @@ class AnswerChallengeActivity : AppCompatActivity() {
             val takeVideoIntent = Intent(MediaStore.ACTION_VIDEO_CAPTURE)
             //dispatchTakePictureIntent(takeVideoIntent)
         }*/
+
+        activity_answer_challenge_placeholder_media_layout.setOnClickListener {
+            if (!activity_answer_challenge_fab.isExpanded) {
+                val shake = AnimationUtils.loadAnimation(this, R.anim.shake)
+                activity_answer_challenge_fab.startAnimation(shake)
+            }
+        }
     }
 
     private fun handleHeader() {

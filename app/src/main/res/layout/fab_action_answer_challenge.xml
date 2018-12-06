@@ -12,9 +12,9 @@
         android:layout_alignParentEnd="true"
         android:src="@drawable/baseline_camera_alt_white_24"
         android:layout_marginEnd="@dimen/padding_small"
-        android:layout_marginBottom="@dimen/padding_xsmall"
+        android:layout_marginBottom="50dp"
         fab:fab_addButtonColorNormal="@color/color_border_second_user"
-        fab:fab_addButtonColorPressed="@color/primary"
+        fab:fab_addButtonColorPressed="@color/yellow_50"
         fab:fab_labelsPosition="left"
         fab:fab_labelStyle="@style/HistoryView_Button_Labels">
 
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             fab:fab_colorNormal="@color/blue_theme"
             fab:fab_title="@string/picture"
-            fab:fab_colorPressed="@color/dark"/>
+            fab:fab_colorPressed="@color/dark_50"/>
 
         <com.getbase.floatingactionbutton.AddFloatingActionButton
             android:id="@+id/floating_button_add_event"
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             fab:fab_colorNormal="@color/color_border_third_user"
             fab:fab_title="@string/video"
-            fab:fab_colorPressed="@color/dark_50"/>
+            fab:fab_colorPressed="@color/red_50"/>
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

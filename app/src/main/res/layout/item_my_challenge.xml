@@ -81,10 +81,10 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintRight_toLeftOf="@+id/item_my_challenge_challenged_user_picture"
-                    android:src="@drawable/three_chevron_arrows_pointing_right"
+                    android:src="@drawable/right_arrow_32"
                     android:layout_marginRight="@dimen/padding_small"
                     android:layout_marginLeft="@dimen/padding_small"
-                    android:tint="@color/black"/>
+                    android:tint="@color/dark_50"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/item_my_challenge_challenged_user_picture"
