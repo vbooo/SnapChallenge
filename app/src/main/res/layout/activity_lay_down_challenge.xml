@@ -79,11 +79,10 @@
 
     <FrameLayout
         android:id="@+id/activity_lay_down_challenge_action_layout"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@drawable/border_frame"
         android:layout_margin="@dimen/padding_large"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_lay_down_challenge_action"
         app:layout_constraintBottom_toTopOf="@+id/activity_lay_down_challenge_time">
 

@@ -32,6 +32,7 @@ class MyChallengeHolder(var view: View, var context: Context) : RecyclerView.Vie
         object : CountDownTimer(duration, 1000) {
 
             override fun onTick(millis: Long) {
+                // if duration is lower than one day we display a HH:MM:SS format
                 if (duration < 86400000) {
                     var millisUntilFinished = millis
                     val secondsInMilli: Long = 1000

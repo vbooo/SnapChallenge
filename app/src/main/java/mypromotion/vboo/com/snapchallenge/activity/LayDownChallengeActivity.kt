@@ -11,7 +11,6 @@ import android.view.KeyEvent
 import android.view.MenuItem
 import android.view.animation.TranslateAnimation
 import android.widget.SeekBar
-import android.widget.Toast
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_lay_down_challenge.*
 import kotlinx.android.synthetic.main.choose_challenge_time_dialog.*
@@ -36,7 +35,6 @@ class LayDownChallengeActivity : AppCompatActivity() {
 
         viewModel = LayDownChallengeViewModel(Challenge(), this)
         context = this
-
 
 
         Picasso.get().load(R.drawable.picture_fabien).error(R.drawable.user_default).placeholder(R.drawable.user_default)

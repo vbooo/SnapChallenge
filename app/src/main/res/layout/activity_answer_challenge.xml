@@ -5,20 +5,12 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activity.AnswerChallengeActivity">
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/activity_answer_challenge_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
-        android:elevation="4dp"
-        android:theme="@style/CustomActionBarStyle"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
     <android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?android:attr/actionBarSize"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".activity.AnswerChallengeActivity">
 
@@ -36,12 +28,13 @@
                     android:textSize="19sp"
                     android:textColor="@android:color/primary_text_light"
                     android:layout_marginTop="@dimen/padding_large"
+                    android:gravity="center_horizontal"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toTopOf="@+id/activity_answer_challenge_second_line"/>
 
-                <!-- Second line -->
+                <!-- START Second line -->
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/activity_answer_challenge_second_line"
                     android:layout_width="match_parent"
@@ -95,8 +88,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
+                        android:gravity="center_vertical"
                         android:background="@drawable/background_yellow_button"
-                        android:layout_marginBottom="@dimen/padding_small"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         >
                         <TextView
@@ -118,6 +113,7 @@
                     </LinearLayout>
 
                 </android.support.constraint.ConstraintLayout>
+                <!-- END Second line -->
 
             </android.support.constraint.ConstraintLayout>
             <!-- END HEADER -->
@@ -136,7 +132,7 @@
             app:layout_constraintTop_toBottomOf="@+id/activity_answer_challenge_layout_header"
             app:layout_constraintBottom_toTopOf="@+id/activity_answer_challenge_image"/>
 
-
+        <!-- START PLACEHOLDER MEDIA -->
         <android.support.constraint.ConstraintLayout
             android:id="@+id/activity_answer_challenge_placeholder_media_layout"
             android:layout_width="match_parent"
@@ -172,8 +168,7 @@
                 app:layout_constraintEnd_toEndOf="parent"/>
 
         </android.support.constraint.ConstraintLayout>
-
-
+        <!-- END PLACEHOLDER MEDIA -->
 
         <ImageView
             android:id="@+id/activity_answer_challenge_image"
@@ -207,6 +202,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/blue_theme_opacity"
                 android:padding="12dp"/>
+
         </FrameLayout>
 
     </android.support.constraint.ConstraintLayout>

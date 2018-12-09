@@ -43,7 +43,7 @@ class MyChallengesFragment : Fragment() {
         listChallenge.add(Challenge("Prendre une douche tout habillé", "", getDaysAgo(2), "https://randomuser.me/api/portraits/thumb/women/33.jpg", "https://randomuser.me/api/portraits/thumb/men/34.jpg"))
         listChallenge.add(Challenge("Prendre le prof de maths au tableau", "", getDaysAgo(3), "https://randomuser.me/api/portraits/thumb/women/34.jpg", "https://randomuser.me/api/portraits/thumb/men/34.jpg"))
         listChallenge.add(Challenge("Faire la bise à une inconnue", "", getDaysAgo(4), "https://randomuser.me/api/portraits/thumb/men/34.jpg", "https://randomuser.me/api/portraits/thumb/men/84.jpg"))
-        listChallenge.add(Challenge("Manger des haricots verts au Nutella", "", getDaysAgo(5), "https://randomuser.me/api/portraits/thumb/men/34.jpg", "https://randomuser.me/api/portraits/thumb/men/83.jpg"))
+        listChallenge.add(Challenge("Manger des haricots verts au Nutella avec du piment", "", getDaysAgo(5), "https://randomuser.me/api/portraits/thumb/men/34.jpg", "https://randomuser.me/api/portraits/thumb/men/83.jpg"))
         listChallenge.add(Challenge("Aller à la piscine", "", getDaysAgo(6), "https://randomuser.me/api/portraits/thumb/men/34.jpg", "https://randomuser.me/api/portraits/thumb/men/82.jpg"))
         listChallenge.add(Challenge("Ice bucket challenge", "", getDaysAgo(7), "https://randomuser.me/api/portraits/thumb/men/81.jpg", "https://randomuser.me/api/portraits/thumb/men/34.jpg"))
         listChallenge.add(Challenge("Aller à la Tour Eiffel", "", getDaysAgo(8), "https://randomuser.me/api/portraits/thumb/men/10.jpg", "https://randomuser.me/api/portraits/thumb/men/34.jpg"))

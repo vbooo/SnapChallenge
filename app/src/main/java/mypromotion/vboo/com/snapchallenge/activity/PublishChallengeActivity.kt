@@ -1,21 +1,15 @@
 package mypromotion.vboo.com.snapchallenge.activity
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
-import android.provider.MediaStore
-import android.support.v4.content.FileProvider
 import android.support.v7.app.AppCompatActivity
-import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.animation.AnimationUtils
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_answer_challenge.*
-import kotlinx.android.synthetic.main.activity_privacy_challenge.*
 import kotlinx.android.synthetic.main.fab_action_answer_challenge.*
 import mypromotion.vboo.com.snapchallenge.R
 import mypromotion.vboo.com.snapchallenge.viewModel.AnswerChallengeViewModel
@@ -25,7 +19,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class AnswerChallengeActivity : AppCompatActivity() {
+class PublishChallengeActivity : AppCompatActivity() {
     private val REQUEST_IMAGE_CAPTURE = 1
     private val REQUEST_TAKE_PHOTO = 1
     private var mCurrentPhotoPath: String? = null
@@ -47,7 +41,7 @@ class AnswerChallengeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_answer_challenge)
+        setContentView(R.layout.activity_publish_challenge)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -71,18 +65,6 @@ class AnswerChallengeActivity : AppCompatActivity() {
 
         viewModel = AnswerChallengeViewModel(this, nameAction, isAnswerToSomeone, urlAuthor, urlUser, true)
 
-        handleHeader()
-
-        /*activity_publish_challenge_image_camera.setOnClickListener {
-            val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            dispatchTakePictureIntent()
-        }
-
-        activity_publish_challenge_video.setOnClickListener {
-            val takeVideoIntent = Intent(MediaStore.ACTION_VIDEO_CAPTURE)
-            //dispatchTakePictureIntent(takeVideoIntent)
-        }*/
-
         activity_answer_challenge_placeholder_media_layout.setOnClickListener {
             if (!activity_answer_challenge_fab.isExpanded) {
                 val shake = AnimationUtils.loadAnimation(this, R.anim.shake)
@@ -90,85 +72,8 @@ class AnswerChallengeActivity : AppCompatActivity() {
             }
         }
 
-
     }
 
-    private fun handleHeader() {
-        activity_answer_challenge_second_line.visibility = viewModel.visibilitySecondLineHeader()
-        activity_answer_challenge_action_name.text = viewModel.nameAction
-        Picasso.get().load(viewModel.urlAuthor).error(R.drawable.user_default).placeholder(R.drawable.user_default)
-                .into(activity_answer_challenge_author_picture)
-        Picasso.get().load(viewModel.challengedUser).error(R.drawable.user_default).placeholder(R.drawable.user_default)
-                .into(activity_answer_challenge_challenged_user_picture)
-
-        updatePrivacyButton()
-        activity_answer_challenge_privacy_layout.setOnClickListener {
-            displayPrivacyDialog()
-        }
-    }
-
-    private fun updatePrivacyButton() {
-        activity_answer_challenge_privacy.text = viewModel.privacyValue()
-        activity_answer_challenge_privacy_layout.setBackgroundResource(viewModel.getBackgroundPrivacy())
-    }
-
-    private fun displayPrivacyDialog() {
-        val alertDiscardChallenge = AlertDialog.Builder(this).create()
-        val customViewPrivacy = LayoutInflater.from(this).inflate(R.layout.activity_privacy_challenge, null)
-        alertDiscardChallenge.setView(customViewPrivacy)
-
-        alertDiscardChallenge.show()
-
-        alertDiscardChallenge.activity_privacy_challenge_checkbox_private.isChecked = viewModel.privateCheckboxIsChecked()
-        alertDiscardChallenge.activity_privacy_challenge_checkbox_public.isChecked = viewModel.publicCheckboxIsChecked()
-
-
-        alertDiscardChallenge.activity_privacy_challenge_checkbox_public.setOnCheckedChangeListener{ _, isChecked ->
-            if (!viewModel.answerIsPublic) {
-                viewModel.answerIsPublic = isChecked
-                alertDiscardChallenge.activity_privacy_challenge_checkbox_private.isChecked = viewModel.privateCheckboxIsChecked()
-                alertDiscardChallenge.activity_privacy_challenge_checkbox_public.isChecked = viewModel.publicCheckboxIsChecked()
-            }
-            updatePrivacyButton()
-            alertDiscardChallenge.dismiss()
-        }
-
-        alertDiscardChallenge.activity_privacy_challenge_checkbox_private.setOnCheckedChangeListener{ _, isChecked ->
-            if (viewModel.answerIsPublic) {
-                viewModel.answerIsPublic = !isChecked
-                alertDiscardChallenge.activity_privacy_challenge_checkbox_private.isChecked = viewModel.privateCheckboxIsChecked()
-                alertDiscardChallenge.activity_privacy_challenge_checkbox_public.isChecked = viewModel.publicCheckboxIsChecked()
-            }
-            updatePrivacyButton()
-            alertDiscardChallenge.dismiss()
-        }
-    }
-
-    private fun dispatchTakePictureIntent() {
-        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-            // Ensure that there's a camera activity to handle the intent
-            takePictureIntent.resolveActivity(packageManager)?.also {
-                // Create the File where the photo should go
-                val photoFile: File? = try {
-                    createImageFile()
-                } catch (ex: IOException) {
-                    // Error occurred while creating the File
-
-                    null
-                }
-                // Continue only if the File was successfully created
-                photoFile?.also {
-                    photoURI = FileProvider.getUriForFile(
-                            this,
-                            "mypromotion.vboo.com.snapchallenge.fileprovider",
-                            it
-                    )
-                    //takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
-                    startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO)
-                }
-            }
-        }
-    }
 
     private fun setPic() {
         // Get the dimensions of the View

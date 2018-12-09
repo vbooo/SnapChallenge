@@ -7,7 +7,9 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
+import kotlinx.android.synthetic.main.activity_lay_down_challenge.*
 import kotlinx.android.synthetic.main.activity_list_action.*
 import mypromotion.vboo.com.snapchallenge.R
 import mypromotion.vboo.com.snapchallenge.adapter.CategoryActionsAdapter
@@ -73,7 +75,6 @@ class ListActionActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_category, menu)
         return true
     }

@@ -81,6 +81,7 @@
     <string name="placeholder_media">Séléctionnez une photo ou une vidéo pour prouver votre challenge</string>
     <string name="send">ENVOYER</string>
     <string name="failed">Echoué</string>
+    <string name="placeholder_media_publish">Sélectionnez une photo ou une vidéo pour publier votre challenge</string>
 
     <plurals name="x_minute">
         <item quantity="one">%d min</item>

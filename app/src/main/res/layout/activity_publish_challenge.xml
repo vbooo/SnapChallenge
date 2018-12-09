@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activity.AnswerChallengeActivity">
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".activity.AnswerChallengeActivity">
+
+            <!-- START HEADER -->
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/activity_answer_challenge_layout_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/activity_answer_challenge_action_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="19sp"
+                    android:textColor="@android:color/primary_text_light"
+                    android:layout_marginTop="@dimen/padding_large"
+                    android:gravity="center_horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/activity_answer_challenge_second_line"/>
+
+
+            </android.support.constraint.ConstraintLayout>
+            <!-- END HEADER -->
+
+        <FrameLayout
+            android:id="@+id/activity_lay_down_challenge_action_layout"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/border_frame"
+            android:layout_margin="@dimen/padding_large"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <LinearLayout
+                android:id="@+id/activity_publish_challenge_layout_add_action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/activity_lay_down_challenge_picture_swords"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:tint="@color/blue_theme"
+                    android:src="@drawable/ic_add_128"/>
+
+                <TextView
+                    android:id="@+id/activity_lay_down_challenge_action_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/dark"
+                    android:textStyle="bold"
+                    android:text="@string/action"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/activity_lay_down_challenge_action_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/dark"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+
+        </FrameLayout>
+
+        <!-- START PLACEHOLDER MEDIA -->
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/activity_answer_challenge_placeholder_media_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:id="@+id/activity_answer_challenge_placeholder_media_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/smartphone"
+                android:tint="#d9d9d9"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+            <TextView
+                android:id="@+id/activity_answer_challenge_placeholder_media_sentence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/placeholder_media_publish"
+                android:textColor="#cccccc"
+                android:textSize="@dimen/primary_text"
+                android:paddingStart="@dimen/padding_large"
+                android:paddingEnd="@dimen/padding_large"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="@dimen/padding_small"
+                app:layout_constraintTop_toBottomOf="@+id/activity_answer_challenge_placeholder_media_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </android.support.constraint.ConstraintLayout>
+        <!-- END PLACEHOLDER MEDIA -->
+
+        <ImageView
+            android:id="@+id/activity_answer_challenge_image"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:foregroundGravity="top"
+            android:visibility="visible"
+            app:layout_constraintTop_toBottomOf="@+id/activity_answer_challenge_description"
+            />
+        <VideoView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/activity_answer_challenge_description"
+            android:visibility="gone"
+            />
+
+        <FrameLayout
+            android:id="@+id/activity_answer_challenge_layout_lay_down"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_top"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/activity_answer_challenge_lay_down"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/send"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/blue_theme_opacity"
+                android:padding="12dp"/>
+
+        </FrameLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <include layout="@layout/fab_action_answer_challenge" />
+</RelativeLayout>
