@@ -47,8 +47,8 @@ class ActionByCategoryActivity : AppCompatActivity() {
      * Used for get the challenged user chosen in ChooseChallengedUserActivity
      */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == ListActionActivity.REQUEST_CODE_ACTION_CHOSE && resultCode == Activity.RESULT_OK) {
-            intent.putExtra(ListActionActivity.ACTION_NAME, data?.getStringExtra(ListActionActivity.ACTION_NAME))
+        if (requestCode == ListCategoryActivity.REQUEST_CODE_ACTION_CHOSE && resultCode == Activity.RESULT_OK) {
+            intent.putExtra(ListCategoryActivity.ACTION_NAME, data?.getStringExtra(ListCategoryActivity.ACTION_NAME))
             setResult(Activity.RESULT_OK, intent)
             finish()
         }
@@ -69,7 +69,7 @@ class ActionByCategoryActivity : AppCompatActivity() {
             }
             R.id.action_add_new_action -> {
                 val intent = Intent(context, NewActionActivity::class.java)
-                startActivityForResult(intent, ListActionActivity.REQUEST_CODE_ACTION_CHOSE)
+                startActivityForResult(intent, ListCategoryActivity.REQUEST_CODE_ACTION_CHOSE)
                 true
             }
             else -> super.onOptionsItemSelected(item)

@@ -4,17 +4,21 @@ import android.app.Activity
 import android.app.Fragment
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.*
 import android.widget.LinearLayout
+import com.getbase.floatingactionbutton.FloatingActionsMenu
+import kotlinx.android.synthetic.main.fab_list_challenge.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import mypromotion.vboo.com.snapchallenge.MainActivity
 import mypromotion.vboo.com.snapchallenge.R
-import mypromotion.vboo.com.snapchallenge.activity.AnswerChallengeActivity
+import mypromotion.vboo.com.snapchallenge.activity.LayDownChallengeActivity
 import mypromotion.vboo.com.snapchallenge.activity.PublishChallengeActivity
+import mypromotion.vboo.com.snapchallenge.activity.RankingActivity
 import mypromotion.vboo.com.snapchallenge.adapter.HomeChallengeAdapter
 import mypromotion.vboo.com.snapchallenge.model.ChallengeAnswer
 import java.util.*
@@ -65,20 +69,33 @@ class HomeFragment : Fragment() {
             adapter = viewAdapter
         }
 
-        fragment_home_fab.setOnClickListener {
-            val intent = Intent(mainActivity, PublishChallengeActivity::class.java)
-            startActivity(intent)
-        }
 
-        fragment_home_recycler_view.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
-                if (dy > 0)
-                    fragment_home_fab.hide()
-                else if (dy < 0)
-                    fragment_home_fab.show()
+        fab_home_list_challenge.setOnFloatingActionsMenuUpdateListener(object : FloatingActionsMenu.OnFloatingActionsMenuUpdateListener {
+            override fun onMenuExpanded() {
+                //fragment_home_view.setBackgroundDrawable(ColorDrawable(Color.BLACK))
+                //global_layout.setBackgroundDrawable(ColorDrawable(android.graphics.Color.BLACK))
+                //global_layout.background.alpha = 128
+            }
+
+            override fun onMenuCollapsed() {
+                //global_layout.background.alpha = 45
             }
         })
+
+        floating_button_send_challenge.setOnClickListener {
+            val intentRanking = Intent(mainActivity, LayDownChallengeActivity::class.java)
+            startActivity(intentRanking)
+        }
+
+        floating_button_publish_challenge.setOnClickListener {
+            val intentRanking = Intent(mainActivity, PublishChallengeActivity::class.java)
+            startActivity(intentRanking)
+        }
+
+
     }
+
+
 
     private fun fetchData() {
 

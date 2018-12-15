@@ -126,7 +126,7 @@ class LayDownChallengeActivity : AppCompatActivity() {
 
     private fun handleAddAction() {
         activity_lay_down_challenge_action_layout.setOnClickListener {
-            val intent = Intent(context, ListActionActivity::class.java)
+            val intent = Intent(context, ListCategoryActivity::class.java)
             startActivityForResult(intent, REQUEST_CODE_GET_ACTION_IN_LIST)
         }
     }
@@ -140,7 +140,7 @@ class LayDownChallengeActivity : AppCompatActivity() {
         } else if (requestCode == REQUEST_CODE_ADD_NEW_ACTION && resultCode == Activity.RESULT_OK) {
             onActionChosen(data?.getStringExtra(NewActionActivity.ACTION_NAME))
         } else if (requestCode == REQUEST_CODE_GET_ACTION_IN_LIST && resultCode == Activity.RESULT_OK) {
-            onActionChosen(data?.getStringExtra(ListActionActivity.ACTION_NAME))
+            onActionChosen(data?.getStringExtra(ListCategoryActivity.ACTION_NAME))
         }
         super.onActivityResult(requestCode, resultCode, data)
         updateLayDownChallenge()

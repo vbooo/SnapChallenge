@@ -38,7 +38,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.NewActionActivity"
-            android:label="@string/new_action"
+            android:label="@string/new_challenge"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.AnswerChallengeActivity"
@@ -57,12 +57,12 @@
             android:label="@string/choose_challenged_user"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.ListActionActivity"
-            android:label="@string/action"
+            android:name=".activity.ListCategoryActivity"
+            android:label="@string/challenge"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ActionByCategoryActivity"
-            android:label="@string/action"
+            android:label="@string/challenge"
             android:screenOrientation="portrait" />
 
         <provider

@@ -55,20 +55,6 @@ class MyChallengesFragment : Fragment() {
             this.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
             adapter = viewAdapter
         }
-
-        fragment_my_challenge_fab.setOnClickListener {
-            val intent = Intent(mainActivity, LayDownChallengeActivity::class.java)
-            startActivity(intent)
-        }
-
-        fragment_my_challenge_recycler_view.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
-                if (dy > 0)
-                    fragment_my_challenge_fab.hide()
-                else if (dy < 0)
-                    fragment_my_challenge_fab.show()
-            }
-        })
     }
 
     fun getDaysAgo(daysToAdd: Int): Date {

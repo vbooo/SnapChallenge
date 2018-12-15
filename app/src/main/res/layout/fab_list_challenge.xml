@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto">
+
+
+    <!-- The floating actions to add either an event, a behavior or a permit -->
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/fab_home_list_challenge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/baseline_camera_alt_white_24"
+        android:layout_marginEnd="@dimen/padding_small"
+        android:layout_marginBottom="@dimen/padding_large"
+        fab:fab_addButtonColorNormal="@color/color_border_second_user"
+        fab:fab_addButtonColorPressed="@color/yellow_50"
+        fab:fab_labelsPosition="left"
+        fab:fab_labelStyle="@style/HistoryView_Button_Labels">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floating_button_send_challenge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/blue_theme"
+            android:src="@drawable/smartphone_send"
+            fab:fab_title="@string/lay_down_a_challenge"
+            fab:fab_colorPressed="@color/dark_50"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floating_button_publish_challenge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/color_border_third_user"
+            fab:fab_title="@string/publish_challenge"
+            android:src="@drawable/baseline_camera_alt_white_24"
+            fab:fab_colorPressed="@color/red_50"/>
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+</merge>

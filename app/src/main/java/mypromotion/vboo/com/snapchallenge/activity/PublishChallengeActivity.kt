@@ -1,5 +1,7 @@
 package mypromotion.vboo.com.snapchallenge.activity
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -8,11 +10,9 @@ import android.os.Bundle
 import android.os.Environment
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
-import android.view.animation.AnimationUtils
-import kotlinx.android.synthetic.main.activity_answer_challenge.*
-import kotlinx.android.synthetic.main.fab_action_answer_challenge.*
+import kotlinx.android.synthetic.main.activity_publish_challenge.*
 import mypromotion.vboo.com.snapchallenge.R
-import mypromotion.vboo.com.snapchallenge.viewModel.AnswerChallengeViewModel
+import mypromotion.vboo.com.snapchallenge.viewModel.PublishChallengeViewModel
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
@@ -25,23 +25,27 @@ class PublishChallengeActivity : AppCompatActivity() {
     private var mCurrentPhotoPath: String? = null
     private var photoURI: Uri? = null
     private var fileMedia: File? = null
+    private lateinit var context: Context
 
     private var isAnswerToSomeone: Boolean = false
     private var nameAction: String? = null
     private var urlAuthor: String? = null
     private var urlUser = "https://randomuser.me/api/portraits/thumb/men/43.jpg"
 
-    private lateinit var viewModel: AnswerChallengeViewModel
+    private lateinit var viewModel: PublishChallengeViewModel
 
     companion object {
         const val NAME_ACTION = "name_action"
         const val IS_ANSWER_TO_SOMEONE = "is_answer_to_someone"
         const val URL_AUTHOR = "url_author"
+        private val REQUEST_CODE_GET_ACTION_IN_LIST = 2
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_publish_challenge)
+
+        context = this
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -63,17 +67,18 @@ class PublishChallengeActivity : AppCompatActivity() {
             null
         }
 
-        viewModel = AnswerChallengeViewModel(this, nameAction, isAnswerToSomeone, urlAuthor, urlUser, true)
+        viewModel = PublishChallengeViewModel(this, nameAction, isAnswerToSomeone, urlAuthor, urlUser, true)
 
-        activity_answer_challenge_placeholder_media_layout.setOnClickListener {
-            if (!activity_answer_challenge_fab.isExpanded) {
-                val shake = AnimationUtils.loadAnimation(this, R.anim.shake)
-                activity_answer_challenge_fab.startAnimation(shake)
-            }
-        }
+        handleAddAction()
 
     }
 
+    private fun handleAddAction() {
+        activity_publish_challenge_action_big_layout.setOnClickListener {
+            val intent = Intent(context, ListCategoryActivity::class.java)
+            startActivityForResult(intent, REQUEST_CODE_GET_ACTION_IN_LIST)
+        }
+    }
 
     private fun setPic() {
         // Get the dimensions of the View
@@ -96,11 +101,11 @@ class PublishChallengeActivity : AppCompatActivity() {
             inPurgeable = true
         }
         BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions)?.also { bitmap ->
-            activity_answer_challenge_image.setImageBitmap(bitmap)
+            //activity_publish_challenge_image.setImageBitmap(bitmap)
         }
 
         val bitmap =  BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions)
-        activity_answer_challenge_image.setImageBitmap(bitmap)
+                //activity_publish_challenge_image.setImageBitmap(bitmap)
     }
 
 
@@ -122,7 +127,17 @@ class PublishChallengeActivity : AppCompatActivity() {
 
             setPic()
 
+        } else if (requestCode == REQUEST_CODE_GET_ACTION_IN_LIST && resultCode == Activity.RESULT_OK) {
+            onActionChosen(data?.getStringExtra(ListCategoryActivity.ACTION_NAME))
         }
+    }
+
+    private fun onActionChosen(stringExtra: String?) {
+        viewModel.nameAction = stringExtra
+        activity_publish_challenge_layout_add_action.visibility = viewModel.placeholderAddActionVisibility()
+        activity_publish_challenge_action_name.visibility = viewModel.nameActionVisibility()
+        activity_publish_challenge_action_name.text = viewModel.nameAction
+
     }
 
     @Throws(IOException::class)

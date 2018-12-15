@@ -5,17 +5,16 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
-import kotlinx.android.synthetic.main.activity_lay_down_challenge.*
 import kotlinx.android.synthetic.main.activity_list_action.*
 import mypromotion.vboo.com.snapchallenge.R
 import mypromotion.vboo.com.snapchallenge.adapter.CategoryActionsAdapter
 import mypromotion.vboo.com.snapchallenge.model.CategoryTemp
 
-class ListActionActivity : AppCompatActivity() {
+class ListCategoryActivity : AppCompatActivity() {
 
     private var context: Context? = null
 
@@ -39,7 +38,7 @@ class ListActionActivity : AppCompatActivity() {
      */
     private fun initRecyclerView() {
         activity_list_action_recycler_view.setHasFixedSize(true)
-        activity_list_action_recycler_view.layoutManager = LinearLayoutManager(context)
+        activity_list_action_recycler_view.layoutManager = GridLayoutManager(context, 2)
         activity_list_action_recycler_view.adapter = CategoryActionsAdapter(this, getCategory())
     }
 
@@ -56,14 +55,16 @@ class ListActionActivity : AppCompatActivity() {
     private fun getCategory(): List<CategoryTemp> {
         val listCategory = arrayListOf<CategoryTemp>()
         listCategory.clear()
-        listCategory.add(CategoryTemp("Divers", "582 actions"))
-        listCategory.add(CategoryTemp("Sport", "482 actions"))
-        listCategory.add(CategoryTemp("Famille", "382 actions"))
-        listCategory.add(CategoryTemp("Musique", "372 actions"))
-        listCategory.add(CategoryTemp("Voyage", "282 actions"))
-        listCategory.add(CategoryTemp("Vacances", "212 actions"))
-        listCategory.add(CategoryTemp("Cuisine", "182 actions"))
-        listCategory.add(CategoryTemp("Maison", "45 actions"))
+        listCategory.add(CategoryTemp("Divers", "882 challenges"))
+        listCategory.add(CategoryTemp("Sport", "782 challenges"))
+        listCategory.add(CategoryTemp("Couple", "682 challenges"))
+        listCategory.add(CategoryTemp("Animaux", "602 challenges"))
+        listCategory.add(CategoryTemp("Sortie", "602 challenges"))
+        listCategory.add(CategoryTemp("Famille", "582 challenges"))
+        listCategory.add(CategoryTemp("Voyage", "282 challenges"))
+        listCategory.add(CategoryTemp("Vacances", "212 challenges"))
+        listCategory.add(CategoryTemp("Alimentation", "182 challenges"))
+        listCategory.add(CategoryTemp("Maison", "45 challenges"))
         return listCategory
     }
 

@@ -27,14 +27,4 @@
         android:layout_height="match_parent">
     </android.support.v7.widget.RecyclerView>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fragment_my_challenge_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:src="@drawable/baseline_add_white_24"
-        android:backgroundTint="@color/color_border_second_user"
-        android:layout_margin="@dimen/fab_margin"
-        app:borderWidth="0dp"/>
-
 </FrameLayout>

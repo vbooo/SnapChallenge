@@ -6,14 +6,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import mypromotion.vboo.com.snapchallenge.R
 import mypromotion.vboo.com.snapchallenge.activity.ActionByCategoryActivity
-import mypromotion.vboo.com.snapchallenge.activity.ListActionActivity
+import mypromotion.vboo.com.snapchallenge.activity.ListCategoryActivity
 import mypromotion.vboo.com.snapchallenge.holder.ActionHolder
 import mypromotion.vboo.com.snapchallenge.model.Action
 
 class ActionByCategoryAdapter (private val activity: ActionByCategoryActivity, private val actions: List<Action>) : RecyclerView.Adapter<ActionHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ActionHolder {
-        val view = LayoutInflater.from(parent?.context).inflate(R.layout.item_category_action, parent, false)
+        val view = LayoutInflater.from(parent?.context).inflate(R.layout.item_action, parent, false)
         return ActionHolder(view)
     }
 
@@ -28,7 +28,7 @@ class ActionByCategoryAdapter (private val activity: ActionByCategoryActivity, p
         // click listener on user row
         holder?.getActionName()?.setOnClickListener {
             val intent = activity.intent
-            intent.putExtra(ListActionActivity.ACTION_NAME, actions[position].label)
+            intent.putExtra(ListCategoryActivity.ACTION_NAME, actions[position].label)
             activity.setResult(Activity.RESULT_OK, intent)
             activity.finish()
         }

@@ -17,7 +17,6 @@ class CommentMediaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_comment_media)
 
-        setSupportActionBar(findViewById(R.id.my_toolbar))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val listChallenge = arrayListOf<CommentMedia>()
