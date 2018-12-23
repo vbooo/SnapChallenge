@@ -59,7 +59,13 @@
         <activity
             android:name=".activity.ListCategoryActivity"
             android:label="@string/challenge"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+
+            <meta-data
+                android:name="android.support.v7.widget.SearchView"
+                android:resource="@xml/searchable" />
+        </activity>
+
         <activity
             android:name=".activity.ActionByCategoryActivity"
             android:label="@string/challenge"
@@ -75,7 +81,9 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name="activity.SearchActionActivity">
+        <activity
+            android:name=".activity.SearchActionActivity"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>

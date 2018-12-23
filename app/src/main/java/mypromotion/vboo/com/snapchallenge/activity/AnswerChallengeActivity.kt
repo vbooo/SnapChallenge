@@ -83,13 +83,6 @@ class AnswerChallengeActivity : AppCompatActivity() {
             //dispatchTakePictureIntent(takeVideoIntent)
         }*/
 
-        activity_answer_challenge_placeholder_media_layout.setOnClickListener {
-            if (!activity_answer_challenge_fab.isExpanded) {
-                val shake = AnimationUtils.loadAnimation(this, R.anim.shake)
-                activity_answer_challenge_fab.startAnimation(shake)
-            }
-        }
-
 
     }
 
@@ -191,11 +184,11 @@ class AnswerChallengeActivity : AppCompatActivity() {
             inPurgeable = true
         }
         BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions)?.also { bitmap ->
-            activity_answer_challenge_image.setImageBitmap(bitmap)
+            //activity_answer_challenge_image.setImageBitmap(bitmap)
         }
 
         val bitmap =  BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions)
-        activity_answer_challenge_image.setImageBitmap(bitmap)
+        //activity_answer_challenge_image.setImageBitmap(bitmap)
     }
 
 

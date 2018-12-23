@@ -40,6 +40,10 @@ class ActionByCategoryActivity : AppCompatActivity() {
         listAction.add(Action(1, "Faire une piste rouge à l'escalade", 200, 20))
         listAction.add(Action(2, "Lever le plus possible au développer couché", 300, 20))
         listAction.add(Action(3, "Aller courir", 100, 20))
+        listAction.add(Action(4, "Faire le plus de pompes possible", 100, 20))
+        listAction.add(Action(5, "Manger des haricots verts au Nutella", 100, 20))
+        listAction.add(Action(5, "En haut de la Tour Eiffel", 100, 20))
+        listAction.add(Action(5, "Jouer au poker", 100, 20))
         return listAction
     }
 
@@ -70,6 +74,12 @@ class ActionByCategoryActivity : AppCompatActivity() {
             R.id.action_add_new_action -> {
                 val intent = Intent(context, NewActionActivity::class.java)
                 startActivityForResult(intent, ListCategoryActivity.REQUEST_CODE_ACTION_CHOSE)
+                true
+            }
+
+            R.id.action_search_action -> {
+                val intent = Intent(context, SearchActionActivity::class.java)
+                startActivity(intent)
                 true
             }
             else -> super.onOptionsItemSelected(item)

@@ -43,7 +43,7 @@ class RankingAdapter(var context: Context) : RecyclerView.Adapter<RecyclerView.V
         return _listRankingDataSource.nbItem
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is RankingHeaderHolder) {
             val header = _listRankingDataSource.getHeaderAt(position)
             holder.setFirstUserPicture(header.urlPicFirstUser)

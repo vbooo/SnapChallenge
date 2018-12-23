@@ -84,6 +84,8 @@
     <string name="proof">Preuve</string>
     <string name="add_proof">AJOUTER UNE PREUVE</string>
     <string name="add_challenge">AJOUTER UN CHALLENGE</string>
+    <string name="friend_to_dare">Amis à défier</string>
+    <string name="search">Rechercher</string>
 
     <plurals name="x_minute">
         <item quantity="one">%d min</item>

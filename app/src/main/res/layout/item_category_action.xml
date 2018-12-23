@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/primary_text"
             android:textColor="@android:color/white"
-            android:textStyle="bold"
+            android:fontFamily="@font/roboto_medium"
             xmlns:android="http://schemas.android.com/apk/res/android" />
 
         <TextView android:id="@+id/item_category_nb_challenges"
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/primary_text"
             android:textColor="@android:color/white"
-            android:textStyle="bold"
+            android:fontFamily="@font/roboto_medium"
             xmlns:android="http://schemas.android.com/apk/res/android" />
 
     </LinearLayout>

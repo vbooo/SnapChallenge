@@ -9,8 +9,8 @@ import mypromotion.vboo.com.snapchallenge.holder.UserHolder
 import mypromotion.vboo.com.snapchallenge.model.User
 
 class ChallengedUserAdapter (private val activity: ChooseChallengedUserActivity, private val users: List<User>, private val idSelectedUser : Int?) : RecyclerView.Adapter<UserHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): UserHolder {
-        val view = LayoutInflater.from(parent?.context).inflate(R.layout.item_user, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_user, parent, false)
         return UserHolder(view)
     }
 
@@ -18,15 +18,15 @@ class ChallengedUserAdapter (private val activity: ChooseChallengedUserActivity,
         return users.size
     }
 
-    override fun onBindViewHolder(holder: UserHolder?, position: Int) {
+    override fun onBindViewHolder(holder: UserHolder, position: Int) {
         // set user title
-        holder?.getUserRow()?.text = users[position].name
+        holder.getUserRow().text = users[position].name
 
         // check the selected user
-        holder?.getUserRow()?.isChecked = users[position].id == idSelectedUser
+        holder.getUserRow().isChecked = users[position].id == idSelectedUser
 
         // click listener on user row
-        holder?.getUserLayout()?.setOnClickListener {
+        holder.getUserLayout().setOnClickListener {
             activity.saveChallengedUser(users[position].id)
         }
     }

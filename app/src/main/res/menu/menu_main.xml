@@ -4,12 +4,12 @@
     tools:context="mypromotion.vboo.com.snapchallenge.MainActivity">
     <item
         android:id="@+id/action_search"
-        android:title="@string/hashtag"
+        android:title="@string/search"
         android:icon="@drawable/baseline_search_black_24"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_ranking"
-        android:title="@string/friends"
+        android:title="@string/ranking"
         android:icon="@drawable/ranking"
         app:showAsAction="ifRoom" />
 </menu>

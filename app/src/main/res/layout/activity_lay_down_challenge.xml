@@ -20,8 +20,8 @@
         android:paddingRight="@dimen/padding_large"
         android:paddingBottom="@dimen/padding_small"
         android:paddingTop="@dimen/padding_large"
-        android:text="@string/challenged_user"
-        android:textColor="@color/dark"/>
+        android:text="@string/friend_to_dare"
+        android:textColor="@color/black"/>
     <LinearLayout
         android:id="@+id/activity_lay_down_challenge_challenged_user_layout"
         android:layout_width="match_parent"
@@ -74,8 +74,8 @@
         android:paddingRight="@dimen/padding_large"
         android:paddingBottom="@dimen/padding_small"
         android:paddingTop="@dimen/padding_large"
-        android:text="@string/action_to_realize"
-        android:textColor="@color/dark"/>
+        android:text="@string/challenge"
+        android:textColor="@color/black"/>
 
     <FrameLayout
         android:id="@+id/activity_lay_down_challenge_action_layout"
@@ -88,16 +88,16 @@
 
         <ImageView
             android:id="@+id/activity_lay_down_challenge_picture_swords"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
-            android:src="@drawable/swords"/>
+            android:src="@drawable/ic_add_128"/>
 
         <TextView
             android:id="@+id/activity_lay_down_challenge_action_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/dark"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_gravity="center"/>
 
@@ -116,7 +116,7 @@
         android:paddingBottom="@dimen/padding_small"
         android:paddingTop="@dimen/padding_large"
         android:text="@string/time_optionnal"
-        android:textColor="@color/dark"/>
+        android:textColor="@color/black"/>
 
     <LinearLayout
         android:id="@+id/activity_lay_down_challenge_time_value_layout"
@@ -144,7 +144,7 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:layout_gravity="center_vertical"
-            android:textColor="@color/dark"/>
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 
@@ -153,7 +153,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:max="100"
-        android:indeterminate="false"
+        android:progressTint="@color/colorPrimaryDark"
+        android:thumbTint="@color/colorPrimary"
         app:layout_constraintTop_toBottomOf="@+id/activity_lay_down_challenge_time_value_layout"
         app:layout_constraintStart_toStartOf="parent"/>
 

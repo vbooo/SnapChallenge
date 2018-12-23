@@ -20,41 +20,7 @@ import mypromotion.vboo.com.snapchallenge.model.User
 
 class ProfilAdapter(var context: Context, var user: User) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    /** Enum used to distinguish the different type of row in the recycler view */
-    enum class ViewType { HEADER, ROW }
-
-    private lateinit var _profilDataSource: ProfilDataSource
-
-    var profilDataSource: ProfilDataSource? = null
-        set(value) {
-            if (value != null) {
-                _profilDataSource = value
-                notifyDataSetChanged()
-            }
-        }
-
-    override fun onCreateViewHolder(parent: ViewGroup,
-                                    viewType: Int): RecyclerView.ViewHolder {
-        return if (viewType == ViewType.HEADER.ordinal) {
-            ProfilHeaderHolder.create(parent, context)
-        } else {
-            ChallengeHolder.create(parent, context)
-        }
-    }
-
-    override fun getItemViewType(position: Int): Int {
-        return if (_profilDataSource.isHeaderAt(position)) {
-            ViewType.HEADER.ordinal
-        } else {
-            ViewType.ROW.ordinal
-        }
-    }
-
-    override fun getItemCount(): Int {
-        return _profilDataSource.nbItem
-    }
-
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is ProfilHeaderHolder) {
             val header = _profilDataSource.getHeaderAt(position)
             holder.setUserPicture(header.urlProfilPicture)
@@ -115,4 +81,41 @@ class ProfilAdapter(var context: Context, var user: User) : RecyclerView.Adapter
             holder.hideAnswerChallenge()
         }
     }
+
+
+    /** Enum used to distinguish the different type of row in the recycler view */
+    enum class ViewType { HEADER, ROW }
+
+    private lateinit var _profilDataSource: ProfilDataSource
+
+    var profilDataSource: ProfilDataSource? = null
+        set(value) {
+            if (value != null) {
+                _profilDataSource = value
+                notifyDataSetChanged()
+            }
+        }
+
+    override fun onCreateViewHolder(parent: ViewGroup,
+                                    viewType: Int): RecyclerView.ViewHolder {
+        return if (viewType == ViewType.HEADER.ordinal) {
+            ProfilHeaderHolder.create(parent, context)
+        } else {
+            ChallengeHolder.create(parent, context)
+        }
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (_profilDataSource.isHeaderAt(position)) {
+            ViewType.HEADER.ordinal
+        } else {
+            ViewType.ROW.ordinal
+        }
+    }
+
+    override fun getItemCount(): Int {
+        return _profilDataSource.nbItem
+    }
+
+
 }

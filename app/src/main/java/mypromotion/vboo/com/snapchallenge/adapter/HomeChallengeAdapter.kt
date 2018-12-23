@@ -18,8 +18,8 @@ import java.util.*
 
 
 class HomeChallengeAdapter(private var dataSet: MutableList<ChallengeAnswer>, var context: Context, var activity: Activity) : RecyclerView.Adapter<ChallengeHolder>(){
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ChallengeHolder {
-        val view = LayoutInflater.from(parent?.context).inflate(R.layout.item_challenge, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChallengeHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_challenge, parent, false)
         return ChallengeHolder(view, context)
     }
 
@@ -27,34 +27,40 @@ class HomeChallengeAdapter(private var dataSet: MutableList<ChallengeAnswer>, va
         return dataSet.size
     }
 
-    override fun onBindViewHolder(holder: ChallengeHolder?, position: Int) {
-        holder?.setUserPicture(dataSet[position].urlOwner)
-        holder?.setChallengeDate(Date())
-        holder?.setChallengeTitle(dataSet[position].nameOwner)
-        holder?.setChallengeDescription(dataSet[position].description)
+    override fun onBindViewHolder(holder: ChallengeHolder, position: Int) {
+        holder.setUserPicture(dataSet[position].urlOwner)
+        holder.setChallengeDate(Date())
+        holder.setChallengeTitle(dataSet[position].nameOwner)
+        holder.setChallengeDescription(dataSet[position].description)
 
         if (dataSet[position].typeChallenge == AnswerChallengeType.video.ordinal) {
-            holder?.getPhotoContainer()?.visibility = View.GONE
-            holder?.getVideoContainer()?.visibility = View.VISIBLE
+            holder.getPhotoContainer().visibility = View.GONE
+            holder.getVideoContainer().visibility = View.VISIBLE
+
+            val player = holder.handleVideoView(dataSet[position].urlMedia)
+            holder.handleMuteButton(player)
+            holder.getMuteButton().visibility = View.VISIBLE
+
         } else {
-            holder?.getPhotoContainer()?.visibility = View.VISIBLE
-            holder?.getVideoContainer()?.visibility = View.GONE
+            holder.getPhotoContainer().visibility = View.VISIBLE
+            holder.getVideoContainer().visibility = View.GONE
+            holder.getMuteButton().visibility = View.GONE
         }
 
-        holder?.setNbLike(dataSet[position].nbLike)
-        holder?.setNbComment(dataSet[position].nbComment)
-        holder?.setNbShare(dataSet[position].nbShare)
+        holder.setNbLike(dataSet[position].nbLike)
+        holder.setNbComment(dataSet[position].nbComment)
+        holder.setNbShare(dataSet[position].nbShare)
 
-        holder?.setUrlPicture(dataSet[position].urlMedia)
+        holder.setUrlPicture(dataSet[position].urlMedia)
 
-        holder?.setNbChallengers(context.resources.getQuantityString(R.plurals.x_challenger, dataSet[position].nbChallengers, dataSet[position].nbChallengers))
+        holder.setNbChallengers(context.resources.getQuantityString(R.plurals.x_challenger, dataSet[position].nbChallengers, dataSet[position].nbChallengers))
 
-        holder?.getNbChallengerTextView()?.setOnClickListener {
+        holder.getNbChallengerTextView().setOnClickListener {
             val intent = Intent(context, ActionChallengersActivity::class.java)
             context.startActivity(intent)
         }
 
-        holder?.getPhotoContainer()?.setOnClickListener {
+        holder.getPhotoContainer().setOnClickListener {
             val intent = Intent(context, DetailMediaActivity::class.java)
             intent.putExtra(CHALLENGE_ANSWER, dataSet[position])
             val options = ActivityOptions
@@ -62,12 +68,12 @@ class HomeChallengeAdapter(private var dataSet: MutableList<ChallengeAnswer>, va
             context.startActivity(intent, options.toBundle())
         }
 
-        holder?.getCommentIcon()?.setOnClickListener {
+        holder.getCommentIcon().setOnClickListener {
             val intent = Intent(context, CommentMediaActivity::class.java)
             context.startActivity(intent)
         }
 
-        holder?.getUserPicture()?.setOnClickListener {
+        holder.getUserPicture().setOnClickListener {
             val intent = Intent(context, ProfilActivity::class.java)
             intent.putExtra(CHALLENGE_ANSWER, dataSet[position])
             val options = ActivityOptions
@@ -75,7 +81,7 @@ class HomeChallengeAdapter(private var dataSet: MutableList<ChallengeAnswer>, va
             context.startActivity(intent)
         }
 
-        holder?.getAnswerChallengeLayout()?.setOnClickListener {
+        holder.getAnswerChallengeLayout().setOnClickListener {
             val intent = Intent(context, AnswerChallengeActivity::class.java)
             intent.putExtra(AnswerChallengeActivity.NAME_ACTION, dataSet[position].description)
             intent.putExtra(AnswerChallengeActivity.IS_ANSWER_TO_SOMEONE, false)

@@ -52,7 +52,7 @@ class ActionChallengersAdapter(var context: Context) : RecyclerView.Adapter<Recy
         return _actionChallengersDataSource.nbItem
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is ActionChallengersHeaderHolder) {
             val header = _actionChallengersDataSource.getHeaderAt(position)
             holder.setActionName(header.nameAction)
@@ -81,7 +81,7 @@ class ActionChallengersAdapter(var context: Context) : RecyclerView.Adapter<Recy
 
             holder.setNbChallengers(context.resources.getQuantityString(R.plurals.x_challenger, challengeUser.nbChallengers, challengeUser.nbChallengers))
 
-            holder.getNbChallengerTextView()?.setOnClickListener {
+            holder.getNbChallengerTextView().setOnClickListener {
                 val intent = Intent(context, ActionChallengersActivity::class.java)
                 context.startActivity(intent)
             }

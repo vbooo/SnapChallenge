@@ -74,7 +74,7 @@ class PublishChallengeActivity : AppCompatActivity() {
     }
 
     private fun handleAddAction() {
-        activity_publish_challenge_action_big_layout.setOnClickListener {
+        activity_publish_challenge_action_layout.setOnClickListener {
             val intent = Intent(context, ListCategoryActivity::class.java)
             startActivityForResult(intent, REQUEST_CODE_GET_ACTION_IN_LIST)
         }
@@ -134,7 +134,7 @@ class PublishChallengeActivity : AppCompatActivity() {
 
     private fun onActionChosen(stringExtra: String?) {
         viewModel.nameAction = stringExtra
-        activity_publish_challenge_layout_add_action.visibility = viewModel.placeholderAddActionVisibility()
+        activity_publish_challenge_add.visibility = viewModel.placeholderAddActionVisibility()
         activity_publish_challenge_action_name.visibility = viewModel.nameActionVisibility()
         activity_publish_challenge_action_name.text = viewModel.nameAction
 

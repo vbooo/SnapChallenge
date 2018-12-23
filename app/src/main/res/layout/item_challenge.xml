@@ -49,12 +49,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
+                    android:paddingBottom="@dimen/padding_xsmall"
+                    android:fontFamily="@font/roboto_regular"
                     android:textColor="@android:color/primary_text_light"/>
 
                 <TextView
                     android:id="@+id/item_home_challenge_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto_light"
                     android:textColor="@color/second_text"/>
             </LinearLayout>
 
@@ -73,29 +78,40 @@
         android:paddingStart="@dimen/padding_large"
         android:paddingEnd="@dimen/padding_large"
         android:gravity="center_vertical"
+        android:fontFamily="@font/roboto_regular"
         app:layout_constraintTop_toBottomOf="@+id/item_home_challenge_header"
         app:layout_constraintBottom_toTopOf="@+id/item_home_challenge_container"/>
 
     <!-- START CONTAINER CHALLENGE PUBLICATION -->
 
-    <FrameLayout
+    <android.support.constraint.ConstraintLayout
         android:id="@+id/item_home_challenge_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/item_home_challenge_description"
         app:layout_constraintBottom_toTopOf="@+id/item_home_challenge_footer">
 
-        <VideoView
+        <com.google.android.exoplayer2.ui.PlayerView
             android:id="@+id/item_home_challenge_container_video"
             android:layout_width="match_parent"
-            android:layout_height="220dp" />
+            android:layout_height="wrap_content"
+            android:minHeight="200dp"
+            app:use_controller="false"/>
+
+        <ImageView
+            android:id="@+id/item_home_challenge_mute_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="@dimen/padding_large"/>
         <ImageView
             android:id="@+id/item_home_challenge_container_image"
             android:layout_width="match_parent"
             android:transitionName="@string/mediaImageTransition"
             android:layout_height="220dp" />
 
-    </FrameLayout>
+    </android.support.constraint.ConstraintLayout>
 
     <!-- END CONTAINER CHALLENGE PUBLICATION -->
 
@@ -141,6 +157,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/dark"
+                        android:fontFamily="@font/roboto_regular"
                         android:paddingEnd="@dimen/padding_large"
                         app:layout_constraintLeft_toRightOf="@+id/item_home_challenge_like_picture"
                         app:layout_constraintRight_toLeftOf="@+id/item_home_challenge_comment_picture"
@@ -163,6 +180,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/dark"
+                        android:fontFamily="@font/roboto_regular"
                         android:paddingEnd="@dimen/padding_large"
                         app:layout_constraintLeft_toRightOf="@+id/item_home_challenge_comment_picture"
                         app:layout_constraintRight_toLeftOf="@+id/item_home_challenge_share_picture"
@@ -185,6 +203,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/dark"
+                        android:fontFamily="@font/roboto_regular"
                         app:layout_constraintLeft_toRightOf="@+id/item_home_challenge_share_picture"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"/>
@@ -199,6 +218,7 @@
                 android:layout_height="match_parent"
                 android:textColor="@color/color_border_second_user"
                 android:textStyle="bold"
+                android:fontFamily="@font/roboto_bold"
                 app:layout_constraintLeft_toRightOf="@+id/item_home_challenge_layout_interaction"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -226,6 +246,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/answer_challenge"
+            android:fontFamily="@font/roboto_medium"
             android:paddingBottom="@dimen/padding_6dp"
             android:paddingTop="@dimen/padding_6dp"
             android:paddingEnd="@dimen/padding_small"
