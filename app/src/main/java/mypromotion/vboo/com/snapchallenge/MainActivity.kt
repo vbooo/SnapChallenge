@@ -10,6 +10,11 @@ import mypromotion.vboo.com.snapchallenge.activity.RankingActivity
 import mypromotion.vboo.com.snapchallenge.fragment.HomeFragment
 import mypromotion.vboo.com.snapchallenge.fragment.MyChallengesFragment
 import mypromotion.vboo.com.snapchallenge.fragment.ProfilFragment
+import mypromotion.vboo.com.snapchallenge.model.network.AllUsersResult
+import mypromotion.vboo.com.snapchallenge.model.network.FindUserByIdResult
+import mypromotion.vboo.com.snapchallenge.network.ServiceResult
+import mypromotion.vboo.com.snapchallenge.network.interfaces.IServiceResultListener
+import mypromotion.vboo.com.snapchallenge.network.service.UserService
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,6 +27,50 @@ class MainActivity : AppCompatActivity() {
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         changeFragment(0)
+
+       /* UserService().login(UserLoginData("toto", "totoPassword"), object : IServiceResultListener<LoginBodyResult> {
+
+            override fun onResult(bodyResult: ServiceResult<LoginBodyResult>) {
+                if (bodyResult.getmError() == null) {
+                    bodyResult.mData?.result?.token?.let {
+                        // save the token in Preferences
+                    }
+                    val gg = ""
+                }
+            }
+        })
+
+        UserService().add(AddUserData("Fabien", "fabien78", "", 18, "f@g.com", "passwordFab"), object : IServiceResultListener<LoginBodyResult> {
+
+            override fun onResult(bodyResult: ServiceResult<LoginBodyResult>) {
+                if (bodyResult.getmError() == null) {
+                    bodyResult.mData?.result?.token?.let {
+                        // save the token in Preferences
+                    }
+                    val gg = ""
+                }
+            }
+        })*/
+
+        UserService().getAllUsers("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtYWlsQGNoYWxsZW5nZS5jb20iLCJfaWQiOiI1Y2ViMzE4MTYzNTdjMTRlZDFjYjg1OWUiLCJpYXQiOjE1NjQwNjQwMTEsImV4cCI6MTU2NDA2NzYxMX0.960s1AFuqfVfH-p9PWkX4eYW7UDAYRUDGNfbQ30aRTA", object : IServiceResultListener<AllUsersResult> {
+
+            override fun onResult(bodyResult: ServiceResult<AllUsersResult>) {
+                if (bodyResult.getmError() == null) {
+                    bodyResult.mData
+                    val gg = ""
+                }
+            }
+        })
+
+        UserService().findById("5ceb31126357c14ed1cb859d", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtYWlsQGNoYWxsZW5nZS5jb20iLCJfaWQiOiI1Y2ViMzE4MTYzNTdjMTRlZDFjYjg1OWUiLCJpYXQiOjE1NjQwNjQwMTEsImV4cCI6MTU2NDA2NzYxMX0.960s1AFuqfVfH-p9PWkX4eYW7UDAYRUDGNfbQ30aRTA", object : IServiceResultListener<FindUserByIdResult> {
+
+            override fun onResult(bodyResult: ServiceResult<FindUserByIdResult>) {
+                if (bodyResult.getmError() == null) {
+                    bodyResult.mData
+                    val gg = ""
+                }
+            }
+        })
 
     }
 

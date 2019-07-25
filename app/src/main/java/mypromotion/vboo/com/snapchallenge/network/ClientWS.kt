@@ -6,8 +6,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ClientWS {
 
     companion object {
-        val BASE_URL_DEV = "https://api.instagram.com/v1/"
-        val BASE_URL_PROD = "https://api.instagram.com/v1/"
+        val BASE_URL_DEV = "http://134.209.189.64/app_api/"
+        val BASE_URL_PROD = "http://134.209.189.64/app_api/"
 
         fun getClient(): Retrofit {
             return Retrofit.Builder()
