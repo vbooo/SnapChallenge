@@ -1,12 +1,16 @@
 package mypromotion.vboo.com.snapchallenge.network.service
 
 import mypromotion.vboo.com.snapchallenge.model.network.*
+import mypromotion.vboo.com.snapchallenge.model.network.user.AddUserParam
+import mypromotion.vboo.com.snapchallenge.model.network.user.AllUsersResult
+import mypromotion.vboo.com.snapchallenge.model.network.user.FindUserByIdResult
+import mypromotion.vboo.com.snapchallenge.model.network.user.UserLoginParam
 import mypromotion.vboo.com.snapchallenge.network.ClientWS
 import mypromotion.vboo.com.snapchallenge.network.ServiceException
 import mypromotion.vboo.com.snapchallenge.network.ServiceResult
 import mypromotion.vboo.com.snapchallenge.network.interfaces.IServiceResultListener
-import mypromotion.vboo.com.snapchallenge.network.interfaces.IUserInterface
-import mypromotion.vboo.com.snapchallenge.network.interfaces.UserInterface
+import mypromotion.vboo.com.snapchallenge.network.interfaces.user.IUserInterface
+import mypromotion.vboo.com.snapchallenge.network.interfaces.user.UserInterface
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -14,8 +18,8 @@ import retrofit2.Response
 class UserService: IUserInterface {
 
 
-    override fun add(addUserData: AddUserData, bodyResultListener: IServiceResultListener<LoginBodyResult>) {
-        val call = getUserInterface()?.add(addUserData)
+    override fun add(addUserParam: AddUserParam, bodyResultListener: IServiceResultListener<LoginBodyResult>) {
+        val call = getUserInterface()?.add(addUserParam)
         call?.enqueue(object : Callback<LoginBodyResult> {
             override fun onResponse(call: Call<LoginBodyResult>, response: Response<LoginBodyResult>) {
                 val result = ServiceResult<LoginBodyResult>()
@@ -93,8 +97,8 @@ class UserService: IUserInterface {
 
     private var mUserInterface: UserInterface? = null
 
-    override fun login(userLoginData: UserLoginData, bodyResultListener: IServiceResultListener<LoginBodyResult>) {
-        val call = getUserInterface()?.login(userLoginData)
+    override fun login(userLoginParam: UserLoginParam, bodyResultListener: IServiceResultListener<LoginBodyResult>) {
+        val call = getUserInterface()?.login(userLoginParam)
         call?.enqueue(object : Callback<LoginBodyResult> {
             override fun onResponse(call: Call<LoginBodyResult>, response: Response<LoginBodyResult>) {
                 val result = ServiceResult<LoginBodyResult>()

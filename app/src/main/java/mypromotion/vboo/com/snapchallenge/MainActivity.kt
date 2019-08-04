@@ -10,14 +10,17 @@ import mypromotion.vboo.com.snapchallenge.activity.RankingActivity
 import mypromotion.vboo.com.snapchallenge.fragment.HomeFragment
 import mypromotion.vboo.com.snapchallenge.fragment.MyChallengesFragment
 import mypromotion.vboo.com.snapchallenge.fragment.ProfilFragment
-import mypromotion.vboo.com.snapchallenge.model.network.AllUsersResult
-import mypromotion.vboo.com.snapchallenge.model.network.FindUserByIdResult
+import mypromotion.vboo.com.snapchallenge.model.network.category.AddCategoryParam
+import mypromotion.vboo.com.snapchallenge.model.network.category.AddCategoryResult
+import mypromotion.vboo.com.snapchallenge.model.network.category.GetAllCategoryResult
 import mypromotion.vboo.com.snapchallenge.network.ServiceResult
 import mypromotion.vboo.com.snapchallenge.network.interfaces.IServiceResultListener
-import mypromotion.vboo.com.snapchallenge.network.service.UserService
+import mypromotion.vboo.com.snapchallenge.network.service.CategoryService
 
 
 class MainActivity : AppCompatActivity() {
+
+    val token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtYWlsQGNoYWxsZW5nZS5jb20iLCJfaWQiOiI1Y2ViMzE4MTYzNTdjMTRlZDFjYjg1OWUiLCJpYXQiOjE1NjQ2MDA5NzAsImV4cCI6MTQ0MDAwMDAwMTU2NDYwMTAwMH0.b8UGDD_qGZgT-WV2AYWTEd8cfitlmvtrS6zoFd07F5M"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         changeFragment(0)
 
-       /* UserService().login(UserLoginData("toto", "totoPassword"), object : IServiceResultListener<LoginBodyResult> {
+       /* UserService().login(UserLoginParam("toto", "totoPassword"), object : IServiceResultListener<LoginBodyResult> {
 
             override fun onResult(bodyResult: ServiceResult<LoginBodyResult>) {
                 if (bodyResult.getmError() == null) {
@@ -40,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        UserService().add(AddUserData("Fabien", "fabien78", "", 18, "f@g.com", "passwordFab"), object : IServiceResultListener<LoginBodyResult> {
+        UserService().add(AddUserParam("Fabien", "fabien78", "", 18, "f@g.com", "passwordFab"), object : IServiceResultListener<LoginBodyResult> {
 
             override fun onResult(bodyResult: ServiceResult<LoginBodyResult>) {
                 if (bodyResult.getmError() == null) {
@@ -50,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                     val gg = ""
                 }
             }
-        })*/
+        })
 
         UserService().getAllUsers("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtYWlsQGNoYWxsZW5nZS5jb20iLCJfaWQiOiI1Y2ViMzE4MTYzNTdjMTRlZDFjYjg1OWUiLCJpYXQiOjE1NjQwNjQwMTEsImV4cCI6MTU2NDA2NzYxMX0.960s1AFuqfVfH-p9PWkX4eYW7UDAYRUDGNfbQ30aRTA", object : IServiceResultListener<AllUsersResult> {
 
@@ -65,6 +68,36 @@ class MainActivity : AppCompatActivity() {
         UserService().findById("5ceb31126357c14ed1cb859d", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtYWlsQGNoYWxsZW5nZS5jb20iLCJfaWQiOiI1Y2ViMzE4MTYzNTdjMTRlZDFjYjg1OWUiLCJpYXQiOjE1NjQwNjQwMTEsImV4cCI6MTU2NDA2NzYxMX0.960s1AFuqfVfH-p9PWkX4eYW7UDAYRUDGNfbQ30aRTA", object : IServiceResultListener<FindUserByIdResult> {
 
             override fun onResult(bodyResult: ServiceResult<FindUserByIdResult>) {
+                if (bodyResult.getmError() == null) {
+                    bodyResult.mData
+                    val gg = ""
+                }
+            }
+        })
+
+        CategoryService().add(AddCategoryParam("Tennis de table", 100), token, object : IServiceResultListener<AddCategoryResult> {
+
+            override fun onResult(bodyResult: ServiceResult<AddCategoryResult>) {
+                if (bodyResult.getmError() == null) {
+                    bodyResult.mData
+                    val gg = ""
+                }
+            }
+        })
+
+        CategoryService().adds(listOf(AddCategoryParam("Tennis de table underwater", 100), AddCategoryParam("Category bizarre", 300)) , token, object : IServiceResultListener<AddCategoryResult> {
+
+            override fun onResult(bodyResult: ServiceResult<AddCategoryResult>) {
+                if (bodyResult.getmError() == null) {
+                    bodyResult.mData
+                    val gg = ""
+                }
+            }
+        })*/
+
+        CategoryService().getAllCategory(token, object : IServiceResultListener<GetAllCategoryResult> {
+
+            override fun onResult(bodyResult: ServiceResult<GetAllCategoryResult>) {
                 if (bodyResult.getmError() == null) {
                     bodyResult.mData
                     val gg = ""

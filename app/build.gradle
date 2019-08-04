@@ -21,7 +21,7 @@ android {
         }
     }
 
-    // Needed for ExoPlayer
+    // Needed for ExoPlayerS
     compileOptions {
         targetCompatibility JavaVersion.VERSION_1_8
     }
